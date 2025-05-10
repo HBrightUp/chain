@@ -661,6 +661,7 @@ pub(crate) enum EpochRewardStatus {
 /// Manager for the state of all accounts and programs after processing its entries.
 /// AbiExample is needed even without Serialize/Deserialize; actual (de-)serialization
 /// are implemented elsewhere for versioning
+/// 表示账本当前状态的数据结构。它包含了所有账户的余额、交易的执行结果以及该状态下的区块链信息
 #[derive(AbiExample, Debug)]
 pub struct Bank {
     /// References to accounts, parent and signature status

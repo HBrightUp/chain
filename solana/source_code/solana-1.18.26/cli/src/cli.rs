@@ -505,10 +505,10 @@ impl From<solana_rpc_client_nonce_utils::Error> for CliError {
 }
 
 pub struct CliConfig<'a> {
-    pub command: CliCommand,
-    pub json_rpc_url: String,
-    pub websocket_url: String,
-    pub keypair_path: String,
+    pub command: CliCommand,        // 所有子命令的枚举
+    pub json_rpc_url: String,       // rpc 地址 
+    pub websocket_url: String,      // websocket 地址
+    pub keypair_path: String,       // 当前 keypair的路径 
     pub commitment: CommitmentConfig,
     pub signers: Vec<&'a dyn Signer>,
     pub rpc_client: Option<Arc<RpcClient>>,
@@ -571,6 +571,7 @@ impl Default for CliConfig<'_> {
     }
 }
 
+// 将子命令解析为 CliCommand
 pub fn parse_command(
     matches: &ArgMatches<'_>,
     default_signer: &DefaultSigner,
@@ -873,6 +874,7 @@ pub fn process_command(config: &CliConfig) -> ProcessResult {
         config.rpc_client.as_ref().unwrap().clone()
     };
 
+    // 所有子命令的处理接口
     match &config.command {
         // Cluster Query Commands
         // Get address of this client

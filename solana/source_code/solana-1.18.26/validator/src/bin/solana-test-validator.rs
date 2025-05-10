@@ -334,7 +334,8 @@ fn main() {
     let faucet_per_request_cap = value_t!(matches, "faucet_per_request_sol_cap", f64)
         .ok()
         .map(sol_to_lamports);
-
+    
+    // 启动本地水龙头服务
     let (sender, receiver) = unbounded();
     run_local_faucet_with_port(
         faucet_keypair,
@@ -393,6 +394,8 @@ fn main() {
         } else {
             (None, None)
         };
+
+    // 启动 json ipc server
     admin_rpc_service::run(
         &ledger_path,
         admin_rpc_service::AdminRpcRequestMetadata {

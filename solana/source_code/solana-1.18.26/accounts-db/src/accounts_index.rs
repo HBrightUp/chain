@@ -236,9 +236,10 @@ impl AccountSecondaryIndexes {
 /// used to keep track of consistency with disk index
 pub struct AccountMapEntryMeta {
     /// true if entry in in-mem idx has changes and needs to be written to disk
+    /// 表示内存中的 帐户数据已经变化了，需要把数据同步到文件中去
     pub dirty: AtomicBool,
     /// 'age' at which this entry should be purged from the cache (implements lru)
-    pub age: AtomicAge,
+    pub age: AtomicAge, // 个人猜想设计： 可能是帐户数据每次变化一次，这个 age 值会加 1，如果这个值与碰盘中的 age 相差太大了则需要数据同步；
 }
 
 impl AccountMapEntryMeta {
@@ -265,14 +266,20 @@ impl AccountMapEntryMeta {
 /// one entry in the in-mem accounts index
 /// Represents the value for an account key in the in-memory accounts index
 pub struct AccountMapEntryInner<T> {
+    
     /// number of alive slots that contain >= 1 instances of account data for this pubkey
     /// where alive represents a slot that has not yet been removed by clean via AccountsDB::clean_stored_dead_slots() for containing no up to date account information
     ref_count: AtomicU64,
+
     /// list of slots in which this pubkey was updated
     /// Note that 'clean' removes outdated entries (ie. older roots) from this slot_list
     /// purge_slot() also removes non-rooted slots from this list
+    /// 
+    /// 更新公匙的 slot 列表，用于维护帐户数据的准确性。这里面的 slot 随时可能会删除
     pub slot_list: RwLock<SlotList<T>>,
     /// synchronization metadata for in-memory state since last flush to disk accounts index
+    /// 
+    /// 判断数据是否需要从内存同步到磁盘
     pub meta: AccountMapEntryMeta,
 }
 
@@ -673,11 +680,13 @@ pub enum AccountsIndexScanResult {
     Unref,
 }
 
+
+// 定义帐户数据索引机制，IndexValue 表示从内存中读取帐户信息，DiskIndexValue 表示从磁盘中读取帐户信息
 #[derive(Debug)]
 /// T: account info type to interact in in-memory items
 /// U: account info type to be persisted to disk
 pub struct AccountsIndex<T: IndexValue, U: DiskIndexValue + From<T> + Into<T>> {
-    pub account_maps: LockMapType<T, U>,
+    pub account_maps: LockMapType<T, U>,        // 最终可能解析为： Vec<Arc<InMemAccountsIndex<T, U>>>
     pub bin_calculator: PubkeyBinCalculator24,
     program_id_index: SecondaryIndex<RwLockSecondaryIndexEntry>,
     spl_token_mint_index: SecondaryIndex<RwLockSecondaryIndexEntry>,

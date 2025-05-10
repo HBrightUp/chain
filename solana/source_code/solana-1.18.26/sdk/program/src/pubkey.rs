@@ -109,6 +109,8 @@ impl<T> DecodeError<T> for ParsePubkeyError {
     }
 }
 
+
+// 实现从 str -> pubkey 
 impl FromStr for Pubkey {
     type Err = ParsePubkeyError;
 
@@ -116,6 +118,8 @@ impl FromStr for Pubkey {
         if s.len() > MAX_BASE58_LEN {
             return Err(ParsePubkeyError::WrongSize);
         }
+
+        // str -> Vec<u8>
         let pubkey_vec = bs58::decode(s)
             .into_vec()
             .map_err(|_| ParsePubkeyError::Invalid)?;

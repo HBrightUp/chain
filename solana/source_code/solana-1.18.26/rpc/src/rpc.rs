@@ -203,7 +203,7 @@ pub struct JsonRpcRequestProcessor {
     genesis_hash: Hash,
     transaction_sender: Arc<Mutex<Sender<TransactionInfo>>>,
     bigtable_ledger_storage: Option<solana_storage_bigtable::LedgerStorage>,
-    optimistically_confirmed_bank: Arc<RwLock<OptimisticallyConfirmedBank>>,
+    optimistically_confirmed_bank: Arc<RwLock<OptimisticallyConfirmedBank>>,    // 处于 confirmed bank 的数据
     largest_accounts_cache: Arc<RwLock<LargestAccountsCache>>,
     max_slots: Arc<MaxSlots>,
     leader_schedule_cache: Arc<LeaderScheduleCache>,
@@ -213,6 +213,7 @@ pub struct JsonRpcRequestProcessor {
 }
 impl Metadata for JsonRpcRequestProcessor {}
 
+// 处理 rcp-client 请求数据
 impl JsonRpcRequestProcessor {
     fn get_bank_with_config(&self, config: RpcContextConfig) -> Result<Arc<Bank>> {
         let RpcContextConfig {
@@ -416,6 +417,7 @@ impl JsonRpcRequestProcessor {
         }
     }
 
+    // 获取帐户的信息
     pub fn get_account_info(
         &self,
         pubkey: &Pubkey,
@@ -434,6 +436,8 @@ impl JsonRpcRequestProcessor {
         let encoding = encoding.unwrap_or(UiAccountEncoding::Binary);
 
         let response = get_encoded_account(&bank, pubkey, encoding, data_slice, None)?;
+        
+        //响应报包含： bank.slot + response
         Ok(new_response(&bank, response))
     }
 
@@ -2293,6 +2297,7 @@ pub(crate) fn check_is_at_least_confirmed(commitment: CommitmentConfig) -> Resul
     Ok(())
 }
 
+// 获取用户信息(未解压)
 fn get_encoded_account(
     bank: &Bank,
     pubkey: &Pubkey,
@@ -2316,6 +2321,7 @@ fn get_encoded_account(
     }
 }
 
+// 将获取的用户信息数据进行压缩，打包成  UiAccount  结构用于传输
 fn encode_account<T: ReadableAccount>(
     account: &T,
     pubkey: &Pubkey,
@@ -2962,12 +2968,14 @@ pub mod rpc_bank {
 
 // RPC interface that depends on AccountsDB
 // Expected to be provided by API nodes
+// 定义 rpc account 相关的 api
 pub mod rpc_accounts {
     use super::*;
     #[rpc]
     pub trait AccountsData {
         type Metadata;
 
+        // 获取用户所有相关的信息
         #[rpc(meta, name = "getAccountInfo")]
         fn get_account_info(
             &self,
@@ -2976,6 +2984,7 @@ pub mod rpc_accounts {
             config: Option<RpcAccountInfoConfig>,
         ) -> Result<RpcResponse<Option<UiAccount>>>;
 
+        // 获取多个用户所有相关的信息
         #[rpc(meta, name = "getMultipleAccounts")]
         fn get_multiple_accounts(
             &self,
@@ -2994,7 +3003,7 @@ pub mod rpc_accounts {
         // SPL Token-specific RPC endpoints
         // See https://github.com/solana-labs/solana-program-library/releases/tag/token-v2.0.0 for
         // program details
-
+        // 返回 spl-token 的数量
         #[rpc(meta, name = "getTokenAccountBalance")]
         fn get_token_account_balance(
             &self,
@@ -3003,6 +3012,7 @@ pub mod rpc_accounts {
             commitment: Option<CommitmentConfig>,
         ) -> Result<RpcResponse<UiTokenAmount>>;
 
+        // 获取 SPL-Token 持币前20名的帐户
         #[rpc(meta, name = "getTokenSupply")]
         fn get_token_supply(
             &self,
@@ -3099,6 +3109,7 @@ pub mod rpc_accounts_scan {
     pub trait AccountsScan {
         type Metadata;
 
+        // 返回当前 program 所有的帐户
         #[rpc(meta, name = "getProgramAccounts")]
         fn get_program_accounts(
             &self,
@@ -3114,6 +3125,7 @@ pub mod rpc_accounts_scan {
             config: Option<RpcLargestAccountsConfig>,
         ) -> Result<RpcResponse<Vec<RpcAccountBalance>>>;
 
+        // 获取供应量
         #[rpc(meta, name = "getSupply")]
         fn get_supply(
             &self,
@@ -3133,6 +3145,7 @@ pub mod rpc_accounts_scan {
             commitment: Option<CommitmentConfig>,
         ) -> Result<RpcResponse<Vec<RpcTokenAccountBalance>>>;
 
+        // 获取 ower 所持有的所有 SPL-token 帐户
         #[rpc(meta, name = "getTokenAccountsByOwner")]
         fn get_token_accounts_by_owner(
             &self,

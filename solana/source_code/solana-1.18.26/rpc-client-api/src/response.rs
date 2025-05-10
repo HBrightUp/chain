@@ -92,10 +92,11 @@ impl RpcResponseContext {
     }
 }
 
+// 定义响应数据格式
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Response<T> {
     pub context: RpcResponseContext,
-    pub value: T,
+    pub value: T,               //  泛型数据，T 表示具体的响应数据类型
 }
 
 #[derive(Debug, PartialEq, Eq, Serialize, Deserialize, Clone)]

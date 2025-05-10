@@ -21,7 +21,7 @@ members = [
     "cargo-registry",
     "clap-utils",
     "clap-v3-utils",
-    "cli",
+    "cli",      # solana : solana 控制台命令行工具
     "cli-config",
     "cli-output",
     "client",
@@ -32,7 +32,7 @@ members = [
     "dos",
     "download-utils",
     "entry",
-    "faucet",
+    "faucet",   # solana_faucet ： 启动 TCP server 负责 sol 水龙头请求
     "frozen-abi",
     "frozen-abi/macro",
     "genesis",
@@ -46,7 +46,7 @@ members = [
     "ledger-tool",
     "local-cluster",
     "log-analyzer",
-    "logger",
+    "logger",       # 控制台日志库
     "measure",
     "memory-management",
     "merkle-root-bench",
@@ -79,8 +79,8 @@ members = [
     "rayon-threadlimit",
     "rbpf-cli",
     "remote-wallet",
-    "rpc",
-    "rpc-client",
+    "rpc",                  # rpc 服务器 模块,接收 rpc-client 的请求包，
+    "rpc-client",           #  rpc 客户端 模块， solana-cli通过它从 rpc 服务端 拿取数据
     "rpc-client-api",
     "rpc-client-nonce-utils",
     "rpc-test",
@@ -111,7 +111,7 @@ members = [
     "unified-scheduler-logic",
     "unified-scheduler-pool",
     "upload-perf",
-    "validator",
+    "validator",    # 
     "version",
     "vote",
     "watchtower",

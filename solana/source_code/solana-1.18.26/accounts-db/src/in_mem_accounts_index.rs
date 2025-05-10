@@ -89,10 +89,12 @@ impl<T: IndexValue> PossibleEvictions<T> {
 
 // one instance of this represents one bin of the accounts index.
 pub struct InMemAccountsIndex<T: IndexValue, U: DiskIndexValue + From<T> + Into<T>> {
+
+    // 帐户数据最后一次从内存 存储到 磁盘的 年龄
     last_age_flushed: AtomicAge,
 
     // backing store
-    map_internal: RwLock<InMemMap<T>>,
+    map_internal: RwLock<InMemMap<T>>,      // 解析为  HashMap<Pubkey, Arc<AccountMapEntryInner<T>>>
     storage: Arc<BucketMapHolder<T, U>>,
     bin: usize,
 

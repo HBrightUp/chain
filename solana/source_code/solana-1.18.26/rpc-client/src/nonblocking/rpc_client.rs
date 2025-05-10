@@ -3830,6 +3830,7 @@ impl RpcClient {
     /// # })?;
     /// # Ok::<(), Error>(())
     /// ```
+    /// 根据用户公匙查找所有用户相关的信息
     pub async fn get_account(&self, pubkey: &Pubkey) -> ClientResult<Account> {
         self.get_account_with_commitment(pubkey, self.commitment())
             .await?
@@ -3941,6 +3942,7 @@ impl RpcClient {
     /// # })?;
     /// # Ok::<(), Error>(())
     /// ```
+    /// // 根据用户公匙获取所有用户的信息
     pub async fn get_account_with_config(
         &self,
         pubkey: &Pubkey,
@@ -3960,6 +3962,8 @@ impl RpcClient {
                         RpcError::ForUser(format!("AccountNotFound: pubkey={pubkey}")).into(),
                     );
                 }
+
+                // 将响应数据转化为 json 格式 并返回
                 let Response {
                     context,
                     value: rpc_account,

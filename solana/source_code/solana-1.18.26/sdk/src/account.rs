@@ -105,19 +105,21 @@ impl Serialize for AccountSharedData {
 /// An Account with data that is stored on chain
 /// This will be the in-memory representation of the 'Account' struct data.
 /// The existing 'Account' structure cannot easily change due to downstream projects.
+/// 
+/// 所用帐户的数据存储格式
 #[derive(PartialEq, Eq, Clone, Default, AbiExample, Deserialize)]
 #[serde(from = "Account")]
 pub struct AccountSharedData {
     /// lamports in the account
-    lamports: u64,
+    lamports: u64,              // 用户 lamports 的数据
     /// data held in this account
-    data: Arc<Vec<u8>>,
+    data: Arc<Vec<u8>>,             // 保存的数据
     /// the program that owns this account. If executable, the program that loads this account.
-    owner: Pubkey,
+    owner: Pubkey,                  // 拥有此帐户的公匙，此公匙可能是 实际的用户，也有可能是 Program id
     /// this account's data contains a loaded program (and is now read-only)
-    executable: bool,
+    executable: bool,               // 是否可执行。可执行是指 data 部分存储了 program 的 bytecode
     /// the epoch at which this account will next owe rent
-    rent_epoch: Epoch,
+    rent_epoch: Epoch,              //  下一次计算租金的时间点
 }
 
 /// Compares two ReadableAccounts

@@ -131,6 +131,9 @@ impl FromStr for CommitmentConfig {
     }
 }
 
+
+// 描述交易状态 Processed、Confirmed、Finalized,默认为 Finalized
+
 #[derive(Serialize, Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash)]
 #[serde(rename_all = "camelCase")]
 /// An attribute of a slot. It describes how finalized a block is at some point in time. For example, a slot

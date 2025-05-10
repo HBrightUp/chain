@@ -122,7 +122,7 @@ pub struct TestValidatorGenesis {
     ledger_path: Option<PathBuf>,
     tower_storage: Option<Arc<dyn TowerStorage>>,
     pub rent: Rent,
-    rpc_config: JsonRpcConfig,
+    rpc_config: JsonRpcConfig,      // rpc server 的配置信息
     pubsub_config: PubSubConfig,
     rpc_ports: Option<(u16, u16)>, // (JsonRpc, JsonRpcPubSub), None == random ports
     warp_slot: Option<Slot>,
@@ -770,9 +770,13 @@ impl TestValidator {
         mint_address: Pubkey,
         config: &TestValidatorGenesis,
     ) -> Result<PathBuf, Box<dyn std::error::Error>> {
+
+        // 验证者提供三个帐户：identity、vote、stake
         let validator_identity = Keypair::new();
         let validator_vote_account = Keypair::new();
         let validator_stake_account = Keypair::new();
+
+
         let validator_identity_lamports = sol_to_lamports(500.);
         let validator_stake_lamports = sol_to_lamports(1_000_000.);
         let mint_lamports = sol_to_lamports(500_000_000.);

@@ -22,6 +22,7 @@ pub fn spl_token_ids() -> Vec<Pubkey> {
 }
 
 // Check if the provided program id as a known SPL Token program id
+// 判断 提供的公匙 是不是  spl_token 或者  spl_token_2022 的 id,这里的用途主要是判断 某个帐户是不是 token 用户；
 pub fn is_known_spl_token_id(program_id: &Pubkey) -> bool {
     *program_id == spl_token::id() || *program_id == spl_token_2022::id()
 }

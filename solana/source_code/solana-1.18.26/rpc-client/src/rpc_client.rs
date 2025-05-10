@@ -3154,6 +3154,7 @@ impl RpcClient {
     /// let account = rpc_client.get_account(&alice_pubkey)?;
     /// # Ok::<(), Error>(())
     /// ```
+    /// 根据用户公匙获取所有相关的信息
     pub fn get_account(&self, pubkey: &Pubkey) -> ClientResult<Account> {
         self.invoke((self.rpc_client.as_ref()).get_account(pubkey))
     }

@@ -85,9 +85,9 @@ pub struct PackedOffsetAndFlags {
 #[derive(Default, Debug, PartialEq, Eq, Clone, Copy)]
 pub struct AccountInfo {
     /// index identifying the append storage
-    store_id: AppendVecId,
+    store_id: AppendVecId,                      // 表示帐户快照数据的自增 id 
 
-    account_offset_and_flags: AccountOffsetAndFlags,
+    account_offset_and_flags: AccountOffsetAndFlags,        // 帐户数据偏移量
 }
 
 #[derive(Default, Debug, PartialEq, Eq, Clone, Copy)]

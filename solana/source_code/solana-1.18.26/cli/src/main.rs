@@ -21,6 +21,7 @@ use {
     std::{collections::HashMap, error, path::PathBuf, rc::Rc, time::Duration},
 };
 
+// 加载配置文件信息
 fn parse_settings(matches: &ArgMatches<'_>) -> Result<bool, Box<dyn error::Error>> {
     let parse_args = match matches.subcommand() {
         ("config", Some(matches)) => {
@@ -143,6 +144,8 @@ fn parse_settings(matches: &ArgMatches<'_>) -> Result<bool, Box<dyn error::Error
     Ok(parse_args)
 }
 
+
+// 解析命令所有的 Flag 和 Option 选项信息
 pub fn parse_args<'a>(
     matches: &ArgMatches<'_>,
     wallet_manager: &mut Option<Rc<RemoteWalletManager>>,
@@ -181,6 +184,7 @@ pub fn parse_args<'a>(
 
     let default_signer = DefaultSigner::new(default_signer_arg_name, &default_signer_path);
 
+    // 解析子命令
     let CliCommandInfo {
         command,
         mut signers,
@@ -241,10 +245,10 @@ pub fn parse_args<'a>(
 }
 
 fn main() -> Result<(), Box<dyn error::Error>> {
-    //rintln!(" Welcome to solana.");
 
+    // 设置控制台日志，默认为 off
     //solana_logger::setup_with_default("off");
-    solana_logger::setup_with_default("info");
+    solana_logger::setup_with_default("trace");
     let matches = get_clap_app(
         crate_name!(),
         crate_description!(),
@@ -280,6 +284,7 @@ fn do_main(matches: &ArgMatches<'_>) -> Result<(), Box<dyn error::Error>> {
         &signers, config.rpc_timeout, config.verbose, config.output_format, 
         config.send_transaction_config, config.confirm_transaction_initial_timeout, config.address_labels, config.use_quic);
 
+        // 开始处理所有子命令(config相关除外)
         let result = process_command(&config)?;
         println!("{result}");
     };

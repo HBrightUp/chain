@@ -1348,6 +1348,7 @@ struct RemoveUnrootedSlotsSynchronization {
 type AccountInfoAccountsIndex = AccountsIndex<AccountInfo, AccountInfo>;
 
 // This structure handles the load/store of the accounts
+//帐户数据库: 是验证器存储数据，用于跟踪用户信息
 #[derive(Debug)]
 pub struct AccountsDb {
     /// Keeps tracks of index into AppendVec on a per slot basis

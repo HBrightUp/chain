@@ -6,13 +6,15 @@ use {
     thiserror::Error,
 };
 
+
+// 定义 solana-cli 请求方法
 #[derive(Debug, PartialEq, Eq, Hash, Clone, Copy)]
 pub enum RpcRequest {
     Custom {
         method: &'static str,
     },
     DeregisterNode,
-    GetAccountInfo,
+    GetAccountInfo,     // 获取用户的信息
     GetBalance,
     GetBlock,
     GetBlockHeight,

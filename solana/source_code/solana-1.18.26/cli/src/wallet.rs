@@ -654,6 +654,8 @@ pub fn parse_verify_offchain_signature(
     })
 }
 
+
+// 处理 solana account <public key> 命令
 pub fn process_show_account(
     rpc_client: &RpcClient,
     config: &CliConfig,
@@ -693,6 +695,8 @@ pub fn process_show_account(
     Ok(account_string)
 }
 
+
+// 处理请求空投 SOL
 pub fn process_airdrop(
     rpc_client: &RpcClient,
     config: &CliConfig,

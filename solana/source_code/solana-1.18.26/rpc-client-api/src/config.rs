@@ -150,10 +150,10 @@ pub enum RpcAccountIndex {
 #[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct RpcAccountInfoConfig {
-    pub encoding: Option<UiAccountEncoding>,
+    pub encoding: Option<UiAccountEncoding>,        // 数据压缩方式
     pub data_slice: Option<UiDataSliceConfig>,
     #[serde(flatten)]
-    pub commitment: Option<CommitmentConfig>,
+    pub commitment: Option<CommitmentConfig>,       // 数据的状态 
     pub min_context_slot: Option<Slot>,
 }
 

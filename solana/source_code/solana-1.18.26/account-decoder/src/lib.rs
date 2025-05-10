@@ -36,16 +36,18 @@ pub type StringAmount = String;
 pub type StringDecimals = String;
 pub const MAX_BASE58_BYTES: usize = 128;
 
+
+// 定义 solana account <public key>  响应数据格式
 /// A duplicate representation of an Account for pretty JSON serialization
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq)]
 #[serde(rename_all = "camelCase")]
 pub struct UiAccount {
-    pub lamports: u64,
+    pub lamports: u64,          // sol 存款
     pub data: UiAccountData,
-    pub owner: String,
-    pub executable: bool,
-    pub rent_epoch: Epoch,
-    pub space: Option<u64>,
+    pub owner: String,          //  帐户的 owner
+    pub executable: bool,       // 是否可执行
+    pub rent_epoch: Epoch,      // 到期的  epoch
+    pub space: Option<u64>,     //  分配的空间
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
