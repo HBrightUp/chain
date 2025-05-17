@@ -33,7 +33,7 @@ members = [
     "download-utils",
     "entry",
     "faucet",   # solana_faucet ： 启动 TCP server 负责 sol 水龙头请求
-    "frozen-abi",
+    "frozen-abi",   # 冻结 struct 或者 enum 的数据
     "frozen-abi/macro",
     "genesis",
     "genesis-utils",
@@ -87,7 +87,7 @@ members = [
     "runtime",
     "runtime-transaction",
     "sdk",
-    "sdk/cargo-build-bpf",
+    "sdk/cargo-build-bpf",  # 已弃用
     "sdk/cargo-build-sbf",
     "sdk/cargo-test-bpf",
     "sdk/cargo-test-sbf",

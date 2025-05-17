@@ -319,6 +319,7 @@ impl SanitizedMessage {
     }
 
     /// If the message uses a durable nonce, return the pubkey of the nonce account
+    /// 获取 durable nonce 对应的 公匙;
     pub fn get_durable_nonce(&self) -> Option<&Pubkey> {
         self.instructions()
             .get(NONCED_TX_MARKER_IX_INDEX as usize)

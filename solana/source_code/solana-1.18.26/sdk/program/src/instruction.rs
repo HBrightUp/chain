@@ -328,12 +328,15 @@ pub enum InstructionError {
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub struct Instruction {
     /// Pubkey of the program that executes this instruction.
+    /// 智能合约ID
     #[wasm_bindgen(skip)]
     pub program_id: Pubkey,
     /// Metadata describing accounts that should be passed to the program.
+    /// 当前 函数执行所需要的所有帐户信息列表
     #[wasm_bindgen(skip)]
     pub accounts: Vec<AccountMeta>,
     /// Opaque data passed to the program for its own interpretation.
+    /// 函数入参，这里使用的是字节码，实际上需要使用 borsh 和 bincode 进行序列化或者反序列化
     #[wasm_bindgen(skip)]
     pub data: Vec<u8>,
 }
@@ -534,14 +537,17 @@ pub fn checked_add(a: u64, b: u64) -> Result<u64, InstructionError> {
 /// default [`AccountMeta::new`] constructor creates writable accounts, this is
 /// a minor hazard: use [`AccountMeta::new_readonly`] to specify that an account
 /// is not writable.
+/// 描述单个帐户可读/可写/签名 状态，将在 instructin 中进行使用
 #[repr(C)]
 #[derive(Debug, Default, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub struct AccountMeta {
     /// An account's public key.
     pub pubkey: Pubkey,
     /// True if an `Instruction` requires a `Transaction` signature matching `pubkey`.
+    ///  True 表示用户已签名
     pub is_signer: bool,
     /// True if the account data or metadata may be mutated during program execution.
+    /// True 表示用户是可写状态
     pub is_writable: bool,
 }
 
@@ -632,11 +638,14 @@ impl AccountMeta {
 #[serde(rename_all = "camelCase")]
 pub struct CompiledInstruction {
     /// Index into the transaction keys array indicating the program account that executes this instruction.
+    /// program id 的索引值，指向 account_keys 中的元素，它是执行此 instruction 的 program id; 
     pub program_id_index: u8,
     /// Ordered indices into the transaction keys array indicating which accounts to pass to the program.
+    /// 帐户索引列表，它同样指向 account_keys 中的元素，表明此 instruction 需要这些帐户的读写或者签名;
     #[serde(with = "short_vec")]
     pub accounts: Vec<u8>,
     /// The program input data.
+    /// 程序的输入数据，这是一串字节，其内容和格式取决于程序的设计
     #[serde(with = "short_vec")]
     pub data: Vec<u8>,
 }

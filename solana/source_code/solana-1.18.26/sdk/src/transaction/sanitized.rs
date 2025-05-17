@@ -24,23 +24,28 @@ use {
 /// Maximum number of accounts that a transaction may lock.
 /// 128 was chosen because it is the minimum number of accounts
 /// needed for the Neon EVM implementation.
+///  一笔交易可以锁定的最大账户数量。
+/// 选择 128 是因为这是 Neon EVM 实现所需的最小账户数量。
 pub const MAX_TX_ACCOUNT_LOCKS: usize = 128;
 
 /// Sanitized transaction and the hash of its message
 #[derive(Debug, Clone, Eq, PartialEq)]
 pub struct SanitizedTransaction {
-    message: SanitizedMessage,
-    message_hash: Hash,
-    is_simple_vote_tx: bool,
-    signatures: Vec<Signature>,
+    message: SanitizedMessage,  //  已经过初步验证的 message
+    message_hash: Hash,         // message 的 hash
+    is_simple_vote_tx: bool,        // 此交易是否是一个投票的交易
+    signatures: Vec<Signature>,     // 交易的签名信息
 }
 
 /// Set of accounts that must be locked for safe transaction processing
+/// 定义锁定用户列表:在处理一笔交易时，可读可写的用户都要被锁定
 #[derive(Debug, Clone, Default, Eq, PartialEq)]
 pub struct TransactionAccountLocks<'a> {
     /// List of readonly account key locks
+    /// 只读用户集
     pub readonly: Vec<&'a Pubkey>,
     /// List of writable account key locks
+    /// 可写用户集
     pub writable: Vec<&'a Pubkey>,
 }
 
@@ -185,6 +190,7 @@ impl SanitizedTransaction {
     }
 
     /// Return the list of accounts that must be locked during processing this transaction.
+    /// 获取 用户列表中 可读可写的
     pub fn get_account_locks_unchecked(&self) -> TransactionAccountLocks {
         let message = &self.message;
         let account_keys = message.account_keys();
@@ -259,12 +265,16 @@ impl SanitizedTransaction {
     }
 
     /// Validate a transaction message against locked accounts
+    /// 验证锁定的公匙是否合法
     pub fn validate_account_locks(
         message: &SanitizedMessage,
         tx_account_lock_limit: usize,
     ) -> Result<()> {
+        // message 中的用户公匙不能有重复的
         if message.has_duplicates() {
             Err(TransactionError::AccountLoadedTwice)
+
+            // message 中的公匙数量不能超过 交易中最大可锁定的用户数量
         } else if message.account_keys().len() > tx_account_lock_limit {
             Err(TransactionError::TooManyAccountLocks)
         } else {

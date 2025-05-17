@@ -182,13 +182,17 @@ pub struct AccountSecondaryIndexesIncludeExclude {
 }
 
 /// specification of how much memory in-mem portion of account index can use
+///  指定账户索引的内存部分可以使用多少内存
 #[derive(Debug, Clone)]
 pub enum IndexLimitMb {
     /// nothing explicit specified, so default
+    /// 没有限制
     Unspecified,
     /// limit was specified, use disk index for rest
+    /// 在磁盘上的容量限制
     Limit(usize),
     /// in-mem-only was specified, no disk index
+    /// 在内存数据上的限制
     InMemOnly,
 }
 
@@ -201,12 +205,13 @@ impl Default for IndexLimitMb {
 #[derive(Debug, Default, Clone)]
 pub struct AccountsIndexConfig {
     pub bins: Option<usize>,
-    pub flush_threads: Option<usize>,
-    pub drives: Option<Vec<PathBuf>>,
-    pub index_limit_mb: IndexLimitMb,
-    pub ages_to_stay_in_cache: Option<Age>,
-    pub scan_results_limit_bytes: Option<usize>,
+    pub flush_threads: Option<usize>,   // 用于数据存储的线程
+    pub drives: Option<Vec<PathBuf>>,       // 存储路径
+    pub index_limit_mb: IndexLimitMb,       // 在磁盘和在内存中的索引大小限制
+    pub ages_to_stay_in_cache: Option<Age>, // 在内存中存活的 age
+    pub scan_results_limit_bytes: Option<usize>,    // 最大可查找的字节数，超过这个限制则会停止扫描;
     /// true if the accounts index is being created as a result of being started as a validator (as opposed to test, etc.)
+    // True 表示由验证器启动的程序，否则是由测试程序或者其它地方使用到的;
     pub started_from_validator: bool,
 }
 
@@ -265,10 +270,12 @@ impl AccountMapEntryMeta {
 #[derive(Debug, Default)]
 /// one entry in the in-mem accounts index
 /// Represents the value for an account key in the in-memory accounts index
+/// 内存账户索引中的一个条目, 表示内存账户索引中账户键的值;
 pub struct AccountMapEntryInner<T> {
     
     /// number of alive slots that contain >= 1 instances of account data for this pubkey
     /// where alive represents a slot that has not yet been removed by clean via AccountsDB::clean_stored_dead_slots() for containing no up to date account information
+    /// 包含该公钥账户数据实例 >= 1 的存活槽位数量
     ref_count: AtomicU64,
 
     /// list of slots in which this pubkey was updated

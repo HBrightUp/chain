@@ -1,5 +1,7 @@
 use solana_sdk::{clock::Slot, saturating_add_assign};
 
+
+// 定义交易的错误统计信息
 #[derive(Debug, Default)]
 pub struct TransactionErrorMetrics {
     pub total: usize,

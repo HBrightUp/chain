@@ -277,6 +277,7 @@ pub fn derive_abi_enum_visitor(item: TokenStream) -> TokenStream {
     }
 }
 
+
 #[cfg(RUSTC_WITH_SPECIALIZATION)]
 fn quote_for_test(
     test_mod_ident: &Ident,
@@ -405,6 +406,7 @@ fn frozen_abi_enum_type(input: ItemEnum, expected_digest: &str) -> TokenStream {
     result.into()
 }
 
+ // 这是一个属性宏，它的作用是提供一个 ‘digest’ 的属性来冻结某个结构体或者枚举的定义，让后续开发的人不能轻易再修改； 
 #[cfg(RUSTC_WITH_SPECIALIZATION)]
 #[proc_macro_attribute]
 pub fn frozen_abi(attrs: TokenStream, item: TokenStream) -> TokenStream {

@@ -2,6 +2,10 @@
 //! AccountInfo is not persisted anywhere between program runs.
 //! AccountInfo is purely runtime state.
 //! Note that AccountInfo is saved to disk buckets during runtime, but disk buckets are recreated at startup.
+//! //! AccountInfo 表示对 AppendVec 或写缓存中 AccountSharedData 的引用。
+//! AccountInfo 在程序运行期间不会持久保存。
+//! AccountInfo 纯粹是运行时状态。
+//! 请注意，AccountInfo 在运行时会保存到磁盘存储桶中，但磁盘存储桶会在启动时重新创建。
 use {
     crate::{
         accounts_db::AppendVecId,
@@ -12,13 +16,17 @@ use {
 };
 
 /// offset within an append vec to account data
+/// 附加向量内的偏移量到帐户数据
 pub type Offset = usize;
 
 /// bytes used to store this account in append vec
 /// Note this max needs to be big enough to handle max data len of 10MB, which is a const
+/// 用于在附加向量中存储此帐户的字节数
+/// 注意，此最大值需要足够大，以处理最大 10MB 的数据长度，这是一个 const
 pub type StoredSize = u32;
 
 /// specify where account data is located
+/// 指定帐户数据存储在磁盘还是缓存
 #[derive(Debug, PartialEq, Eq)]
 pub enum StorageLocation {
     AppendVec(AppendVecId, Offset),
@@ -26,6 +34,8 @@ pub enum StorageLocation {
 }
 
 impl StorageLocation {
+
+     //判断两个 StorageLocation 是否相等
     pub fn is_offset_equal(&self, other: &StorageLocation) -> bool {
         match self {
             StorageLocation::Cached => {
@@ -41,6 +51,8 @@ impl StorageLocation {
             }
         }
     }
+
+    // 判断两个 StorageLocation 的 store_id 是否相等
     pub fn is_store_id_equal(&self, other: &StorageLocation) -> bool {
         match self {
             StorageLocation::Cached => {
@@ -61,6 +73,8 @@ impl StorageLocation {
 /// how large the offset we store in AccountInfo is
 /// Note this is a smaller datatype than 'Offset'
 /// AppendVecs store accounts aligned to u64, so offset is always a multiple of 8 (sizeof(u64))
+/// 我们在 AccountInfo 中存储的偏移量有多大；注意：这是一个比“Offset”更小的数据类型；
+/// AppendVecs 存储的账户与 u64 对齐，因此偏移量始终是 8 的倍数 (sizeof(u64))
 pub type OffsetReduced = u32;
 
 /// This is an illegal value for 'offset'.
@@ -77,8 +91,10 @@ const CACHED_OFFSET: OffsetReduced = (1 << (OffsetReduced::BITS - 1)) - 1;
 #[derive(Debug, Default, Copy, Clone, Eq, PartialEq)]
 pub struct PackedOffsetAndFlags {
     /// this provides 2^31 bits, which when multiplied by 8 (sizeof(u64)) = 16G, which is the maximum size of an append vec
+    /// 这提供了 2^31 位，乘以 8 (sizeof(u64)) = 16G，这是附加向量的最大大小
     offset_reduced: B31,
     /// use 1 bit to specify that the entry is zero lamport
+    /// 用  1 bit 表示帐户的 lamport 是否为0;
     is_zero_lamport: bool,
 }
 
@@ -98,6 +114,8 @@ pub struct AccountOffsetAndFlags {
 }
 
 impl ZeroLamport for AccountInfo {
+
+    //判断帐户的 lamport 是否为 0;
     fn is_zero_lamport(&self) -> bool {
         self.account_offset_and_flags
             .packed_offset_and_flags
@@ -126,7 +144,9 @@ const CACHE_VIRTUAL_STORAGE_ID: AppendVecId = AppendVecId::MAX;
 impl AccountInfo {
     pub fn new(storage_location: StorageLocation, lamports: u64) -> Self {
         let mut packed_offset_and_flags = PackedOffsetAndFlags::default();
-        let store_id = match storage_location {
+
+        // 以8字节对齐，重新计算 store_id
+        let store_id: u32 = match storage_location {
             StorageLocation::AppendVec(store_id, offset) => {
                 let reduced_offset = Self::get_reduced_offset(offset);
                 assert_ne!(
@@ -156,6 +176,7 @@ impl AccountInfo {
         }
     }
 
+    // 数据按 8 字节对齐
     fn get_reduced_offset(offset: usize) -> OffsetReduced {
         (offset / ALIGN_BOUNDARY_OFFSET) as OffsetReduced
     }

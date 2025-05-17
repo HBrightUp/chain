@@ -6,6 +6,8 @@ use {crate::instruction::InstructionError, bincode::config::Options};
 
 /// Deserialize with a limit based the maximum amount of data a program can expect to get.
 /// This function should be used in place of direct deserialization to help prevent OOM errors
+/// /// 根据程序预期可获得的最大数据量进行反序列化。
+/// 此函数应用于代替直接反序列化，以帮助防止 OOM 错误
 pub fn limited_deserialize<T>(instruction_data: &[u8], limit: u64) -> Result<T, InstructionError>
 where
     T: serde::de::DeserializeOwned,

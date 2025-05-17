@@ -694,6 +694,7 @@ impl RpcClient {
         )
     }
 
+    // 提交交易并获取执行的结果 
     #[cfg(feature = "spinner")]
     pub fn send_and_confirm_transaction_with_spinner_and_config(
         &self,

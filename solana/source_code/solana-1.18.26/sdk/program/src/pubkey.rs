@@ -87,6 +87,7 @@ impl From<u64> for PubkeyError {
 #[borsh(crate = "borsh")]
 pub struct Pubkey(pub(crate) [u8; 32]);
 
+// 空的
 impl crate::sanitize::Sanitize for Pubkey {}
 
 #[derive(Error, Debug, Serialize, Clone, PartialEq, Eq, FromPrimitive, ToPrimitive)]
@@ -163,6 +164,7 @@ impl TryFrom<&str> for Pubkey {
     }
 }
 
+// 根据输入的随机种子做为 x 值，使用　ed25519 曲线，判断是否可以求出　Ｙ　值；　
 #[allow(clippy::used_underscore_binding)]
 pub fn bytes_are_curve_point<T: AsRef<[u8]>>(_bytes: T) -> bool {
     #[cfg(not(target_os = "solana"))]
@@ -481,6 +483,13 @@ impl Pubkey {
     /// #
     /// # Ok::<(), anyhow::Error>(())
     /// ```
+    /// 根据公匙和 program id 构建一个一个 程序派生地址(PDA)，这个函数和PDA 地址有几个注意点：
+    /// 1. PDA 地址是根据输入的数据做为 x 点，找到一个稍微偏移 ed25519 曲线的 Y 值(而且必须是一个很大的整数值)，所以此公匙没有
+    /// 对应的公匙，只能由 program 才能进行签名；
+    /// 2. 函数 find_program_address 在查找PDA 地址的时候其运行时间不确定，结果不确定，所以一般不要在链上运行，而是客户端在链下查找用户可
+    /// 用的 PDA 地址，并记录下 bump 种子； 
+    /// 3. 创建 PDA 地址时必须传递 bump，这样链上才知道确定的 PDA 地址，即 (pubkey, bump ) => PDA 地址； 
+    /// 4. 在使用 find_program_address 时传递 seed 为字符串数组时，要小心 hash 冲突，详细说明看上面的英文注释； 
     pub fn find_program_address(seeds: &[&[u8]], program_id: &Pubkey) -> (Pubkey, u8) {
         Self::try_find_program_address(seeds, program_id)
             .unwrap_or_else(|| panic!("Unable to find a viable program address bump seed"))
@@ -503,7 +512,8 @@ impl Pubkey {
         // Perform the calculation inline, calling this from within a program is
         // not supported
         #[cfg(not(target_os = "solana"))]
-        {
+        {   
+            // bump 是从 255 －> 0 反序查找的
             let mut bump_seed = [std::u8::MAX];
             for _ in 0..std::u8::MAX {
                 {
@@ -586,6 +596,8 @@ impl Pubkey {
         seeds: &[&[u8]],
         program_id: &Pubkey,
     ) -> Result<Pubkey, PubkeyError> {
+
+        // seeds 的随机种子最多为 16 个，每个随机种子不能超过32字节；
         if seeds.len() > MAX_SEEDS {
             return Err(PubkeyError::MaxSeedLengthExceeded);
         }
@@ -599,6 +611,7 @@ impl Pubkey {
         // not supported
         #[cfg(not(target_os = "solana"))]
         {
+            // 使用随机种子轮流hash
             let mut hasher = crate::hash::Hasher::default();
             for seed in seeds.iter() {
                 hasher.hash(seed);
@@ -606,6 +619,7 @@ impl Pubkey {
             hasher.hashv(&[program_id.as_ref(), PDA_MARKER]);
             let hash = hasher.result();
 
+            // 返回为真，说明　此　hash 在　ed25519 上有　Ｙ　值，不能做为 PDA 地址，所以返回错误，认为是一个无效的种子；　
             if bytes_are_curve_point(hash) {
                 return Err(PubkeyError::InvalidSeeds);
             }

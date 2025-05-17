@@ -30,26 +30,32 @@ use {
 };
 
 /// Index of an account inside of the TransactionContext or an InstructionContext.
+/// 指向　TransactionAccounts　中　用户所在位置(索引号)
 pub type IndexOfAccount = u16;
 
 /// Contains account meta data which varies between instruction.
 ///
 /// It also contains indices to other structures for faster lookup.
+/// 定义 Instruction  中 用户相关的数据，此结构也在 帐户索引表中使用
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub struct InstructionAccount {
     /// Points to the account and its key in the `TransactionContext`
+    /// 帐户在交易帐户列表中的 index，也即位置
     pub index_in_transaction: IndexOfAccount,
+
     /// Points to the first occurrence in the parent `InstructionContext`
-    ///
     /// This excludes the program accounts.
+    /// 
     pub index_in_caller: IndexOfAccount,
     /// Points to the first occurrence in the current `InstructionContext`
     ///
     /// This excludes the program accounts.
     pub index_in_callee: IndexOfAccount,
     /// Is this account supposed to sign
+    /// 是否提供签名
     pub is_signer: bool,
     /// Is this account allowed to become writable
+    /// 是否可写
     pub is_writable: bool,
 }
 
@@ -212,6 +218,7 @@ impl TransactionContext {
     }
 
     /// Searches for an account by its key
+    /// 根据 index 获取 帐户在交易中存储的公匙
     pub fn get_key_of_account_at_index(
         &self,
         index_in_transaction: IndexOfAccount,
@@ -222,6 +229,7 @@ impl TransactionContext {
     }
 
     /// Searches for an account by its key
+    /// 根据 index 获取 帐户存储的数据
     #[cfg(not(target_os = "solana"))]
     pub fn get_account_at_index(
         &self,
@@ -403,6 +411,7 @@ impl TransactionContext {
     }
 
     /// Calculates the sum of all lamports within an instruction
+    /// 累加 instruct 中所有用户的 lamport； 
     #[cfg(not(target_os = "solana"))]
     fn instruction_accounts_lamport_sum(
         &self,
@@ -449,13 +458,14 @@ pub struct TransactionReturnData {
 /// Loaded instruction shared between runtime and programs.
 ///
 /// This context is valid for the entire duration of a (possibly cross program) instruction being processed.
+/// 定义一个 Instruction 的上下文
 #[derive(Debug, Clone, Default, Eq, PartialEq)]
 pub struct InstructionContext {
-    nesting_level: usize,
-    instruction_accounts_lamport_sum: u128,
+    nesting_level: usize,           // 应该是指当前 instruction 嵌套的深度
+    instruction_accounts_lamport_sum: u128,     // 当前 instrution 中 lamport 的总量
     program_accounts: Vec<IndexOfAccount>,
-    instruction_accounts: Vec<InstructionAccount>,
-    instruction_data: Vec<u8>,
+    instruction_accounts: Vec<InstructionAccount>,  // instruction 中所有帐户信息的列表
+    instruction_data: Vec<u8>,                  // 入参
 }
 
 impl InstructionContext {
@@ -552,6 +562,7 @@ impl InstructionContext {
     }
 
     /// Translates the given instruction wide instruction_account_index into a transaction wide index
+    /// 根据在 instruction 提供的 index 查找到它在 交易中 的 index;
     pub fn get_index_of_instruction_account_in_transaction(
         &self,
         instruction_account_index: IndexOfAccount,

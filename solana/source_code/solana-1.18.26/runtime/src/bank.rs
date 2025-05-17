@@ -800,6 +800,7 @@ pub struct Bank {
     // `transaction_log_collector_config`
     pub transaction_log_collector: Arc<RwLock<TransactionLogCollector>>,
 
+    // 核心功能特性的集合，以查看特性的状态，可以由客户端工具  spl-feature-proposal 查看
     pub feature_set: Arc<FeatureSet>,
 
     /// callback function only to be called when dropping and should only be called once
@@ -4178,7 +4179,7 @@ impl Bank {
         {
             transaction_account_lock_limit
         } else if self
-            .feature_set
+            .feature_set   // 查看是否启用了限制锁定帐户数量的我特性
             .is_active(&feature_set::increase_tx_account_lock_limit::id())
         {
             MAX_TX_ACCOUNT_LOCKS
@@ -4189,6 +4190,7 @@ impl Bank {
 
     /// Prepare a transaction batch from a list of versioned transactions from
     /// an entry. Used for tests only.
+    /// 此函数仅用于测试: 对交易集合的基本数据验证，以及锁定帐户 
     pub fn prepare_entry_batch(&self, txs: Vec<VersionedTransaction>) -> Result<TransactionBatch> {
         let sanitized_txs = txs
             .into_iter()
@@ -4421,6 +4423,8 @@ impl Bank {
         error_counters: &mut TransactionErrorMetrics,
     ) -> TransactionCheckResult {
         let recent_blockhash = tx.message().recent_blockhash();
+
+        //这里会优先判断 block hash 是否在规定范围之内； 如果不在，则判断是
         if hash_queue.is_hash_valid_for_age(recent_blockhash, max_age) {
             (Ok(()), None)
         } else if let Some((address, account)) =
@@ -5070,6 +5074,7 @@ impl Bank {
         result
     }
 
+    // 批量处理经过初步验证的交易
     #[allow(clippy::too_many_arguments, clippy::type_complexity)]
     pub fn load_and_execute_transactions(
         &self,
@@ -5085,6 +5090,8 @@ impl Bank {
     ) -> LoadAndExecuteTransactionsOutput {
         let sanitized_txs = batch.sanitized_transactions();
         debug!("processing transactions: {}", sanitized_txs.len());
+
+        // 统计初步验证交易出现的错误信息
         let mut error_counters = TransactionErrorMetrics::default();
 
         let retryable_transaction_indexes: Vec<_> = batch
@@ -6283,6 +6290,7 @@ impl Bank {
     }
 
     /// Process a batch of transactions.
+    /// 处量批量的交易
     #[must_use]
     pub fn load_execute_and_commit_transactions(
         &self,
@@ -6398,6 +6406,8 @@ impl Bank {
         &self,
         txs: impl Iterator<Item = &'a Transaction>,
     ) -> Result<Vec<Result<()>>> {
+
+        // 判断是使用 哪个版本的结构序列化交易消息
         let txs = txs
             .map(|tx| VersionedTransaction::from(tx.clone()))
             .collect();
@@ -6406,6 +6416,7 @@ impl Bank {
 
     /// Process multiple transaction in a single batch. This is used for benches and unit tests.
     /// Short circuits if any of the transactions do not pass sanitization checks.
+    // 在单个批次中处理多个事务。这用于基准测试和单元测试
     pub fn try_process_entry_transactions(
         &self,
         txs: Vec<VersionedTransaction>,

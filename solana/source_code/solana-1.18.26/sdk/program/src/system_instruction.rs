@@ -82,6 +82,7 @@ impl<T> DecodeError<T> for SystemError {
 }
 
 /// Maximum permitted size of account data (10 MiB).
+/// 帐户最大可用数据为 10MB
 pub const MAX_PERMITTED_DATA_LENGTH: u64 = 10 * 1024 * 1024;
 
 /// Maximum permitted size of new allocations per transaction, in bytes.
@@ -101,6 +102,8 @@ static_assertions::const_assert!(MAX_PERMITTED_DATA_LENGTH <= u32::MAX as u64);
 static_assertions::const_assert_eq!(MAX_PERMITTED_DATA_LENGTH, 10_485_760);
 
 /// An instruction to the system program.
+/// frozen_abi 的意思是 冻结 SystemInstruction 这个枚举的定义，对它进行 hash，其值必须是 
+/// "5e22s2kFu9Do77hdcCyxyhuKHD8ThAB6Q6dNaLTCjL5M", 否则报错； 
 #[frozen_abi(digest = "5e22s2kFu9Do77hdcCyxyhuKHD8ThAB6Q6dNaLTCjL5M")]
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq, AbiExample, AbiEnumVisitor)]
 pub enum SystemInstruction {

@@ -103,6 +103,7 @@ fn compile_instructions(ixs: &[Instruction], keys: &[Pubkey]) -> Vec<CompiledIns
 /// redundantly specifying the fee-payer is not strictly required.
 // NOTE: Serialization-related changes must be paired with the custom serialization
 // for versioned messages in the `RemainingLegacyMessage` struct.
+// 定义交易消息结构体
 #[wasm_bindgen]
 #[frozen_abi(digest = "2KnLEqfLcTBQqitE22Pp8JYkaqVVbAkGbCfdeHoyxcAU")]
 #[derive(Serialize, Deserialize, Default, Debug, PartialEq, Eq, Clone, AbiExample)]
@@ -111,26 +112,33 @@ pub struct Message {
     /// The message header, identifying signed and read-only `account_keys`.
     // NOTE: Serialization-related changes must be paired with the direct read at sigverify.
     #[wasm_bindgen(skip)]
-    pub header: MessageHeader,
+    pub header: MessageHeader,  // 消息头
 
     /// All the account keys used by this transaction.
+    /// 所有用户的地址列表，这里的用户地址排序必须和 MessageHeader 中的所描述的用户数量一致； 
     #[wasm_bindgen(skip)]
     #[serde(with = "short_vec")]
     pub account_keys: Vec<Pubkey>,
 
     /// The id of a recent ledger entry.
+    //构建交易时的 block hash，一般是客户端观察账本构建交易的 block hash。如果交易中的内容和 block hash 完全相同，则此交易会被忽略，如果 block hash不一样，则认为是两笔不同的交易； 
+    // 如果交易中的 block hash 与当前链上的 block hash 相差超过 150 个区块以上，则认为是无效的交易
     pub recent_blockhash: Hash,
 
     /// Programs that will be executed in sequence and committed in one atomic transaction if all
     /// succeed.
+    /// instruction 列表。按顺序调用一系列合约，在一个原子操作中commit。
     #[wasm_bindgen(skip)]
     #[serde(with = "short_vec")]
     pub instructions: Vec<CompiledInstruction>,
 }
 
 impl Sanitize for Message {
+
+    // 验证消息中的 header 是否合法
     fn sanitize(&self) -> std::result::Result<(), SanitizeError> {
         // signing area and read-only non-signing area should not overlap
+        // 初步验证是否有足够多的帐户提供签名或者读写
         if self.header.num_required_signatures as usize
             + self.header.num_readonly_unsigned_accounts as usize
             > self.account_keys.len()
@@ -144,13 +152,18 @@ impl Sanitize for Message {
         }
 
         for ci in &self.instructions {
+
+            // program id 都是放在 用户公匙后面的？
             if ci.program_id_index as usize >= self.account_keys.len() {
                 return Err(SanitizeError::IndexOutOfBounds);
             }
             // A program cannot be a payer.
+            // 第一个索引值 0 是付费用户，所以不能是一个 program id; 
             if ci.program_id_index == 0 {
                 return Err(SanitizeError::IndexOutOfBounds);
             }
+
+            // 验证交易中所需要的帐户索引值必须 account_keys中找到，否则认为是无效的交易
             for ai in &ci.accounts {
                 if *ai as usize >= self.account_keys.len() {
                     return Err(SanitizeError::IndexOutOfBounds);
@@ -595,6 +608,7 @@ impl Message {
     }
 
     /// Returns `true` if `account_keys` has any duplicate keys.
+    /// 验证 message 中的 公匙是否有重复的
     pub fn has_duplicates(&self) -> bool {
         // Note: This is an O(n^2) algorithm, but requires no heap allocations. The benchmark
         // `bench_has_duplicates` in benches/message_processor.rs shows that this implementation is

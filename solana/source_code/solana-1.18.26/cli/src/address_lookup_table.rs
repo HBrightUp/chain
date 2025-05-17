@@ -494,6 +494,7 @@ pub fn parse_address_lookup_table_subcommand(
     Ok(response)
 }
 
+// 处理 帐户地址索引相关的命令
 pub fn process_address_lookup_table_subcommand(
     rpc_client: Arc<RpcClient>,
     config: &CliConfig,
@@ -563,6 +564,7 @@ pub fn process_address_lookup_table_subcommand(
     }
 }
 
+// 创建帐户索引表
 fn process_create_lookup_table(
     rpc_client: &RpcClient,
     config: &CliConfig,
@@ -580,13 +582,15 @@ fn process_create_lookup_table(
         CliError::RpcRequestError("Failed to deserialize clock sysvar".to_string())
     })?;
 
-    let payer_address = payer_signer.pubkey();
+    // 调用 sdk 构建一个帐户索引地址的 instruction
+    let payer_address = payer_signer.pubkey();  
     let (create_lookup_table_ix, lookup_table_address) = if authority_signer.is_some() {
         create_lookup_table_signed(authority_address, payer_address, clock.slot)
     } else {
         create_lookup_table(authority_address, payer_address, clock.slot)
     };
 
+    // 构建交易
     let blockhash = rpc_client.get_latest_blockhash()?;
     let mut tx = Transaction::new_unsigned(Message::new(
         &[create_lookup_table_ix],
@@ -598,6 +602,7 @@ fn process_create_lookup_table(
         keypairs.push(authority_signer);
     }
 
+    // 构建交易并执行
     tx.try_sign(&keypairs, blockhash)?;
     let result = rpc_client.send_and_confirm_transaction_with_spinner_and_config(
         &tx,

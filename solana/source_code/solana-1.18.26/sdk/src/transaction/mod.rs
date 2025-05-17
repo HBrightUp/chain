@@ -167,6 +167,9 @@ pub type Result<T> = result::Result<T, TransactionError>;
 /// if the caller has knowledge that the first account of the constructed
 /// transaction's `Message` is both a signer and the expected fee-payer, then
 /// redundantly specifying the fee-payer is not strictly required.
+/// 可以使用 solana fees 查看当前每个签名的交易费用。由于每笔交易被限制在 1232 个字节大小，所以一笔交易最多有 12 笔签名(每个签名为 64 字节)。
+/// 可写签名用户列表中的第一个用户支付交易费用； 
+/// 无论交易是否成功，都需要支付交易费用。交易费用目前 50％ 会被销毁，剩下的给验证者； 
 #[wasm_bindgen]
 #[frozen_abi(digest = "FZtncnS1Xk8ghHfKiXE5oGiUbw2wJhmfXQuNgQR3K6Mc")]
 #[derive(Debug, PartialEq, Default, Eq, Clone, Serialize, Deserialize, AbiExample)]
@@ -180,13 +183,15 @@ pub struct Transaction {
     /// [`MessageHeader`]: crate::message::MessageHeader
     /// [`num_required_signatures`]: crate::message::MessageHeader::num_required_signatures
     // NOTE: Serialization-related changes must be paired with the direct read at sigverify.
+    // 给定消息的 ED25519 签名数组。untime 会验证签名的数量跟消息头的前 8 bit里记录的数量一致，并且验证每个签名是否由消息账户地址数组中
+    //对应索引的私钥签名的。
     #[wasm_bindgen(skip)]
     #[serde(with = "short_vec")]
     pub signatures: Vec<Signature>,
 
     /// The message to sign.
     #[wasm_bindgen(skip)]
-    pub message: Message,
+    pub message: Message,  // 等待签名的消息数据
 }
 
 impl Sanitize for Transaction {
@@ -843,6 +848,7 @@ impl Transaction {
     /// #
     /// # Ok::<(), anyhow::Error>(())
     /// ```
+    //  所需用户对交易签名
     pub fn try_sign<T: Signers + ?Sized>(
         &mut self,
         keypairs: &T,
@@ -911,6 +917,8 @@ impl Transaction {
         keypairs: &T,
         recent_blockhash: Hash,
     ) -> result::Result<(), SignerError> {
+
+        //验证提供的签名所对应的公匙是不与交易中的完全匹配
         let positions = self.get_signing_keypair_positions(&keypairs.pubkeys())?;
         if positions.iter().any(|pos| pos.is_none()) {
             return Err(SignerError::KeypairPubkeyMismatch);
@@ -939,6 +947,7 @@ impl Transaction {
         recent_blockhash: Hash,
     ) -> result::Result<(), SignerError> {
         // if you change the blockhash, you're re-signing...
+        // 交易签名时自动更新了一上 block hash, 减少交易失效的概率
         if recent_blockhash != self.message.recent_blockhash {
             self.message.recent_blockhash = recent_blockhash;
             self.signatures
@@ -946,6 +955,7 @@ impl Transaction {
                 .for_each(|signature| *signature = Signature::default());
         }
 
+        // 用户进行轮流签名，并将所有签名更新到交易中
         let signatures = keypairs.try_sign_message(&self.message_data())?;
         for i in 0..positions.len() {
             self.signatures[positions[i]] = signatures[i];
@@ -1034,12 +1044,15 @@ impl Transaction {
     ///
     /// [`account_keys`]: Message::account_keys
     pub fn get_signing_keypair_positions(&self, pubkeys: &[Pubkey]) -> Result<Vec<Option<usize>>> {
+
+        // 交易中所需的签名必须不能大于所提供的用户数量，否则认为是无效的交易(也即交易中应该要签名的用户却没有签名)
         if self.message.account_keys.len() < self.message.header.num_required_signatures as usize {
             return Err(TransactionError::InvalidAccountIndex);
         }
         let signed_keys =
             &self.message.account_keys[0..self.message.header.num_required_signatures as usize];
 
+        // 验证 交易中所需要的签名对应的公匙与上面提供签名的公匙顺序相同且完全匹配
         Ok(pubkeys
             .iter()
             .map(|pubkey| signed_keys.iter().position(|x| x == pubkey))

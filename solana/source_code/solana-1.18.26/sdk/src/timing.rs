@@ -40,6 +40,7 @@ pub fn timestamp() -> u64 {
     duration_as_ms(&now)
 }
 
+// 定义一年有多少秒
 pub const SECONDS_PER_YEAR: f64 = 365.242_199 * 24.0 * 60.0 * 60.0;
 
 /// from years to slots

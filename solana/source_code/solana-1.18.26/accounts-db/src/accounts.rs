@@ -89,6 +89,7 @@ impl AccountLocks {
 }
 
 /// This structure handles synchronization for db
+/// 此结构处理数据库的同步
 #[derive(Debug, AbiExample)]
 pub struct Accounts {
     /// Single global AccountsDb
@@ -96,6 +97,7 @@ pub struct Accounts {
 
     /// set of read-only and writable accounts which are currently
     /// being processed by banking/replay threads
+    /// 被锁定的用户集: 在处理交易时需要锁定交易相关的帐户以保证帐户数据同步
     pub(crate) account_locks: Mutex<AccountLocks>,
 }
 
@@ -529,6 +531,7 @@ impl Accounts {
         self.accounts_db.store_uncached(slot, &[(pubkey, account)]);
     }
 
+    // 将需要锁定的用户存储到 Accounts 中;
     fn lock_account(
         &self,
         account_locks: &mut AccountLocks,
@@ -577,6 +580,7 @@ impl Accounts {
 
     /// This function will prevent multiple threads from modifying the same account state at the
     /// same time
+    /// 锁定帐户：防止多线程在同一时间修改相同的帐户数据，出现帐户数据竞态问题
     #[must_use]
     #[allow(clippy::needless_collect)]
     pub fn lock_accounts<'a>(
@@ -608,6 +612,7 @@ impl Accounts {
         self.lock_accounts_inner(tx_account_locks_results)
     }
 
+    // 锁定帐户
     #[must_use]
     fn lock_accounts_inner(
         &self,

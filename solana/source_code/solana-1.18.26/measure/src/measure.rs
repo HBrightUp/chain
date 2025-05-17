@@ -6,6 +6,8 @@ use {
     },
 };
 
+
+// 定义一个交易的计时器
 #[derive(Debug)]
 pub struct Measure {
     name: &'static str,

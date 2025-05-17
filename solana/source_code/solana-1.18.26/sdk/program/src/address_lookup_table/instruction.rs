@@ -68,6 +68,7 @@ pub enum ProgramInstruction {
 }
 
 /// Derives the address of an address table account from a wallet address and a recent block's slot.
+/// 根据 用户公匙 和 block hash 派生一个 用户索引表，它也是用 find_program_address 方法获取的派生地址
 pub fn derive_lookup_table_address(
     authority_address: &Pubkey,
     recent_block_slot: Slot,
@@ -80,12 +81,14 @@ pub fn derive_lookup_table_address(
 
 /// Constructs an instruction to create a table account and returns
 /// the instruction and the table account's derived address.
+/// 创建一个地址索引表
 fn create_lookup_table_common(
     authority_address: Pubkey,
     payer_address: Pubkey,
     recent_slot: Slot,
     authority_is_signer: bool,
 ) -> (Instruction, Pubkey) {
+    // 找到一个可
     let (lookup_table_address, bump_seed) =
         derive_lookup_table_address(&authority_address, recent_slot);
     let instruction = Instruction::new_with_bincode(

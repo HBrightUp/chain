@@ -19,6 +19,7 @@ pub trait Signers {
 
 macro_rules! default_keypairs_impl {
     () => {
+        // 从 keypair 中获取所有的 pubkey 集合
         fn pubkeys(&self) -> Vec<Pubkey> {
             self.iter().map(|keypair| keypair.pubkey()).collect()
         }
@@ -37,6 +38,7 @@ macro_rules! default_keypairs_impl {
                 .collect()
         }
 
+        // 用户对交易进行轮流签名
         fn try_sign_message(&self, message: &[u8]) -> Result<Vec<Signature>, SignerError> {
             let mut signatures = Vec::new();
             for keypair in self.iter() {

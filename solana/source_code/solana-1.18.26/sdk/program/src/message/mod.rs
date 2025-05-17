@@ -90,7 +90,8 @@ pub const MESSAGE_HEADER_LENGTH: usize = 3;
 /// may process them in parallel, in a single [PoH] entry. Transactions that
 /// access the same read-write accounts are processed sequentially.
 ///
-/// [PoH]: https://docs.solanalabs.com/consensus/synchronization
+/// [PoH]: https://docs.solanalabs.com/consensus/synchronization]
+/// 定义消息头
 #[derive(Serialize, Deserialize, Default, Debug, PartialEq, Eq, Clone, Copy, AbiExample)]
 #[serde(rename_all = "camelCase")]
 pub struct MessageHeader {
@@ -98,13 +99,16 @@ pub struct MessageHeader {
     /// valid. The signers of those signatures must match the first
     /// `num_required_signatures` of [`Message::account_keys`].
     // NOTE: Serialization-related changes must be paired with the direct read at sigverify.
+    /// 交易中需要签名的用户数量
     pub num_required_signatures: u8,
 
     /// The last `num_readonly_signed_accounts` of the signed keys are read-only
     /// accounts.
+    /// 交易中只读用户的数量
     pub num_readonly_signed_accounts: u8,
 
     /// The last `num_readonly_unsigned_accounts` of the unsigned keys are
     /// read-only accounts.
+    /// 不需要签名的只读用户数量
     pub num_readonly_unsigned_accounts: u8,
 }

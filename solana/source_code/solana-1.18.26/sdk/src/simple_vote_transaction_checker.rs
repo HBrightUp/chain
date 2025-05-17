@@ -7,6 +7,7 @@ use crate::{message::VersionedMessage, transaction::SanitizedVersionedTransactio
 /// 2. is legacy message;
 /// 3. has only one instruction;
 /// 4. which must be Vote instruction;
+/// 判断交易是否是一个投票的交易
 pub fn is_simple_vote_transaction(
     sanitized_versioned_transaction: &SanitizedVersionedTransaction,
 ) -> bool {

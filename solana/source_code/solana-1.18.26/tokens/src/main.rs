@@ -16,7 +16,7 @@ use {
 };
 
 fn main() -> Result<(), Box<dyn Error>> {
-    let command_args = parse_args(env::args_os())?;
+    let command_args: solana_tokens::args::Args = parse_args(env::args_os())?;
     let config = if Path::new(&command_args.config_file).exists() {
         Config::load(&command_args.config_file)?
     } else {
@@ -27,11 +27,14 @@ fn main() -> Result<(), Box<dyn Error>> {
         }
         Config::default()
     };
+
+    // 构建一个 rpc 客户端
     let json_rpc_url = normalize_to_url_if_moniker(command_args.url.unwrap_or(config.json_rpc_url));
     let client = RpcClient::new(json_rpc_url);
 
     let exit = Arc::new(AtomicBool::default());
     // Initialize CTRL-C handler to ensure db changes are written before exit.
+    // 为 ctrl + c 设置一个控制流，里面放个原子变量以用来程序其它线程知道程序要退出了;
     ctrlc::set_handler({
         let exit = exit.clone();
         move || {

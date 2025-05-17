@@ -31,6 +31,7 @@ pub const MESSAGE_VERSION_PREFIX: u8 = 0x80;
 /// which message version is serialized starting from version `0`. If the first
 /// is bit is not set, all bytes are used to encode the legacy `Message`
 /// format.
+///  定义消息版本, V0 版本的消息比 Legacy 多了一个帐户索引表
 #[frozen_abi(digest = "G4EAiqmGgBprgf5ePYemLJcoFfx4R7rhC1Weo2FVJ7fn")]
 #[derive(Debug, PartialEq, Eq, Clone, AbiEnumVisitor, AbiExample)]
 pub enum VersionedMessage {
@@ -132,12 +133,14 @@ impl VersionedMessage {
         }
     }
 
+    // 序列化 message 数据
     pub fn serialize(&self) -> Vec<u8> {
         bincode::serialize(self).unwrap()
     }
 
     /// Compute the blake3 hash of this transaction's message
-    pub fn hash(&self) -> Hash {
+    /// 对 序列化的message 的数据进行 blake3 hash
+    pub fn hash(&self) -> Hash { 
         let message_bytes = self.serialize();
         Self::hash_raw_message(&message_bytes)
     }

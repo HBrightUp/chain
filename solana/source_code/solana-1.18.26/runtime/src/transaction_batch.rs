@@ -6,7 +6,7 @@ use {
 
 // Represents the results of trying to lock a set of accounts
 pub struct TransactionBatch<'a, 'b> {
-    lock_results: Vec<Result<()>>,
+    lock_results: Vec<Result<()>>,      // 处理交易产生的错误信息
     bank: &'a Bank,
     sanitized_txs: Cow<'b, [SanitizedTransaction]>,
     needs_unlock: bool,

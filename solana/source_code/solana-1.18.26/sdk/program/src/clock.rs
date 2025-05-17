@@ -25,6 +25,7 @@ use solana_sdk_macro::CloneZeroed;
 /// The default tick rate that the cluster attempts to achieve (160 per second).
 ///
 /// Note that the actual tick rate at any given time should be expected to drift.
+/// 定义每秒的 Tick, 1 Tick 包含 1。25万次hash计算，1 slot 包含 64 次 tick,所以这里定义的 160 就相当于 1s 的时间； 
 pub const DEFAULT_TICKS_PER_SECOND: u64 = 160;
 
 #[cfg(test)]
@@ -39,6 +40,7 @@ pub const SLOT_MS: u64 = DEFAULT_MS_PER_SLOT;
 
 // At 160 ticks/s, 64 ticks per slot implies that leader rotation and voting will happen
 // every 400 ms. A fast voting cadence ensures faster finality and convergence
+// 以 160 ticks/s 的速度，每 slot 64 ticks 意味着领导者轮换和投票将每 400 毫秒进行一次。快速的投票节奏可确保更快的最终确定性和收敛性
 pub const DEFAULT_TICKS_PER_SLOT: u64 = 64;
 
 // GCP n1-standard hardware and also a xeon e5-2520 v4 are about this rate of hashes/s
@@ -106,6 +108,7 @@ pub const NUM_CONSECUTIVE_LEADER_SLOTS: u64 = 4;
 #[cfg(test)]
 static_assertions::const_assert_eq!(DEFAULT_MS_PER_SLOT, 400);
 /// The expected duration of a slot (400 milliseconds).
+///  Slot 的持续时间期望值为 400 ms;
 pub const DEFAULT_MS_PER_SLOT: u64 = 1_000 * DEFAULT_TICKS_PER_SLOT / DEFAULT_TICKS_PER_SECOND;
 pub const DEFAULT_S_PER_SLOT: f64 = DEFAULT_TICKS_PER_SLOT as f64 / DEFAULT_TICKS_PER_SECOND as f64;
 
@@ -117,11 +120,13 @@ pub const DEFAULT_S_PER_SLOT: f64 = DEFAULT_TICKS_PER_SLOT as f64 / DEFAULT_TICK
 /// memory consumption, but requires a client to update its `recent_blockhash`
 /// more frequently. Raising the value lengthens the time a client must wait to
 /// be certain a missing transaction will not be processed by the network.
+/// Bank 只跟踪最近 120 block hash, 距离太远的会被丢弃;
 pub const MAX_HASH_AGE_IN_SECONDS: usize = 120;
 
 #[cfg(test)]
 static_assertions::const_assert_eq!(MAX_RECENT_BLOCKHASHES, 300);
 // Number of maximum recent blockhashes (one blockhash per non-skipped slot)
+// Bank 可存储的最大的 hash age，当前设置为 300 ;
 pub const MAX_RECENT_BLOCKHASHES: usize =
     MAX_HASH_AGE_IN_SECONDS * DEFAULT_TICKS_PER_SECOND as usize / DEFAULT_TICKS_PER_SLOT as usize;
 

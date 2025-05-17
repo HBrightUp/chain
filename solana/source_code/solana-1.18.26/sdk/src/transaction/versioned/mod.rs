@@ -121,7 +121,10 @@ impl VersionedTransaction {
         Ok(())
     }
 
+    // 预先验证交易中签名的合法性
     pub(crate) fn sanitize_signatures(&self) -> std::result::Result<(), SanitizeError> {
+
+        // 验证交易中的签名数量必须和提供的签名数量一致，不能多也不能少
         let num_required_signatures = usize::from(self.message.header().num_required_signatures);
         match num_required_signatures.cmp(&self.signatures.len()) {
             Ordering::Greater => Err(SanitizeError::IndexOutOfBounds),
@@ -131,6 +134,7 @@ impl VersionedTransaction {
 
         // Signatures are verified before message keys are loaded so all signers
         // must correspond to static account keys.
+        // 如果签名的数量比消息中的用户公匙都多，说明交易是非法的，交易中都没有我的公匙，怎么能我就签名了？
         if self.signatures.len() > self.message.static_account_keys().len() {
             return Err(SanitizeError::IndexOutOfBounds);
         }

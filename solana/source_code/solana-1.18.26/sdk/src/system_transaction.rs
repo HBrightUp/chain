@@ -11,6 +11,7 @@ use crate::{
 };
 
 /// Create and sign new SystemInstruction::CreateAccount transaction
+/// 构建创建新用户的交易
 pub fn create_account(
     from_keypair: &Keypair,
     to_keypair: &Keypair,
@@ -50,6 +51,7 @@ pub fn assign(from_keypair: &Keypair, recent_blockhash: Hash, program_id: &Pubke
 }
 
 /// Create and sign new system_instruction::Transfer transaction
+/// 构建转帐的交易
 pub fn transfer(
     from_keypair: &Keypair,
     to: &Pubkey,

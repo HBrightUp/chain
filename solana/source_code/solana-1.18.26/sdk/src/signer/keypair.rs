@@ -100,6 +100,7 @@ impl Keypair {
 #[cfg(test)]
 static_assertions::const_assert_eq!(Keypair::SECRET_KEY_LENGTH, ed25519_dalek::SECRET_KEY_LENGTH);
 
+// keypair 在这里实现了  Signer trait
 impl Signer for Keypair {
     #[inline]
     fn pubkey(&self) -> Pubkey {
@@ -114,6 +115,7 @@ impl Signer for Keypair {
         Signature::from(self.0.sign(message).to_bytes())
     }
 
+    // 使用私匙对数据进行签名
     fn try_sign_message(&self, message: &[u8]) -> Result<Signature, SignerError> {
         Ok(self.sign_message(message))
     }

@@ -260,6 +260,7 @@ unsafe impl std::alloc::GlobalAlloc for BumpAllocator {
 }
 
 /// Maximum number of bytes a program may add to an account during a single realloc
+/// 用户使用 realloc 重新分配内存时一次可最大申请 10K
 pub const MAX_PERMITTED_DATA_INCREASE: usize = 1_024 * 10;
 
 /// `assert_eq(std::mem::align_of::<u128>(), 8)` is true for BPF but not for some host machines

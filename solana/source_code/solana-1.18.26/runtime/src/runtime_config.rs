@@ -5,5 +5,5 @@ use solana_program_runtime::compute_budget::ComputeBudget;
 pub struct RuntimeConfig {
     pub compute_budget: Option<ComputeBudget>,
     pub log_messages_bytes_limit: Option<usize>,
-    pub transaction_account_lock_limit: Option<usize>,
+    pub transaction_account_lock_limit: Option<usize>,  // 一笔交易最大能锁定的帐户数量
 }

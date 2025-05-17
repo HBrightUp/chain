@@ -13,7 +13,7 @@ pub struct FeeCalculator {
     ///
     /// This amount may increase/decrease over time based on cluster processing
     /// load.
-    pub lamports_per_signature: u64,
+    pub lamports_per_signature: u64,    // 当前签名的费用成本，其值会随负载增加或者减少
 }
 
 impl FeeCalculator {
@@ -27,6 +27,7 @@ impl FeeCalculator {
         since = "1.9.0",
         note = "Please do not use, will no longer be available in the future"
     )]
+    // 注意：此功能将在 1.9.0 版本弃用
     pub fn calculate_fee(&self, message: &Message) -> u64 {
         let mut num_signatures: u64 = 0;
         for instruction in &message.instructions {
@@ -41,7 +42,7 @@ impl FeeCalculator {
                 }
             }
         }
-
+        // 根据签名数量和输入参数制定费用
         self.lamports_per_signature
             * (u64::from(message.header.num_required_signatures) + num_signatures)
     }

@@ -1352,6 +1352,7 @@ type AccountInfoAccountsIndex = AccountsIndex<AccountInfo, AccountInfo>;
 #[derive(Debug)]
 pub struct AccountsDb {
     /// Keeps tracks of index into AppendVec on a per slot basis
+    /// 在每个槽位上跟踪 AppendVec 中的索引
     pub accounts_index: AccountInfoAccountsIndex,
 
     /// Some(offset) iff we want to squash old append vecs together into 'ancient append vecs'

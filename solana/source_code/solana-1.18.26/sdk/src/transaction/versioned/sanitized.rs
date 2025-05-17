@@ -8,9 +8,9 @@ use {
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct SanitizedVersionedTransaction {
     /// List of signatures
-    pub(crate) signatures: Vec<Signature>,
+    pub(crate) signatures: Vec<Signature>,  // 经过初步验证的交易中的签名信息
     /// Message to sign.
-    pub(crate) message: SanitizedVersionedMessage,
+    pub(crate) message: SanitizedVersionedMessage,  // 交易中的消息数据
 }
 
 impl TryFrom<VersionedTransaction> for SanitizedVersionedTransaction {

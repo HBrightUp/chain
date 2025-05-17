@@ -297,6 +297,7 @@ fn transfer_with_seed(
 
 pub const DEFAULT_COMPUTE_UNITS: u64 = 150;
 
+// 智能合约入口点
 declare_process_instruction!(Entrypoint, DEFAULT_COMPUTE_UNITS, |invoke_context| {
     let transaction_context = &invoke_context.transaction_context;
     let instruction_context = transaction_context.get_current_instruction_context()?;

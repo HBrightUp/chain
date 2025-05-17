@@ -20,14 +20,18 @@ struct HashAge {
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize, AbiExample)]
 pub struct BlockhashQueue {
     /// index of last hash to be registered
+    /// 要注册的最后一个 hash 索引
     last_hash_index: u64,
 
     /// last hash to be registered
+    /// 最后一个要注册的哈希值
     last_hash: Option<Hash>,
 
+    // 存储了最近 block hash 值所对应的 age，
     ages: HashMap<Hash, HashAge>,
 
     /// hashes older than `max_age` will be dropped from the queue
+    ///  如果 hash 的 age 大于 max_age, Bank 将从队列中丢弃此数据;
     max_age: usize,
 }
 
@@ -63,6 +67,7 @@ impl BlockhashQueue {
     }
 
     /// Check if the age of the hash is within the specified age
+    /// 验证交易的 block hash 是否超过了指定的生命周期
     pub fn is_hash_valid_for_age(&self, hash: &Hash, max_age: usize) -> bool {
         self.ages
             .get(hash)
@@ -89,6 +94,7 @@ impl BlockhashQueue {
         self.last_hash = Some(*hash);
     }
 
+    //  验证交易的 block hash 是否过期 
     fn is_hash_index_valid(last_hash_index: u64, max_age: usize, hash_index: u64) -> bool {
         last_hash_index - hash_index <= max_age as u64
     }

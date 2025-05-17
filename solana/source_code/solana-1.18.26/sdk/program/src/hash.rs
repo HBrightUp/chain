@@ -69,6 +69,7 @@ impl Hasher {
     }
 }
 
+
 impl Sanitize for Hash {}
 
 impl From<[u8; HASH_BYTES]> for Hash {
@@ -147,6 +148,7 @@ impl Hash {
 }
 
 /// Return a Sha256 hash for the given data.
+/// 对给定的数据进行 sha256 hash 并返回结果;
 pub fn hashv(vals: &[&[u8]]) -> Hash {
     // Perform the calculation inline, calling this from within a program is
     // not supported
