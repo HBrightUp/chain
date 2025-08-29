@@ -1,0 +1,917 @@
+//https服务
+114.67.37.2:20580  	 10.186.11.223:9008		node-a    https://testrpc1.uosio.org:20580                                                   
+124.232.156.101:9008    					node-c    https://testrpc2.uosio.org:9008					
+
+                      
+//p2p同步数据
+114.67.37.2:20581  			10.186.11.223:12008
+114.67.37.245:12008       	10.186.11.243:12008 
+124.232.156.101:12008       			
+
+10.186.11.227:12008		uosio		   
+10.186.11.204:12008   	marsaccount3		   
+10.186.11.211:12008		uosvegasjack
+
+
+114.67.37.2			node-all
+124.232.156.101		node-all
+114.67.37.245		mongodb10.186.11.204   	marsaccount3	   
+10.186.11.211		uosvegasjack10.186.11.103		uosproducera 	
+10.186.11.107		uosproducerb	内部RPC访问
+10.186.11.109		uosproducerc	内部RPC访问
+
+
+root
+Zxcvbn2019	
+echo "ip: 10.186.11.110"
+echo "producer: uosproduceri"
+
+source ~/.bashrc
+./uos_moni_cli 132.232.99.50 2000 /home/uos/monicl/bin/shuos.sh &
+
+export LD_LIBRARY_PATH="/home/uos/monicl/lib:$LD_LIBRARY_PATH"
+
+//mongodb数据库
+114.67.37.245:9002	
+
+//区块浏览器
+114.67.37.2:20582  10.186.11.204:3000
+
+/******************************************************************  常用命令  ******************************************************************************************************************/
+./noduos --config-dir ./cfg --data-dir ~/uosdata &
+
+./noduos --config-dir ./cfg --data-dir ~/uosdata --genesis-json ./cfg/genesis-json &
+
+
+
+nohup ./uos_moni_cli  132.232.99.50  2000 /home/uos/monicli/bin/shuos.sh  &
+
+nohup ./noduos --config-dir ./cfg --data-dir ~/uosdata      > eoslog.file 2>&1 &
+
+./noduos --config-dir ./cfg/ --data-dir ~/uosdata  --mongodb-block-start 2771395 &
+
+/*********************************************************  上线指令集 ***************************************************************/
+
+//uosio sign
+UOS8VrEtzikkqQBokT5ECirQQZ4Qpkh1p31spGSgTCHX95T86tU7Y
+5HxmNvuR7fPbRKU87j39B3CoJ5e2zYnuYFLXvukqQt3EARvbnLU
+
+//uosio.bpay 
+Private key: 5JQwqdGNmwEbkj5KTCuRLqa6Lg7GgyvJZdpKdkrQYDR59E3ks1U
+Public key: UOS8NaMwb1nSJJfy2KvBHwUJ27qWqeT65hP7MpApvZNezzTQ1dFxE
+
+//uosio.msig  
+Private key: 5JxHwPxBtLa3uqsDiMpdiqdUxYQoMP19aVPkYGNAhYSK6X5MJts
+Public key: UOS7v3urL8PWCFBAqfGDgC8HTCf6earvQnLw7BX5WreVybpScEF2X
+
+//uosio.names 
+Private key: 5JaYfreg8o7mhaSofjaeEMZkGTSqN3bDRxakfS13VUVH1utegRS
+Public key: UOS7p7Xtz7szpT7xF6xVL2PwGiFaQytseDmau7y5We2cCcjKPB86i
+
+//uosio.ram  
+Private key: 5KPghUc3Useu8ZGDMiMkf7M7LmYUGQMPKn1fHT55tq9aZTkMJjA
+Public key: UOS5qcSK4fpcyLyeqd7ndvVs7adDvN5Yx1iaAGebh1buvsb6r3obZ 
+
+//uosio.ramfee
+Private key: 5KEo6irvZjit4R8hnpD8zVg5pt1kFPqaKBso3o3C1Zzacmy6mLH
+Public key: UOS76j3XK5QHyLFFhdyP32motwD2qqZXnoEPr9AJxVRN83c6sREHG
+
+//uosio.saving
+Private key: 5JboMpcBczuRNVHRPVsbZkYc9Hk7y6MbNJv9dEAseyuv3w1d2yw
+Public key: UOS63xPz9FkpeBfWx3a1v3rSqinu1khajiGkJFZeUyA65XHdkujuE
+
+//uosio.stake 
+Private key: 5JHTuRCVp6M2hu22JaoE3iYBNwFmxE56Y9BxExX2AAEwFk3fkx8
+Public key: UOS6U61BXKK94JTBP6Baf3xGGP97rGiusGuMEEb48hU4EtAKZpTcg
+
+//uosio.token 
+Private key: 5Jm7YvC51vJmRbRWcgCKWYMJJE3VXCdnjZAW1Vfj2254kAkJR1K
+Public key: UOS8GEKwnCWcihh3i7TxUuqn6amNyLHbNto1sxQVgfqRVEt3sJG8N
+
+//uosio.vpay  
+Private key: 5KJiStCJoY4jkwYmmv524ACtL2on8AXE7C4VyWs2u27UbzfZYM5
+Public key: UOS7e2CYJ5sSK4JRkRoQDRG97dFXCzYh7YgXgKSyPLw99zavLaw83
+
+//uosio.bvpay 
+Private key: 5Jm1xwh2E2B4QDtw4w9DXGzCuWQv2DKMU8U3ktWZsVJMJf72dip
+Public key: UOS8e7TYAuVsLvGFjEe8y6osBL6B8S2bwi12fEppi2bPyVShpYf7G
+
+//uosio.union 
+Private key: 5JUTFXuPBpCbvd25e9n9SDQ4UChrRuTAND4mQ6y9rrypYvbxQwk
+Public key: UOS54X9FnMcqonxXpsQC53PqeKihRuj1y7WSjudynQKL4nG2bPVMg
+
+//uosio.propos
+Private key: 5JkgoX1qTuP54zoukFwCFDXo1qS3SCmLUypsE6BaGXs5B7eD17w
+Public key: UOS6uXJJYqPDHuCyxLQ8GEWPSHLezcV5g9SFEeurQdexCt2yTp6ft
+
+//uosio.txfee 
+Private key: 5J4nfBf8SUuqDu4mshNbycWujrYZu1j4XMBkK7yfAia7hL2jRTT
+Public key: UOS8EJCgiP2DZBj9mi71jk2nEu6DBsdjhWCs2sNZx4zx82tX9BkUD
+
+//pramuziliuos (union1)
+//owner
+Private key: 5JfnPZKWRSiXALr8jzFay4aHcjV3Bk8HNT32W95kjchHUcB3v3G
+Public key: UOS5seDmpurnErBmV7VCJoVTHNoPqL9ySxygNqNhMY5WWBPDJ5g6F
+//active
+Private key: 5HyarK8Zrq7AYXWXTYqz6fVtW7zTFUThUKQK7xkJZq8YwJKX4wj
+Public key: UOS6EJRwZ5qikCzZasK2cujAAvkL4ZzyFz9qmqBD1N8ieveNiknci
+
+//uosflareio55(union2)
+//owner
+Private key: 5KdxSxm762qhd2pfFL8pK3k8oykwYXDe3HbYrXj8cMVhCGjjs6F
+Public key: UOS63wSt9FsUXiQybBFfV2ztTF5DMHCxk1CDeHuPA8F6vcoZRQDgA
+//active
+Private key: 5JvBLjkJyYwVZrJiiUmSdaFQ8p9GHT4iyQihEZc6K318Ee7K521
+Public key: UOS6muWn5qmX1g7jjejS4YaYBTWL2NtwdcnoSfXeT7BSfAFNhuSek
+
+//pollopfree11(union3)
+//owner
+Private key: 5KT7X6MNNq7BBhgmV5u7tkwHEmHEYGwPMzZDp7EdC87LaSzj4WS
+Public key: UOS64qH5CvVoYHmYGxN3ZqxZsPFU4HfXU9AX4AG8RkC2hheJVAuog
+//active
+Private key: 5KVsxmxgWVMratNWsuxGaWqyMh9TRsiifEQqfq8VxrMa7duGtjS
+Public key: UOS6bB5qRLGA99XwnEpF3MJwHGxQPtgd7B3bqH2cARxLnkW8EwVAt
+
+
+//marsaccount3(producer)
+//owner
+Private key: 5KSNj72kHNZYoiuYQvdRhSgPxQes21wgcKecW5MocHFPrV8YZZS
+Public key: UOS6aWfdf6tHWCepZpP6MzdynuNMAkNKr6nbNMguTuCatq88LyG4G
+//active
+Private key: 5JAt42Whx48oSxKfTJK9bkrCXk3icohdiseKcd7kDH22VvpbBJF
+Public key: UOS5tK2pRQb8qf9Y2Yiu7sUAHmy5MnH2PKLdminLc9KcYEjgVXXRd
+
+//uosvegasjack(producer)
+//owner
+Private key: 5JfvXMR1TJQ8ExXaMDuWiy2q96uouGuBnbeR4BX62j8dwSMg8cN
+Public key: UOS5aTdkbRaPH5WKYPJaxX8HfqGtX8hKx8p6FDPAzpkyJiYnuBu5c
+//active
+Private key: 5JoSPcJqPLUG1HVyaF64Gt1d5qJ9V4qh4gLoLQENKuQbRoz6vxR
+Public key: UOS6K6EJq8WXrK1nQ92rw7GfuGh9VvBquqSkKw7zLCJEjbZvPNPsE
+
+//dragonexsafe(producer)
+//owner
+Private key: 5JJnhd1mabqpKN3Yo7JSXii6TjAeZcZeaHWsmwGfy5C5VZ8wJyH
+Public key: UOS7DVNg9bsq1zUZtUbWwA1UyhaqFBmNrCRVnPFeGYgsx7kzfAtiC
+//active
+Private key: 5JmgQf1Dji1xPMKSFUoMYiwBQC4ag4fXPsBohTKFhCYDf1FXwyQ
+Public key: UOS6UgyJF9i3eL4WaML7xNSc5o5eETw92g9PyUKsu7Px5CeWgUeSH
+
+//gm2tqnjygyge(producer)
+//owner
+Private key: 5KCZr8aivxXxToc8Z6FQD1BpHyoBGcaoTx5bjyEMJAuX5VoyXdC
+Public key: UOS5VuJ2S1hEnizHDRfF4pxAbyEH9VsSXMZZKh3Npn81vC5Q46vVU
+//active
+Private key: 5J9AewwnAU3TgGGttQTjVyzWLL6Gvderqv2xbVR2PDrPNq5X68G
+Public key: UOS7zcjpAM9AnWEcqa2pUkN1axejUZB1ZWcn5BSU4UrPPKKVQFQow
+
+//robertocarlo(producer)
+//owner
+Private key: 5Hs4cUQYe2D8Adj94pVMCLWNicKew23YrXRPDBRSUuVoWz8RRb1
+Public key: UOS5tJwM5jVQg2LrCEBMhmtjzSHwGkUoCGWKJP7TV66DT9yCePa5d
+//active
+Private key: 5J69FxHm8NNmwyzeRphouDxst9BPHB9szPDR5J3sH9csXfdvc2w
+Public key: UOS5ke9rQTAc8HYhRg4hL7Ra2HX2yEsPCtmQqnjNg7nobrfLTJv9v
+
+//ulordofficia
+//owner
+5JfsUAAj9dNRWabV5JxL2MEG4SqNM9Q5SGyUVkADwx7tyxCxLYV
+UOS8YubH89MoGNgt9PwNxbPLBmGRACLH4X7zpeHxu2B3ojZqUSaDe
+//active
+5KWpdvJAkHoNJZrJhTcjYM9rv4LacWwy64tHAjs6341rpYkbNZE
+UOS7WNbcmycwUCoRGufU94kVSvt9oTSasy4sz1AL5n3W7uE53DnWL
+
+//uosulordtest  uosulordnet1
+//owner
+Private key: 5JfvXMR1TJQ8ExXaMDuWiy2q96uouGuBnbeR4BX62j8dwSMg8cN
+Public key: UOS5aTdkbRaPH5WKYPJaxX8HfqGtX8hKx8p6FDPAzpkyJiYnuBu5c
+//active
+Private key: 5JoSPcJqPLUG1HVyaF64Gt1d5qJ9V4qh4gLoLQENKuQbRoz6vxR
+Public key: UOS6K6EJq8WXrK1nQ92rw7GfuGh9VvBquqSkKw7zLCJEjbZvPNPsE
+
+cluos wallet create -n uos --to-console
+PW5Jfvy8ikNoyVzPhbb94Jmc787pG8GHdNmjfreGM4xL6G5G3aZua
+
+cluos wallet   import -n uos --private-key  5HxmNvuR7fPbRKU87j39B3CoJ5e2zYnuYFLXvukqQt3EARvbnLU
+cluos wallet   import -n uos --private-key  5JQwqdGNmwEbkj5KTCuRLqa6Lg7GgyvJZdpKdkrQYDR59E3ks1U
+cluos wallet   import -n uos --private-key  5JxHwPxBtLa3uqsDiMpdiqdUxYQoMP19aVPkYGNAhYSK6X5MJts
+cluos wallet   import -n uos --private-key  5JaYfreg8o7mhaSofjaeEMZkGTSqN3bDRxakfS13VUVH1utegRS
+cluos wallet   import -n uos --private-key  5KPghUc3Useu8ZGDMiMkf7M7LmYUGQMPKn1fHT55tq9aZTkMJjA
+cluos wallet   import -n uos --private-key  5KEo6irvZjit4R8hnpD8zVg5pt1kFPqaKBso3o3C1Zzacmy6mLH
+cluos wallet   import -n uos --private-key  5JboMpcBczuRNVHRPVsbZkYc9Hk7y6MbNJv9dEAseyuv3w1d2yw
+cluos wallet   import -n uos --private-key  5JHTuRCVp6M2hu22JaoE3iYBNwFmxE56Y9BxExX2AAEwFk3fkx8
+cluos wallet   import -n uos --private-key  5Jm7YvC51vJmRbRWcgCKWYMJJE3VXCdnjZAW1Vfj2254kAkJR1K
+cluos wallet   import -n uos --private-key  5KJiStCJoY4jkwYmmv524ACtL2on8AXE7C4VyWs2u27UbzfZYM5
+cluos wallet   import -n uos --private-key  5Jm1xwh2E2B4QDtw4w9DXGzCuWQv2DKMU8U3ktWZsVJMJf72dip
+cluos wallet   import -n uos --private-key  5JUTFXuPBpCbvd25e9n9SDQ4UChrRuTAND4mQ6y9rrypYvbxQwk
+cluos wallet   import -n uos --private-key  5JkgoX1qTuP54zoukFwCFDXo1qS3SCmLUypsE6BaGXs5B7eD17w
+cluos wallet   import -n uos --private-key  5J4nfBf8SUuqDu4mshNbycWujrYZu1j4XMBkK7yfAia7hL2jRTT
+
+cluos wallet   import -n uos --private-key  5JoSPcJqPLUG1HVyaF64Gt1d5qJ9V4qh4gLoLQENKuQbRoz6vxR
+cluos wallet   import -n uos --private-key  5KWpdvJAkHoNJZrJhTcjYM9rv4LacWwy64tHAjs6341rpYkbNZE
+
+cluos wallet   import -n uos --private-key  5HyarK8Zrq7AYXWXTYqz6fVtW7zTFUThUKQK7xkJZq8YwJKX4wj
+cluos wallet   import -n uos --private-key  5JvBLjkJyYwVZrJiiUmSdaFQ8p9GHT4iyQihEZc6K318Ee7K521
+cluos wallet   import -n uos --private-key  5KVsxmxgWVMratNWsuxGaWqyMh9TRsiifEQqfq8VxrMa7duGtjS
+
+cluos wallet   import -n uos --private-key  5JAt42Whx48oSxKfTJK9bkrCXk3icohdiseKcd7kDH22VvpbBJF
+cluos wallet   import -n uos --private-key  5JoSPcJqPLUG1HVyaF64Gt1d5qJ9V4qh4gLoLQENKuQbRoz6vxR
+cluos wallet   import -n uos --private-key  5JmgQf1Dji1xPMKSFUoMYiwBQC4ag4fXPsBohTKFhCYDf1FXwyQ
+cluos wallet   import -n uos --private-key  5J9AewwnAU3TgGGttQTjVyzWLL6Gvderqv2xbVR2PDrPNq5X68G
+cluos wallet   import -n uos --private-key  5J69FxHm8NNmwyzeRphouDxst9BPHB9szPDR5J3sH9csXfdvc2w
+
+cluos wallet   import -n uos --private-key  5KcPegpF6nQ7bHCEH1iryUnVFzWKNMMkREG9pu9A9NcstZQR78p
+
+
+cluos  -u http://10.186.11.227:9008 create account uosio uosio.bpay  UOS8NaMwb1nSJJfy2KvBHwUJ27qWqeT65hP7MpApvZNezzTQ1dFxE
+cluos  -u http://10.186.11.227:9008 create account uosio uosio.msig  UOS7v3urL8PWCFBAqfGDgC8HTCf6earvQnLw7BX5WreVybpScEF2X
+cluos  -u http://10.186.11.227:9008 create account uosio uosio.names  UOS7p7Xtz7szpT7xF6xVL2PwGiFaQytseDmau7y5We2cCcjKPB86i
+cluos  -u http://10.186.11.227:9008 create account uosio uosio.ram     UOS5qcSK4fpcyLyeqd7ndvVs7adDvN5Yx1iaAGebh1buvsb6r3obZ
+cluos  -u http://10.186.11.227:9008 create account uosio uosio.ramfee UOS76j3XK5QHyLFFhdyP32motwD2qqZXnoEPr9AJxVRN83c6sREHG
+cluos  -u http://10.186.11.227:9008 create account uosio uosio.saving  UOS63xPz9FkpeBfWx3a1v3rSqinu1khajiGkJFZeUyA65XHdkujuE
+cluos  -u http://10.186.11.227:9008 create account uosio uosio.stake   UOS6U61BXKK94JTBP6Baf3xGGP97rGiusGuMEEb48hU4EtAKZpTcg
+cluos  -u http://10.186.11.227:9008 create account uosio uosio.token  UOS8GEKwnCWcihh3i7TxUuqn6amNyLHbNto1sxQVgfqRVEt3sJG8N
+cluos  -u http://10.186.11.227:9008 create account uosio uosio.vpay   UOS7e2CYJ5sSK4JRkRoQDRG97dFXCzYh7YgXgKSyPLw99zavLaw83
+cluos  -u http://10.186.11.227:9008 create account uosio uosio.bvpay   UOS8e7TYAuVsLvGFjEe8y6osBL6B8S2bwi12fEppi2bPyVShpYf7G
+cluos  -u http://10.186.11.227:9008 create account uosio uosio.union   UOS54X9FnMcqonxXpsQC53PqeKihRuj1y7WSjudynQKL4nG2bPVMg
+cluos  -u http://10.186.11.227:9008 create account uosio uosio.txfee    UOS8EJCgiP2DZBj9mi71jk2nEu6DBsdjhWCs2sNZx4zx82tX9BkUD
+
+
+
+cluos  -u http://10.186.11.227:9008 set contract uosio.token ~/UOS/build/contracts/uosio.token/
+cluos  -u http://10.186.11.227:9008 set contract uosio.msig ~/UOS/build/contracts/uosio.msig/
+cluos  -u http://10.186.11.227:9008 push action uosio.token create '["uosio.union", "1000000000.0000 UOS"]' -p uosio.token
+cluos  -u http://10.186.11.227:9008 set contract uosio ~/UOS/build/contracts/uosio.system/ 
+
+cluos  -u http://10.186.11.227:9008 push action uosio setpriv '["uosio.msig", 1]' -p uosio
+
+cluos  -u http://10.186.11.227:9008 set contract uosio.union ~/UOS/build/contracts/uosio.union/ 
+cluos  -u http://10.186.11.227:9008 set contract uosio.bvpay ~/UOS/build/contracts/uosio.bvpay/
+
+cluos  -u http://10.186.11.227:9008  push action uosio.union modifymember '[["pramuziliuos","uosflareio55","pollopfree11"]]' -p uosio.union
+
+cluos  -u http://10.186.11.227:9008  push action uosio.token issue '["uosio", "100000.0000  UOS", "memo"]' -p uosio.union
+
+cluos  -u http://10.186.11.227:9008 system newaccount --transfer uosio pramuziliuos UOS5seDmpurnErBmV7VCJoVTHNoPqL9ySxygNqNhMY5WWBPDJ5g6F UOS6EJRwZ5qikCzZasK2cujAAvkL4ZzyFz9qmqBD1N8ieveNiknci  --stake-net "1000.0000  UOS" --stake-cpu "1000.0000  UOS" --buy-ram "500.0000  UOS"
+
+cluos  -u http://10.186.11.227:9008 system newaccount --transfer uosio uosflareio55 UOS63wSt9FsUXiQybBFfV2ztTF5DMHCxk1CDeHuPA8F6vcoZRQDgA UOS6muWn5qmX1g7jjejS4YaYBTWL2NtwdcnoSfXeT7BSfAFNhuSek  --stake-net "1000.0000  UOS" --stake-cpu "1000.0000  UOS" --buy-ram "500.0000  UOS"
+
+cluos  -u http://10.186.11.227:9008 system newaccount --transfer uosio pollopfree11 UOS64qH5CvVoYHmYGxN3ZqxZsPFU4HfXU9AX4AG8RkC2hheJVAuog UOS6bB5qRLGA99XwnEpF3MJwHGxQPtgd7B3bqH2cARxLnkW8EwVAt  --stake-net "1000.0000  UOS" --stake-cpu "1000.0000  UOS" --buy-ram "500.0000  UOS"
+
+cluos  -u http://10.186.11.227:9008 system newaccount --transfer uosio uosulordtest UOS5aTdkbRaPH5WKYPJaxX8HfqGtX8hKx8p6FDPAzpkyJiYnuBu5c UOS6K6EJq8WXrK1nQ92rw7GfuGh9VvBquqSkKw7zLCJEjbZvPNPsE  --stake-net "20.0000  UOS" --stake-cpu "100.0000  UOS" --buy-ram "20.0000  UOS"
+
+cluos  -u http://10.186.11.227:9008 system newaccount --transfer uosio uosulordnet1 UOS5aTdkbRaPH5WKYPJaxX8HfqGtX8hKx8p6FDPAzpkyJiYnuBu5c UOS6K6EJq8WXrK1nQ92rw7GfuGh9VvBquqSkKw7zLCJEjbZvPNPsE  --stake-net "20.0000  UOS" --stake-cpu "100.0000  UOS" --buy-ram "20.0000  UOS"
+
+cluos  -u http://10.186.11.227:9008 transfer uosio uosulordtest "50.0000  UOS"
+cluos  -u http://10.186.11.227:9008 transfer uosio uosulordnet1 "50.0000  UOS"
+cluos  -u http://10.186.11.227:9008  system delegatebw uosulordtest uosulordtest '25 UOS' '25 UOS'
+cluos  -u http://10.186.11.227:9008  system delegatebw uosulordnet1 uosulordtest '25 UOS' '25 UOS'
+
+cluos  -u http://10.186.11.227:9008 system newaccount --transfer uosio ulordofficia UOS8YubH89MoGNgt9PwNxbPLBmGRACLH4X7zpeHxu2B3ojZqUSaDe UOS7WNbcmycwUCoRGufU94kVSvt9oTSasy4sz1AL5n3W7uE53DnWL  --stake-net "10000.0000  UOS" --stake-cpu "10000.0000  UOS" --buy-ram "10000.0000  UOS"
+
+cluos  -u http://10.186.11.227:9008 get account uosio
+
+cluos  -u http://10.186.11.227:9008 transfer uosio ulordofficia "62120.0000  UOS"
+
+cluos -u http://10.186.11.227:9008   set account permission uosio.union active '{"threshold":3,"keys":[{"key":"UOS6EJRwZ5qikCzZasK2cujAAvkL4ZzyFz9qmqBD1N8ieveNiknci","weight":1},{"key":"UOS6bB5qRLGA99XwnEpF3MJwHGxQPtgd7B3bqH2cARxLnkW8EwVAt","weight":1},{"key":"UOS6muWn5qmX1g7jjejS4YaYBTWL2NtwdcnoSfXeT7BSfAFNhuSek","weight":1}],"accounts":[{"permission":{"actor":"uosio.union","permission":"uosio.code"},"weight":3}]}' owner -p uosio.union@owner
+
+cluos -u http://10.186.11.227:9008   set account permission uosio.union owner '{"threshold":3,"keys":[{"key":"UOS5seDmpurnErBmV7VCJoVTHNoPqL9ySxygNqNhMY5WWBPDJ5g6F","weight":1},{"key":"UOS63wSt9FsUXiQybBFfV2ztTF5DMHCxk1CDeHuPA8F6vcoZRQDgA","weight":1},{"key":"UOS64qH5CvVoYHmYGxN3ZqxZsPFU4HfXU9AX4AG8RkC2hheJVAuog","weight":1}],"accounts":[]}' -p uosio.union@owner
+
+cluos  -u http://10.186.11.227:9008 system newaccount --transfer ulordofficia marsaccount3 UOS6aWfdf6tHWCepZpP6MzdynuNMAkNKr6nbNMguTuCatq88LyG4G UOS5tK2pRQb8qf9Y2Yiu7sUAHmy5MnH2PKLdminLc9KcYEjgVXXRd  --stake-net "1000.0000  UOS" --stake-cpu "1000.0000  UOS" --buy-ram "1000.0000  UOS"
+
+cluos  -u http://10.186.11.227:9008 system newaccount --transfer ulordofficia uosvegasjack UOS5aTdkbRaPH5WKYPJaxX8HfqGtX8hKx8p6FDPAzpkyJiYnuBu5c UOS6K6EJq8WXrK1nQ92rw7GfuGh9VvBquqSkKw7zLCJEjbZvPNPsE  --stake-net "1000.0000  UOS" --stake-cpu "1000.0000  UOS" --buy-ram "1000.0000  UOS"
+
+cluos  -u http://10.186.11.227:9008 system newaccount --transfer ulordofficia dragonexsafe UOS7DVNg9bsq1zUZtUbWwA1UyhaqFBmNrCRVnPFeGYgsx7kzfAtiC UOS6UgyJF9i3eL4WaML7xNSc5o5eETw92g9PyUKsu7Px5CeWgUeSH  --stake-net "1000.0000  UOS" --stake-cpu "1000.0000  UOS" --buy-ram "1000.0000  UOS"
+
+cluos  -u http://10.186.11.227:9008 system newaccount --transfer ulordofficia gm2tqnjygyge UOS5VuJ2S1hEnizHDRfF4pxAbyEH9VsSXMZZKh3Npn81vC5Q46vVU UOS7zcjpAM9AnWEcqa2pUkN1axejUZB1ZWcn5BSU4UrPPKKVQFQow  --stake-net "1000.0000  UOS" --stake-cpu "1000.0000  UOS" --buy-ram "1000.0000  UOS"
+
+cluos  -u http://10.186.11.227:9008 system newaccount --transfer ulordofficia robertocarlo UOS5tJwM5jVQg2LrCEBMhmtjzSHwGkUoCGWKJP7TV66DT9yCePa5d UOS5ke9rQTAc8HYhRg4hL7Ra2HX2yEsPCtmQqnjNg7nobrfLTJv9v  --stake-net "1000.0000  UOS" --stake-cpu "1000.0000  UOS" --buy-ram "1000.0000  UOS"
+
+cluos  -u http://10.186.11.227:9008 system regproducer marsaccount3 UOS5tK2pRQb8qf9Y2Yiu7sUAHmy5MnH2PKLdminLc9KcYEjgVXXRd https://marsaccount3.com/chain UU2dhqWjczcgmhTEizk2LMWUWs2gZaanoi
+
+cluos  -u http://10.186.11.227:9008 system regproducer uosvegasjack UOS6K6EJq8WXrK1nQ92rw7GfuGh9VvBquqSkKw7zLCJEjbZvPNPsE https://uosvegasjack.com/chain UdQvFeXEVeeQrz1Gy5snqkQzuXK5HhEdLT
+
+cluos  -u http://10.186.11.227:9008 system regproducer dragonexsafe UOS6UgyJF9i3eL4WaML7xNSc5o5eETw92g9PyUKsu7Px5CeWgUeSH https://dragonexsafe.com/chain UPrbHboenBSfgzoxREdqQyCfxumqB2FH73
+
+cluos  -u http://10.186.11.227:9008 system regproducer gm2tqnjygyge UOS7zcjpAM9AnWEcqa2pUkN1axejUZB1ZWcn5BSU4UrPPKKVQFQow https://gm2tqnjygyge.com/chain UgUin7G1RV94zVFMctuHi4VCpSEN3gV2fE
+
+cluos  -u http://10.186.11.227:9008 system regproducer robertocarlo UOS5ke9rQTAc8HYhRg4hL7Ra2HX2yEsPCtmQqnjNg7nobrfLTJv9v https://robertocarlo.com/chain UQRLpoSErjwYdvomEExk8LMnDSfyD2MxnD
+
+cluos  -u http://10.186.11.227:9008  system delegatebw marsaccount3 marsaccount3 '20000 UOS' '20000 UOS'
+cluos  -u http://10.186.11.227:9008  system voteproducer prods marsaccount3 "40000 UOS" marsaccount3
+
+cluos  -u http://10.186.11.227:9008  system delegatebw uosvegasjack uosvegasjack '20000 UOS' '20000 UOS'
+cluos  -u http://10.186.11.227:9008  system voteproducer prods uosvegasjack "40000 UOS" uosvegasjack
+
+cluos  -u http://10.186.11.227:9008  system delegatebw dragonexsafe dragonexsafe '20000 UOS' '20000 UOS'
+cluos  -u http://10.186.11.227:9008  system voteproducer prods dragonexsafe "40000 UOS" dragonexsafe
+
+cluos  -u http://10.186.11.227:9008  system delegatebw gm2tqnjygyge gm2tqnjygyge 20000 UOS' '20000 UOS'
+cluos  -u http://10.186.11.227:9008  system voteproducer prods gm2tqnjygyge "40000 UOS" gm2tqnjygyge
+
+cluos  -u http://10.186.11.227:9008  system delegatebw robertocarlo robertocarlo '20000 UOS' '20000 UOS'
+cluos  -u http://10.186.11.227:9008  system voteproducer prods robertocarlo "40000 UOS" robertocarlo
+
+//uosgenesuser(user)(谭科专用)
+cluos  -u http://10.186.11.227:9008 system newaccount --transfer ulordofficia uosgenesuser UOS5aTdkbRaPH5WKYPJaxX8HfqGtX8hKx8p6FDPAzpkyJiYnuBu5c UOS6K6EJq8WXrK1nQ92rw7GfuGh9VvBquqSkKw7zLCJEjbZvPNPsE  --stake-net "1000.0000  UOS" --stake-cpu "1000.0000  UOS" --buy-ram "1000.0000  UOS"
+cluos  -u http://10.186.11.227:9008 transfer ulordofficia uosgenesuser "500.0000  UOS"
+
+//tobetioadmin(user)(孝经专用)
+//owner
+Private key: 5JLAhLKR9kWYcs2Hfb8gzHLjP2BvvmURKb9ASR8x9ttmd3vP56K
+Public key: UOS6gnEEFhWwkBJMBGUwg87wCSZVmQXBGpJ34g64vJMEQbhm18sZt
+//active
+Private key: 5KcPegpF6nQ7bHCEH1iryUnVFzWKNMMkREG9pu9A9NcstZQR78p
+Public key: UOS5kkHPHw2JNMcyarxkb2ANJA3x7VGq5Rv3Tq3WHyxc7gfFkAnEA
+
+cluos  -u http://10.186.11.227:9008 system newaccount --transfer ulordofficia tobetioadmin UOS6gnEEFhWwkBJMBGUwg87wCSZVmQXBGpJ34g64vJMEQbhm18sZt UOS5kkHPHw2JNMcyarxkb2ANJA3x7VGq5Rv3Tq3WHyxc7gfFkAnEA  --stake-net "100.0000  UOS" --stake-cpu "100.0000  UOS" --buy-ram "100.0000  UOS"
+
+//发代币
+//加载token合约
+cluos --wallet-url http://127.0.0.1:8900 --url http://10.186.11.227:9008 set  contract  tobetioadmin ~/UOS/build/contracts/uosio.token/
+
+//创建代币
+cluos --wallet-url http://127.0.0.1:8900 --url http://10.186.11.227:9008 push action tobetioadmin create '["tobetioadmin", "1000000000.0000 GYB"]' -p tobetioadmin@active
+
+//发行代币
+cluos --wallet-url http://127.0.0.1:8900 --url http://10.186.11.227:9008 push action tobetioadmin issue '["tobetioadmin","10000.0000 GYB","memo"]' -p tobetioadmin
+
+cluos --wallet-url http://127.0.0.1:8900 --url http://10.186.11.227:9008 get currency balance tobetioadmin tobetioadmin GYB
+cluos --wallet-url http://127.0.0.1:8900 --url http://10.186.11.227:9008 get currency stats tobetioadmin GYB
+
+cluos -u http://10.186.11.227:9008 push action  tobetioadmin  transfer  '["tobetioadmin","ulordofficia","10 GYB", "nothing" ]'  -p tobetioadmin@active
+
+cluos -u http://10.186.11.227:9008 push action  tobetioadmin transfer  '["tobetioadmin","ulordofficia","100 GYB", "nothing" ]'  -p tobetioadmin@active 
+
+cluos -u http://10.186.11.227:9008 push action  tobetioadmin transfer  '["tobetioadmin","xuhuixiang11","1000 GYB", "nothing" ]'  -p tobetioadmin@active
+ 
+ 
+/*******************************************************************  投票用户 **********************************************************************/
+//uosman33yong
+5JyzfZ8iq3WmYyq1NQsSwRAWPt6CJrNZifqhdeKpbG2Cz19QVS3
+UOS7Q7HXQagexapzP7wTeXuayyzoZnhdtF8RbNAPgXsP52jtZFT2v
+//tongzhenzb23
+5KS4jEeDLBJj9UmVfac5WTmEBwYfKcNC3uSjAJbbD2Ro2DkwNsF
+UOS5fQ2m5bc5cXq9Bzsk8L1zQNHvZRP1XTNNzj2eoNFxdBhM2toZR
+//crazycapitap
+5JCc3Ep7QEHQY7oxwEVHKfzW3HqdZQz2hLAxrEjmy7dCddtZMLL
+UOS7sFDyzShE2fmguDfmYozM4mBsopyFcgrDvjQPJK19BkjnTNxu9
+//g44dqnzrgege
+5JphsZgXVhwfENm3qGVdrWh9gobhvsES1zaRssK67C1qPGCgNhW
+UOS8ffqcnobzvjiEGHoKVjsg3VacKz5bKjYw4CSwxFpfT71D42v7u
+//sleafpnights
+5JbxyrPLV3aNdsrsFjb7VP8gvGTtwhiQQ1YBDD3jjqZkefcJQ24
+UOS6v9WAtxn2VWiZoH96GJUrJuVRXfoVpm7d1gobgXCkVFdN5omP1
+//chenqingning
+5KbrFEWnijSNHqKXCJPu6td3Au2j9wc44BUVx5MkbmjdGNmswWH
+UOS7upaeDfG2pjCdUqaUr9wzCoRkW87EoVJRgTV3gwAZD8qUFjru1
+
+cluos wallet create -n user --to-console
+PW5KcX9LXJj8Bi5rrYzGS2EeTAUo4PpVknz1xdTh3SoKprES2snBr
+
+cluos wallet   import -n user --private-key  5JyzfZ8iq3WmYyq1NQsSwRAWPt6CJrNZifqhdeKpbG2Cz19QVS3
+cluos wallet   import -n user --private-key  5KS4jEeDLBJj9UmVfac5WTmEBwYfKcNC3uSjAJbbD2Ro2DkwNsF
+cluos wallet   import -n user --private-key  5JCc3Ep7QEHQY7oxwEVHKfzW3HqdZQz2hLAxrEjmy7dCddtZMLL
+cluos wallet   import -n user --private-key  5JphsZgXVhwfENm3qGVdrWh9gobhvsES1zaRssK67C1qPGCgNhW
+cluos wallet   import -n user --private-key  5JbxyrPLV3aNdsrsFjb7VP8gvGTtwhiQQ1YBDD3jjqZkefcJQ24
+cluos wallet   import -n user --private-key  5KbrFEWnijSNHqKXCJPu6td3Au2j9wc44BUVx5MkbmjdGNmswWH
+
+//投票用户
+cluos -u http://10.186.11.227:9008 system newaccount --transfer ulordofficia uosman33yong UOS7Q7HXQagexapzP7wTeXuayyzoZnhdtF8RbNAPgXsP52jtZFT2v UOS7Q7HXQagexapzP7wTeXuayyzoZnhdtF8RbNAPgXsP52jtZFT2v  --stake-net "20.0000  UOS" --stake-cpu "20.0000  UOS" --buy-ram "40.0000  UOS"
+
+cluos -u http://10.186.11.227:9008 system newaccount --transfer ulordofficia tongzhenzb23 UOS5fQ2m5bc5cXq9Bzsk8L1zQNHvZRP1XTNNzj2eoNFxdBhM2toZR UOS5fQ2m5bc5cXq9Bzsk8L1zQNHvZRP1XTNNzj2eoNFxdBhM2toZR  --stake-net "20.0000  UOS" --stake-cpu "20.0000  UOS" --buy-ram "40.0000  UOS"
+
+cluos -u http://10.186.11.227:9008 system newaccount --transfer ulordofficia crazycapitap UOS7sFDyzShE2fmguDfmYozM4mBsopyFcgrDvjQPJK19BkjnTNxu9 UOS7sFDyzShE2fmguDfmYozM4mBsopyFcgrDvjQPJK19BkjnTNxu9  --stake-net "20.0000  UOS" --stake-cpu "20.0000  UOS" --buy-ram "40.0000  UOS"
+
+cluos -u http://10.186.11.227:9008 system newaccount --transfer ulordofficia g44dqnzrgege UOS8ffqcnobzvjiEGHoKVjsg3VacKz5bKjYw4CSwxFpfT71D42v7u UOS8ffqcnobzvjiEGHoKVjsg3VacKz5bKjYw4CSwxFpfT71D42v7u  --stake-net "20.0000  UOS" --stake-cpu "20.0000  UOS" --buy-ram "40.0000  UOS"
+
+cluos -u http://10.186.11.227:9008 system newaccount --transfer ulordofficia sleafpnights UOS6v9WAtxn2VWiZoH96GJUrJuVRXfoVpm7d1gobgXCkVFdN5omP1 UOS6v9WAtxn2VWiZoH96GJUrJuVRXfoVpm7d1gobgXCkVFdN5omP1  --stake-net "20.0000  UOS" --stake-cpu "20.0000  UOS" --buy-ram "40.0000  UOS"
+
+cluos -u http://10.186.11.227:9008 system newaccount --transfer ulordofficia chenqingning UOS7upaeDfG2pjCdUqaUr9wzCoRkW87EoVJRgTV3gwAZD8qUFjru1 UOS7upaeDfG2pjCdUqaUr9wzCoRkW87EoVJRgTV3gwAZD8qUFjru1  --stake-net "20.0000  UOS" --stake-cpu "20.0000  UOS" --buy-ram "40.0000  UOS"
+
+
+cluos  -u http://10.186.11.227:9008  system delegatebw marsaccount3 marsaccount3 '50000 UOS' '50000 UOS'
+cluos  -u http://10.186.11.227:9008  system voteproducer prods marsaccount3 "100000 UOS" marsaccount3
+cluos  -u http://10.186.11.227:9008  system delegatebw uosvegasjack uosvegasjack '50000 UOS' '50000 UOS'
+cluos  -u http://10.186.11.227:9008  system voteproducer prods uosvegasjack "100000 UOS" uosvegasjack
+cluos  -u http://10.186.11.227:9008  system delegatebw dragonexsafe dragonexsafe '50000 UOS' '50000 UOS'
+cluos  -u http://10.186.11.227:9008  system voteproducer prods dragonexsafe "100000 UOS" dragonexsafe
+cluos  -u http://10.186.11.227:9008  system delegatebw gm2tqnjygyge gm2tqnjygyge '50000 UOS' '50000 UOS'
+cluos  -u http://10.186.11.227:9008  system voteproducer prods gm2tqnjygyge "100000 UOS" gm2tqnjygyge
+cluos  -u http://10.186.11.227:9008  system delegatebw robertocarlo robertocarlo '50000 UOS' '50000 UOS'
+cluos  -u http://10.186.11.227:9008  system voteproducer prods robertocarlo "100000 UOS" robertocarlo
+
+
+
+
+cluos  -u http://10.186.11.227:9008  system delegatebw uosman33yong uosman33yong '50000 UOS' '50000 UOS'
+cluos  -u http://10.186.11.227:9008  system voteproducer prods uosman33yong "100000 UOS" marsaccount3
+cluos  -u http://10.186.11.227:9008  system delegatebw tongzhenzb23 tongzhenzb23 '50000 UOS' '50000 UOS'
+cluos  -u http://10.186.11.227:9008  system voteproducer prods tongzhenzb23 "100000 UOS" uosvegasjack
+cluos  -u http://10.186.11.227:9008  system delegatebw crazycapitap crazycapitap '50000 UOS' '50000 UOS'
+cluos  -u http://10.186.11.227:9008  system voteproducer prods crazycapitap "100000 UOS" dragonexsafe
+cluos  -u http://10.186.11.227:9008  system delegatebw g44dqnzrgege g44dqnzrgege '50000 UOS' '50000 UOS'
+cluos  -u http://10.186.11.227:9008  system voteproducer prods g44dqnzrgege "100000 UOS" gm2tqnjygyge
+cluos  -u http://10.186.11.227:9008  system delegatebw sleafpnights sleafpnights '50000 UOS' '50000 UOS'
+cluos  -u http://10.186.11.227:9008  system voteproducer prods sleafpnights "100000 UOS" robertocarlo
+
+/************************************************************* mytest ********************************************************************/
+//赎回
+cluos  -u http://10.186.11.227:9008  system undelegatebw robertocarlo robertocarlo '5000  UOS' '5000  UOS'
+
+
+cluos  -u http://10.186.11.227:9008  system  cancelvote robertocarlo "10000 UOS" robertocarlo
+
+cluos  -u http://10.186.11.227:9008  system undelegatebw  robertocarlo robertocarlo "2000 UOS" "2000 UOS"
+
+cluos -u http://10.186.11.227:9008 transfer ulordofficia huqinghuqing "2000 UOS"
+cluos  -u http://10.186.11.227:9008  system delegatebw huqinghuqing huqinghuqing '500 UOS' '500 UOS'
+
+/************************************************************* test bp ***************************************************************/
+
+cluos  -u http://10.186.11.227:9008 system newaccount --transfer ulordofficia tobrightnice UOS6gnEEFhWwkBJMBGUwg87wCSZVmQXBGpJ34g64vJMEQbhm18sZt UOS5kkHPHw2JNMcyarxkb2ANJA3x7VGq5Rv3Tq3WHyxc7gfFkAnEA  --stake-net "100.0000  UOS" --stake-cpu "100.0000  UOS" --buy-ram "100.0000  UOS"
+cluos -u http://10.186.11.227:9008 transfer ulordofficia tobrightnice "2000 UOS"
+cluos wallet create -n uos
+PW5JBss7rmxUiTKsV1eJdKRK2pnepD9mXtGatn8TDShsgsp3pf7CZ
+
+cluos wallet   import -n uos --private-key  5KcPegpF6nQ7bHCEH1iryUnVFzWKNMMkREG9pu9A9NcstZQR78p
+
+cluos wallet   import -n uos --private-key  5JmgQf1Dji1xPMKSFUoMYiwBQC4ag4fXPsBohTKFhCYDf1FXwyQ
+cluos wallet   import -n uos --private-key  5J9AewwnAU3TgGGttQTjVyzWLL6Gvderqv2xbVR2PDrPNq5X68G
+cluos wallet   import -n uos --private-key  5JAt42Whx48oSxKfTJK9bkrCXk3icohdiseKcd7kDH22VvpbBJF
+cluos wallet   import -n uos --private-key  5J69FxHm8NNmwyzeRphouDxst9BPHB9szPDR5J3sH9csXfdvc2w
+cluos wallet   import -n uos --private-key  5JoSPcJqPLUG1HVyaF64Gt1d5qJ9V4qh4gLoLQENKuQbRoz6vxR
+
+cluos  -u http://124.232.156.101:9008 system regproducer tobrightnice UOS5kkHPHw2JNMcyarxkb2ANJA3x7VGq5Rv3Tq3WHyxc7gfFkAnEA https://tobrightnice.com/chain UQRLpoSErjwYdvomEExk8LMnDSfyD2MxnD
+
+//暂停出块
+cluos  -u http://124.232.156.101:9008 push action uosio unregprod '["tobrightnice","0"]' -p tobrightnice@active
+
+
+
+cluos  -u http://124.232.156.101:9008  system delegatebw tobrightnice tobrightnice '500 UOS' '500 UOS'
+cluos  -u http://124.232.156.101:9008  system voteproducer prods tobrightnice "100 UOS" tobrightnice
+
+//在取消所有投票后还可以进行出块，不科学,需要修改
+cluos -u http://124.232.156.101:9008 system cancelvote tobrightnice "100.0000 UOS" tobrightnice
+
+//取消出块
+cluos -u http://124.232.156.101:9008 push action uosio unregprod '["tobrightnice","0"]' -p tobrightnice@active
+
+//恢复出块，相当于重新注册(投票数必须大于0才出块)
+cluos  -u http://124.232.156.101:9008 system regproducer tobrightnice UOS5kkHPHw2JNMcyarxkb2ANJA3x7VGq5Rv3Tq3WHyxc7gfFkAnEA https://tobrightnice.com/chain UQRLpoSErjwYdvomEExk8LMnDSfyD2MxnD
+
+//发起提案退出候选节点
+cluos -u http://124.232.156.101:9008 multisig propose release1 '[{"actor":"tobrightnice","permission":"active"},{"actor":"dragonexsafe","permission":"active"},{"actor":"gm2tqnjygyge","permission":"active"},{"actor":"marsaccount3","permission":"active"},{"actor":"robertocarlo","permission":"active"},{"actor":"uosvegasjack","permission":"active"}]' '[{"actor":"uosio","permission":"active"}]' uosio unregprod '{"producer":"tobrightnice","release":1}' -p tobrightnice@active
+
+//查看提案
+cluos -u http://124.232.156.101:9008 multisig review tobrightnice release1
+
+//查看提案状态
+cluos -u http://124.232.156.101:9008  get table uosio.msig tobrightnice approvals
+
+//审批提案
+cluos -u http://124.232.156.101:9008 multisig approve tobrightnice release1 '{"actor":"dragonexsafe","permission":"active"}' -p dragonexsafe@active
+cluos -u http://124.232.156.101:9008 multisig approve tobrightnice release1 '{"actor":"gm2tqnjygyge","permission":"active"}' -p gm2tqnjygyge@active
+cluos -u http://124.232.156.101:9008 multisig approve tobrightnice release1 '{"actor":"tobrightnice","permission":"active"}' -p tobrightnice@active
+cluos -u http://124.232.156.101:9008 multisig approve tobrightnice release1 '{"actor":"marsaccount3","permission":"active"}' -p marsaccount3@active
+cluos -u http://124.232.156.101:9008 multisig approve tobrightnice release1 '{"actor":"robertocarlo","permission":"active"}' -p robertocarlo@active
+cluos -u http://124.232.156.101:9008 multisig approve tobrightnice release1 '{"actor":"uosvegasjack","permission":"active"}' -p uosvegasjack@active
+
+cluos -u http://124.232.156.101:9008  multisig exec tobrightnice release1 -p tobrightnice
+
+
+//直接使用uosio 注销bp用户
+cluos -u http://124.232.156.101:9008 push action uosio unregprod '{"producer":"tobrightnice","release":1}' -p uosio@active
+
+cluos -u http://124.232.156.101:9008 multisig propose removeprod2 '[{"actor":"tobrightnice","permission":"active"},{"actor":"dragonexsafe","permission":"active"},{"actor":"gm2tqnjygyge","permission":"active"},{"actor":"marsaccount3","permission":"active"},{"actor":"robertocarlo","permission":"active"},{"actor":"uosvegasjack","permission":"active"}]' '[{"actor":"uosio","permission":"active"}]' uosio rmvproducer '{"producer":"tobrightnice"}' -p dragonexsafe
+
+cluos -u http://124.232.156.101:9008 multisig approve dragonexsafe removeprod2 '{"actor":"dragonexsafe","permission":"active"}' -p dragonexsafe@active
+cluos -u http://124.232.156.101:9008 multisig approve dragonexsafe removeprod2 '{"actor":"gm2tqnjygyge","permission":"active"}' -p gm2tqnjygyge@active
+cluos -u http://124.232.156.101:9008 multisig approve dragonexsafe removeprod2 '{"actor":"tobrightnice","permission":"active"}' -p tobrightnice@active
+cluos -u http://124.232.156.101:9008 multisig approve dragonexsafe removeprod2 '{"actor":"marsaccount3","permission":"active"}' -p marsaccount3@active
+cluos -u http://124.232.156.101:9008 multisig approve dragonexsafe removeprod2 '{"actor":"robertocarlo","permission":"active"}' -p robertocarlo@active
+
+cluos -u http://124.232.156.101:9008  multisig exec dragonexsafe removeprod2 -p dragonexsafe
+
+//测试多个投票给bp后,bp被强制投票删除的情况 
+cluos  -u http://124.232.156.101:9008 system newaccount --transfer ulordofficia wangruixiwww UOS6gnEEFhWwkBJMBGUwg87wCSZVmQXBGpJ34g64vJMEQbhm18sZt UOS5kkHPHw2JNMcyarxkb2ANJA3x7VGq5Rv3Tq3WHyxc7gfFkAnEA  --stake-net "100.0000  UOS" --stake-cpu "100.0000  UOS" --buy-ram "100.0000  UOS"
+cluos -u http://124.232.156.101:9008 transfer ulordofficia wangruixiwww "2000 UOS"
+
+cluos  -u http://124.232.156.101:9008  system delegatebw wangruixiwww wangruixiwww '500 UOS' '500 UOS'
+cluos  -u http://124.232.156.101:9008 system regproducer wangruixiwww UOS5kkHPHw2JNMcyarxkb2ANJA3x7VGq5Rv3Tq3WHyxc7gfFkAnEA https://wangruixiwww.com/chain UQRLpoSErjwYdvomEExk8LMnDSfyD2MxnD
+
+cluos  -u http://124.232.156.101:9008  system voteproducer prods dragonexsafe "100 UOS" wangruixiwww
+cluos  -u http://124.232.156.101:9008  system voteproducer prods gm2tqnjygyge "200 UOS" wangruixiwww
+cluos  -u http://124.232.156.101:9008  system voteproducer prods tobrightnice "300 UOS" wangruixiwww
+cluos  -u http://124.232.156.101:9008  system voteproducer prods marsaccount3 "400 UOS" wangruixiwww
+cluos  -u http://124.232.156.101:9008  system voteproducer prods wangruixiwww "500 UOS" wangruixiwww
+
+cluos -u http://124.232.156.101:9008 multisig propose removeprod2 '[{"actor":"wangruixiwww","permission":"active"},{"actor":"dragonexsafe","permission":"active"},{"actor":"gm2tqnjygyge","permission":"active"},{"actor":"marsaccount3","permission":"active"},{"actor":"robertocarlo","permission":"active"},{"actor":"uosvegasjack","permission":"active"}]' '[{"actor":"uosio","permission":"active"}]' uosio rmvproducer '{"producer":"wangruixiwww"}' -p dragonexsafe
+
+cluos -u http://124.232.156.101:9008 multisig approve dragonexsafe removeprod2 '{"actor":"dragonexsafe","permission":"active"}' -p dragonexsafe@active
+cluos -u http://124.232.156.101:9008 multisig approve dragonexsafe removeprod2 '{"actor":"gm2tqnjygyge","permission":"active"}' -p gm2tqnjygyge@active
+cluos -u http://124.232.156.101:9008 multisig approve dragonexsafe removeprod2 '{"actor":"wangruixiwww","permission":"active"}' -p wangruixiwww@active
+cluos -u http://124.232.156.101:9008 multisig approve dragonexsafe removeprod2 '{"actor":"marsaccount3","permission":"active"}' -p marsaccount3@active
+cluos -u http://124.232.156.101:9008 multisig approve dragonexsafe removeprod2 '{"actor":"robertocarlo","permission":"active"}' -p robertocarlo@active
+
+cluos -u http://124.232.156.101:9008  multisig exec dragonexsafe dragonexsafe -p dragonexsafe
+
+cluos -u http://124.232.156.101:9008  system  cancelvote dragonexsafe "10 UOS" dragonexsafe
+
+cluos  -u http://124.232.156.101:9008  system  cancelvote dragonexsafe "100 UOS" wangruixiwww
+
+//测试bp节点取消投票到0时情况 
+
+cluos  -u http://124.232.156.101:9008 system newaccount --transfer ulordofficia wangruixiww1 UOS6gnEEFhWwkBJMBGUwg87wCSZVmQXBGpJ34g64vJMEQbhm18sZt UOS5kkHPHw2JNMcyarxkb2ANJA3x7VGq5Rv3Tq3WHyxc7gfFkAnEA  --stake-net "100.0000  UOS" --stake-cpu "100.0000  UOS" --buy-ram "100.0000  UOS"
+cluos -u http://124.232.156.101:9008 transfer ulordofficia wangruixiww1 "2000 UOS"
+
+cluos  -u http://124.232.156.101:9008  system delegatebw wangruixiww1 wangruixiww1 '500 UOS' '500 UOS'
+cluos  -u http://124.232.156.101:9008 system regproducer wangruixiww1 UOS5kkHPHw2JNMcyarxkb2ANJA3x7VGq5Rv3Tq3WHyxc7gfFkAnEA https://wangruixiww1.com/chain UQRLpoSErjwYdvomEExk8LMnDSfyD2MxnD
+
+cluos  -u http://124.232.156.101:9008  system voteproducer prods wangruixiww1 "100 UOS" wangruixiww1
+
+cluos  -u http://124.232.156.101:9008  system  cancelvote wangruixiww1 "100 UOS" wangruixiww1
+
+//test delegate wangruixiww1
+
+cluos -u http://124.232.156.101:9008  system delegatebw wangruixiww1 wangruixiwww '100 UOS' '100 UOS'
+
+
+uos@hml:~$ cluos -u http://124.232.156.101:9008 get account wangruixiwww
+created: 2019-01-15T00:48:17.000
+permissions: 
+     owner     1:    1 UOS6gnEEFhWwkBJMBGUwg87wCSZVmQXBGpJ34g64vJMEQbhm18sZt
+        active     1:    1 UOS5kkHPHw2JNMcyarxkb2ANJA3x7VGq5Rv3Tq3WHyxc7gfFkAnEA
+memory: 
+     quota:     160.6 KiB    used:     3.861 KiB  
+
+net bandwidth: 
+     staked:        200.0000 UOS           (total stake delegated from account to self)
+     delegated:     100.0000 UOS           (total staked delegated to account from others)
+     used:               609 bytes
+     available:         97.1 GiB  
+     limit:             97.1 GiB  
+
+cpu bandwidth:
+     staked:          0.0000 UOS           (total stake delegated from account to self)
+     delegated:     100.0000 UOS           (total staked delegated to account from others)
+     used:             3.478 ms   
+     available:        2.079 hr   
+     limit:            2.079 hr   
+
+UOS balances: 
+     liquid:         1000.0000 UOS
+     staked:          200.0000 UOS
+     unstaking:         0.0000 UOS
+     total:          1200.0000 UOS
+
+producers:
+     staked:          200.0000 UOS
+     <not voted>
+     total:             0.0000 UOS
+
+uos@hml:~$ cluos -u http://124.232.156.101:9008 get account wangruixiww1
+created: 2019-01-15T03:19:59.000
+permissions: 
+     owner     1:    1 UOS6gnEEFhWwkBJMBGUwg87wCSZVmQXBGpJ34g64vJMEQbhm18sZt
+        active     1:    1 UOS5kkHPHw2JNMcyarxkb2ANJA3x7VGq5Rv3Tq3WHyxc7gfFkAnEA
+memory: 
+     quota:     160.4 KiB    used:     4.018 KiB  
+
+net bandwidth: 
+     staked:        600.0000 UOS           (total stake delegated from account to self)
+     delegated:       0.0000 UOS           (total staked delegated to account from others)
+     used:               688 bytes
+     available:        194.2 GiB  
+     limit:            194.2 GiB  
+
+cpu bandwidth:
+     staked:        600.0000 UOS           (total stake delegated from account to self)
+     delegated:       0.0000 UOS           (total staked delegated to account from others)
+     used:             9.346 ms   
+     available:        12.47 hr   
+     limit:            12.47 hr   
+
+UOS balances: 
+     liquid:          800.0000 UOS
+     staked:         1200.0000 UOS
+     unstaking:         0.0000 UOS
+     total:          2000.0000 UOS
+
+producers:
+     staked:         1400.0000 UOS
+     <not voted>
+     total:             0.0000 UOS
+
+//6355614b09744bd1053c34098de625d373063da2d20bd2165aabcb12e7d10702
+cluos -u http://124.232.156.101:9008  system undelegatebw  wangruixiww1 wangruixiww1 "100 UOS" "100 UOS"
+//8f7c185ad9bd4985236dad8290c23d17f8e1181e331c8e28c103bb3d7ce6eb6d
+cluos -u http://124.232.156.101:9008  system undelegatebw  wangruixiww1 wangruixiwww "100 UOS" "100 UOS"
+
+//数据解压测试
+//64ebe561c871322597ddef72104de898dbe3ef88ff1b4d0521f5da659930e66f
+cluos  -u http://124.232.156.101:9008 system newaccount --transfer ulordofficia mengruixiww1 UOS6gnEEFhWwkBJMBGUwg87wCSZVmQXBGpJ34g64vJMEQbhm18sZt UOS5kkHPHw2JNMcyarxkb2ANJA3x7VGq5Rv3Tq3WHyxc7gfFkAnEA  --stake-net "100.0000  UOS" --stake-cpu "100.0000  UOS" --buy-ram "100.0000  UOS"
+
+//05cbcf3cb950e10b59439e9ecbf9ececefe9c650428e144b53a104ee16691a26
+cluos -u http://124.232.156.101:9008 transfer ulordofficia mengruixiww1 "200 UOS"
+
+cluos  -u http://124.232.156.101:9008 system newaccount --transfer ulordofficia mengruixiww2 UOS6gnEEFhWwkBJMBGUwg87wCSZVmQXBGpJ34g64vJMEQbhm18sZt UOS5kkHPHw2JNMcyarxkb2ANJA3x7VGq5Rv3Tq3WHyxc7gfFkAnEA  --stake-net "100.0000  UOS" --stake-cpu "100.0000  UOS" --buy-ram "100.0000  UOS"
+
+db.transactions.find({"trx_id": "05cbcf3cb950e10b59439e9ecbf9ececefe9c650428e144b53a104ee16691a26"})
+
+
+cluos  -u http://10.186.11.227:9008 set contract token ~/UOS/build/contracts/token/ -p mengruixiww2@active
+
+/******************************************************* uosio.sudo 测试 ***************************************************************
+cluos  -u http://124.232.156.101:9008 system newaccount --transfer ulordofficia testsudotest UOS6gnEEFhWwkBJMBGUwg87wCSZVmQXBGpJ34g64vJMEQbhm18sZt UOS5kkHPHw2JNMcyarxkb2ANJA3x7VGq5Rv3Tq3WHyxc7gfFkAnEA  --stake-net "100.0000  UOS" --stake-cpu "100.0000  UOS" --buy-ram "100.0000  UOS"
+cluos -u http://124.232.156.101:9008 transfer ulordofficia testsudotest "220 UOS"
+
+cluos  -u http://124.232.156.101:9008 set contract dragonexsafe /home/uos/UOS/build/contracts/uosio.sudo -p dragonexsafe@active
+
+//testsudotest owner
+5JyzfZ8iq3WmYyq1NQsSwRAWPt6CJrNZifqhdeKpbG2Cz19QVS3
+UOS7Q7HXQagexapzP7wTeXuayyzoZnhdtF8RbNAPgXsP52jtZFT2v
+//testsudotest active
+5KS4jEeDLBJj9UmVfac5WTmEBwYfKcNC3uSjAJbbD2Ro2DkwNsF
+UOS5fQ2m5bc5cXq9Bzsk8L1zQNHvZRP1XTNNzj2eoNFxdBhM2toZR
+
+cluos -u http://124.232.156.101:9008 set account permission -s -j -d testsudotest owner '{"threshold": 1, "accounts": [{"permission": {"actor": "uosio", "permission": "active"}, "weight": 1}]}' > update_testsudotest_owner_trx.json
+
+cluos -u http://124.232.156.101:9008 sudo exec -s -j -d dragonexsafe update_testsudotest_owner_trx.json > sudo_update_testsudotest_owner_trx.json
+/*********************************************************************  交易  ***********************************************************
+
+cluos  -u http://10.186.11.227:9008 system newaccount --transfer ulordofficia transferaaaa UOS6gnEEFhWwkBJMBGUwg87wCSZVmQXBGpJ34g64vJMEQbhm18sZt UOS5kkHPHw2JNMcyarxkb2ANJA3x7VGq5Rv3Tq3WHyxc7gfFkAnEA  --stake-net "5000.0000  UOS" --stake-cpu "10000.0000  UOS" --buy-ram "1000.0000  UOS"
+cluos  -u http://10.186.11.227:9008 system newaccount --transfer ulordofficia transferbbbb UOS6gnEEFhWwkBJMBGUwg87wCSZVmQXBGpJ34g64vJMEQbhm18sZt UOS5kkHPHw2JNMcyarxkb2ANJA3x7VGq5Rv3Tq3WHyxc7gfFkAnEA  --stake-net "5000.0000  UOS" --stake-cpu "10000.0000  UOS" --buy-ram "1000.0000  UOS"
+cluos -u http://124.232.156.101:9008 transfer ulordofficia transferaaaa "5000 UOS"
+cluos -u http://124.232.156.101:9008 transfer ulordofficia transferbbbb "5000 UOS"
+/**************************************************************释放uosio用户权限 *******************************************************/
+
+//更新uosio权限
+cluos  -u http://10.186.11.227:9008 push action uosio updateauth '{"account": "uosio", "permission": "owner", "parent": "", "auth": {"threshold": 1, "keys": [], "waits": [], "accounts": [{"weight": 1, "permission": {"actor": "uosio.prods", "permission": "active"}}]}}' -p uosio@owner
+cluos  -u http://10.186.11.227:9008 push action uosio updateauth '{"account": "uosio", "permission": "active", "parent": "owner", "auth": {"threshold": 1, "keys": [], "waits": [], "accounts": [{"weight": 1, "permission": {"actor": "uosio.prods", "permission": "active"}}]}}' -p uosio@active
+
+/*********************************************************  常用维护指令 *************************************************************/
+
+nohup ./noduos --config-dir ./cfg --data-dir ./data > uos.log 2>&1 &
+
+cluos  -u http://10.186.11.227:9008  system delegatebw huqinghuqing huqinghuqing '20 UOS' '20 UOS'
+cluos  -u http://10.186.11.227:9008  system voteproducer prods huqinghuqing "50 UOS" robertocarlo
+cluos  -u http://10.186.11.227:9008  system  cancelvote huqinghuqing "10000 UOS" robertocarlo
+
+
+/*************************************************************  21节点测试 ************************************************************
+10.186.11.103      uosproducera
+Private key: 5Keknxtfu9iWV71JuossPnqinr7MqgATz9hraEeVRUUXGyu5PVN
+Public key: UOS5WzV1moXqtcGRLbDev2RtECFTj5tybRpYiRTme3rmcVm1ViK7R
+
+10.186.11.107		uosproducerb
+Private key: 5KF3fEyszon3xMsGbkSmyQrHUDuCsz2Vi38aWa7UCXQsk2Qmz4t
+Public key: UOS6XPQ9rpnGB3x1GQdeS9DU6dULNqbkXHAo9hk4Yk9Edhc3yRLJd
+
+10.186.11.109		uosproducerc
+Private key: 5JuqcxBekK43xYNMvGg1PaxhEHgBNRGh2sBJGTcWRXUCcK3LLK5
+Public key: UOS7u3Yv4hZ2VNhok98wxBfWviqtwH94dFQ8saGRLTZcQCxvmvok1
+
+10.186.11.105		uosproducerd
+Private key: 5JXfFaQ3LuVqnMUzgXgMGQN276YiauJSHtJ2YDv1Lv9pMMXNSZk
+Public key: UOS6nDpM7QjFHoPB9ym3gjaPGfNSqW78XXUZJ7rKVPsbRSzT39gmz
+
+10.186.11.106		uosproducere
+Private key: 5KQwKpPnYtSf5kTLxQST3NsF7EKQZSjKM7Xzys1krMXjEjqYYXn
+Public key: UOS6SXwxM3VJe2waLcFwiHsHXZYdALF3aoj2D86TTD5Rm1nQc3qqV
+
+10.186.11.108		uosproducerf
+Private key: 5KXaHaGgry5CBYbNHjygqh3jbBxnFEp9qG8jQ6bBE5aac1NBtz6
+Public key: UOS6VDWEeQEuSUjBTLUif8Qjd4EvHnoc9hZyvsPYYvT9bqhusd9ng
+
+10.186.11.104		uosproducerg
+Private key: 5J5XoayRTJqwEMcFD9i47V43z2gbezFNgB4dghkcoTU1aQCJSkz
+Public key: UOS8V3s3LiPo4SjZ11LozhAeD8Z7rMSfRStYeqw5d3QjSnBWJTXvq
+
+10.186.11.11		uosproducerh
+rivate key: 5JYV3uBJnx5ppjpjbwaNP2Ax84gRjrVNxrEBwrBgXpbjfpGqAvp
+Public key: UOS828eMAti5Ejov7WRgjXZhGXQ1DAvnnqcTy5WdCVYhGfbFxC237
+
+10.186.11.110		uosproduceri
+Private key: 5HqNP1xutEjryFnVAVQAo6U7PYh3CatStgKwyf1nhZHWuSTr2r7
+Public key: UOS6cFSCjBg5SoD3x8ukpWNkoHabdcJ4fp5eZFUx541dFmqaVYEa5
+
+10.186.11.113		uosproducerj
+Private key: 5JHCrJsQ92STu3XZfm41g3GE3sGK78ampyrzoyAE5p2PLwnk2Ff
+Public key: UOS7er99rUq1B855VSbu2zkY2nJjTsEMd4V5EaM3zYPpVpWejQmGM
+
+10.186.11.112		uosproducerk
+Private key: 5HsSiqbqA7XVMhkGpH3KDoq9zGg5oKjNUttMRZBCWQ4PAEL3VGx
+Public key: UOS7v8e1hkjTU5tRzRWp7ukG4hsjpErnvJBYQvA6jjKYAAaHxy5K7
+
+10.186.11.111		uosproducerl
+Private key: 5K6vSMKgVtW5Dv58EbzdxhPXtkgkCo57wZxQxvdEAuG8bXVqenk
+Public key: UOS5CbfQCs9NhUKCLowwEA2xs3Vz2NusAzTeJKq7gezgCtPgVJXFz
+
+10.186.11.114		uosproducerm
+Private key: 5J43yG3hyH52PuFUTfwAP7fjesu5Q17KcG7PDYpS9iJiu8nSFZT
+Public key: UOS6CjDf7S2dUWxGGuZA9d4enkownA2b6M1aDYaJznWYYvF14E3s5
+
+10.186.11.119		uosproducern
+Private key: 5HyrPbV3xDFnhmBzhEfiQNtx4AFw2qnj7D3Su2KWHvrnytCQ6Ty
+Public key: UOS75ppzHvy4HAZtfQUG4mC1xe1soYmp56xZ4iAu61xnZSu6buQNJ
+
+10.186.11.118		uosproducero
+Private key: 5KRgk2EiMQqARJpMb5qTj5DJxpAywiJQq1ofXr31G9oSdbb9XMk
+Public key: UOS6wP9hvoqqKxv5jAg6H1GzVZ36FVxn1PzyZujbGeXeq7PZW5wa6
+
+10.186.11.116		uosproducerp
+Private key: 5KHNp6MpKwzcnkQqsPRVS7L3JdqXQKgPy232wrd5JKmcMwwsKqD
+Public key: UOS7xgAUXrcNT1rckiaXbkaSYS3eyTBZU7TqHmdisoGML187b4CwH
+
+10.186.11.117		uosproducerq
+Private key: 5KiCr5jbudGg1hCgHN3a7zaH2bnGFuBEFuDG7SUU8VtUtnM7Nv1
+Public key: UOS58WsZAKNTgd5bmKF3foCKnpQXAWUgiAXi7QTb8g7rsyczGfTut
+
+10.186.11.115		uosproducerr
+Private key: 5JS3GG2c5i4W6XTAo37LAEqYMwvc79oFBMDTapN6Zp5KTnn7cCt
+Public key: UOS53xqC1bDzYDmtRcuy7Ci9HP4nmGRuLKjJqnitcXJqr6WGF4ek9
+
+10.186.11.24		uosproducers
+Private key: 5JY9eWiT3TfXf7QKtgDfXHRy1G3FZHEyHB7GV6tJf54nCTYBzDA
+Public key: UOS6TosVE9DJXKeJXd4vHaqkosF99S9k3TV2s7RkpG5ME6C9vEApb
+
+10.186.11.22		uosproducert
+Private key: 5JT2BzfByxSmUgG48qHvZsbG5N1NctdEtVUTYRtpya6679h1yzT
+Public key: UOS4xd7pEVmw6TtPsnv8D1QJyJfRC1VV21ENZnrYissujwKRRdzrQ
+
+10.186.11.20		uosproduceru
+Private key: 5K91WqFTwEtXrGRggyNice9YGoLjuBVxXoEDHjovRSJJLVXV1wS
+Public key: UOS6sEGkH4nq6NAMt6cTVwELmMzFVTMxJscchC56Dm5AjqmcfCU5v
+
+cluos wallet   import -n uos --private-key  5Keknxtfu9iWV71JuossPnqinr7MqgATz9hraEeVRUUXGyu5PVN
+
+cluos wallet   import -n uos --private-key  5KF3fEyszon3xMsGbkSmyQrHUDuCsz2Vi38aWa7UCXQsk2Qmz4t
+cluos wallet   import -n uos --private-key  5JuqcxBekK43xYNMvGg1PaxhEHgBNRGh2sBJGTcWRXUCcK3LLK5
+cluos wallet   import -n uos --private-key  5JXfFaQ3LuVqnMUzgXgMGQN276YiauJSHtJ2YDv1Lv9pMMXNSZk
+cluos wallet   import -n uos --private-key  5KQwKpPnYtSf5kTLxQST3NsF7EKQZSjKM7Xzys1krMXjEjqYYXn
+cluos wallet   import -n uos --private-key  5KXaHaGgry5CBYbNHjygqh3jbBxnFEp9qG8jQ6bBE5aac1NBtz6
+cluos wallet   import -n uos --private-key  5J5XoayRTJqwEMcFD9i47V43z2gbezFNgB4dghkcoTU1aQCJSkz
+cluos wallet   import -n uos --private-key  5JYV3uBJnx5ppjpjbwaNP2Ax84gRjrVNxrEBwrBgXpbjfpGqAvp
+cluos wallet   import -n uos --private-key  5HqNP1xutEjryFnVAVQAo6U7PYh3CatStgKwyf1nhZHWuSTr2r7
+cluos wallet   import -n uos --private-key  5JHCrJsQ92STu3XZfm41g3GE3sGK78ampyrzoyAE5p2PLwnk2Ff
+cluos wallet   import -n uos --private-key  5HsSiqbqA7XVMhkGpH3KDoq9zGg5oKjNUttMRZBCWQ4PAEL3VGx
+cluos wallet   import -n uos --private-key  5K6vSMKgVtW5Dv58EbzdxhPXtkgkCo57wZxQxvdEAuG8bXVqenk
+cluos wallet   import -n uos --private-key  5J43yG3hyH52PuFUTfwAP7fjesu5Q17KcG7PDYpS9iJiu8nSFZT
+cluos wallet   import -n uos --private-key  5HyrPbV3xDFnhmBzhEfiQNtx4AFw2qnj7D3Su2KWHvrnytCQ6Ty
+cluos wallet   import -n uos --private-key  5KRgk2EiMQqARJpMb5qTj5DJxpAywiJQq1ofXr31G9oSdbb9XMk
+cluos wallet   import -n uos --private-key  5KHNp6MpKwzcnkQqsPRVS7L3JdqXQKgPy232wrd5JKmcMwwsKqD
+cluos wallet   import -n uos --private-key  5KiCr5jbudGg1hCgHN3a7zaH2bnGFuBEFuDG7SUU8VtUtnM7Nv1
+cluos wallet   import -n uos --private-key  5JS3GG2c5i4W6XTAo37LAEqYMwvc79oFBMDTapN6Zp5KTnn7cCt
+cluos wallet   import -n uos --private-key  5JY9eWiT3TfXf7QKtgDfXHRy1G3FZHEyHB7GV6tJf54nCTYBzDA
+cluos wallet   import -n uos --private-key  5JT2BzfByxSmUgG48qHvZsbG5N1NctdEtVUTYRtpya6679h1yzT
+cluos wallet   import -n uos --private-key  5K91WqFTwEtXrGRggyNice9YGoLjuBVxXoEDHjovRSJJLVXV1wS
+
+cluos  -u http://124.232.156.101:9008  push action uosio.token issue '["ulordofficia", "10000000.0000  UOS", "memo"]' -p uosio.union
+
+cluos  -u http://124.232.156.101:9008 system newaccount --transfer ulordofficia uosproducera UOS5WzV1moXqtcGRLbDev2RtECFTj5tybRpYiRTme3rmcVm1ViK7R   --stake-net "10.0000  UOS" --stake-cpu "10.0000  UOS" --buy-ram "10.0000  UOS"
+cluos  -u http://124.232.156.101:9008 system regproducer uosproducera UOS5WzV1moXqtcGRLbDev2RtECFTj5tybRpYiRTme3rmcVm1ViK7R https://uosproducera.com/chain UQRLpoSErjwYdvomEExk8LMnDSfyD2MxnD
+
+cluos  -u http://124.232.156.101:9008 transfer  ulordofficia uosproducera "70000.0000 UOS"  
+cluos  -u http://124.232.156.101:9008  system delegatebw uosproducera  uosproducera "35000.0000 UOS"  "35000.0000 UOS"
+cluos  -u http://124.232.156.101:9008 system voteproducer prods uosproducera "50 UOS" uosproducera
+
+cluos  -u http://124.232.156.101:9008 system newaccount --transfer ulordofficia uosproducerb UOS6XPQ9rpnGB3x1GQdeS9DU6dULNqbkXHAo9hk4Yk9Edhc3yRLJd   --stake-net "50000.0000  UOS" --stake-cpu "50000.0000  UOS" --buy-ram "10.0000  UOS"
+cluos  -u http://124.232.156.101:9008 system regproducer uosproducerb UOS6XPQ9rpnGB3x1GQdeS9DU6dULNqbkXHAo9hk4Yk9Edhc3yRLJd https://uosproducerb.com/chain UQRLpoSErjwYdvomEExk8LMnDSfyD2MxnD
+cluos  -u http://124.232.156.101:9008 system voteproducer prods uosproducerb "10 UOS" uosproducerb
+
+cluos  -u http://124.232.156.101:9008 system newaccount --transfer ulordofficia uosproducerc UOS7u3Yv4hZ2VNhok98wxBfWviqtwH94dFQ8saGRLTZcQCxvmvok1   --stake-net "50000.0000  UOS" --stake-cpu "50000.0000  UOS" --buy-ram "10.0000  UOS"
+cluos  -u http://124.232.156.101:9008 system regproducer uosproducerc UOS7u3Yv4hZ2VNhok98wxBfWviqtwH94dFQ8saGRLTZcQCxvmvok1 https://uosproducerc.com/chain UQRLpoSErjwYdvomEExk8LMnDSfyD2MxnD
+cluos  -u http://124.232.156.101:9008 system voteproducer prods uosproducerc "1000 UOS" uosproducerc
+
+cluos  -u http://124.232.156.101:9008 system newaccount --transfer ulordofficia uosproducerd UOS6nDpM7QjFHoPB9ym3gjaPGfNSqW78XXUZJ7rKVPsbRSzT39gmz   --stake-net "50000.0000  UOS" --stake-cpu "50000.0000  UOS" --buy-ram "10.0000  UOS"
+cluos  -u http://124.232.156.101:9008 system regproducer uosproducerd UOS6nDpM7QjFHoPB9ym3gjaPGfNSqW78XXUZJ7rKVPsbRSzT39gmz https://uosproducerd.com/chain UQRLpoSErjwYdvomEExk8LMnDSfyD2MxnD
+cluos  -u http://124.232.156.101:9008 system voteproducer prods uosproducerd "10000 UOS" uosproducerd
+
+cluos  -u http://124.232.156.101:9008 system newaccount --transfer ulordofficia uosproducere UOS6SXwxM3VJe2waLcFwiHsHXZYdALF3aoj2D86TTD5Rm1nQc3qqV   --stake-net "50000.0000  UOS" --stake-cpu "50000.0000  UOS" --buy-ram "10.0000  UOS"
+cluos  -u http://124.232.156.101:9008 system regproducer uosproducere UOS6SXwxM3VJe2waLcFwiHsHXZYdALF3aoj2D86TTD5Rm1nQc3qqV https://uosproducere.com/chain UQRLpoSErjwYdvomEExk8LMnDSfyD2MxnD
+cluos  -u http://124.232.156.101:9008 system voteproducer prods uosproducere "5000 UOS" uosproducere
+
+cluos  -u http://124.232.156.101:9008 system newaccount --transfer ulordofficia uosproducerf UOS6VDWEeQEuSUjBTLUif8Qjd4EvHnoc9hZyvsPYYvT9bqhusd9ng   --stake-net "50000.0000  UOS" --stake-cpu "50000.0000  UOS" --buy-ram "10.0000  UOS"
+cluos  -u http://124.232.156.101:9008 system regproducer uosproducerf UOS6VDWEeQEuSUjBTLUif8Qjd4EvHnoc9hZyvsPYYvT9bqhusd9ng https://uosproducerf.com/chain UQRLpoSErjwYdvomEExk8LMnDSfyD2MxnD
+cluos  -u http://124.232.156.101:9008 system voteproducer prods uosproducerf "6000 UOS" uosproducerf
+
+cluos  -u http://124.232.156.101:9008 system newaccount --transfer ulordofficia uosproducerg UOS8V3s3LiPo4SjZ11LozhAeD8Z7rMSfRStYeqw5d3QjSnBWJTXvq   --stake-net "50000.0000  UOS" --stake-cpu "50000.0000  UOS" --buy-ram "10.0000  UOS"
+cluos  -u http://124.232.156.101:9008 system regproducer uosproducerg UOS8V3s3LiPo4SjZ11LozhAeD8Z7rMSfRStYeqw5d3QjSnBWJTXvq https://uosproducerg.com/chain UQRLpoSErjwYdvomEExk8LMnDSfyD2MxnD
+cluos  -u http://124.232.156.101:9008 system voteproducer prods uosproducerg "60000 UOS" uosproducerg
+
+cluos  -u http://124.232.156.101:9008 system newaccount --transfer ulordofficia uosproducerh UOS828eMAti5Ejov7WRgjXZhGXQ1DAvnnqcTy5WdCVYhGfbFxC237   --stake-net "50000.0000  UOS" --stake-cpu "50000.0000  UOS" --buy-ram "10.0000  UOS"
+cluos  -u http://124.232.156.101:9008 system regproducer uosproducerh UOS828eMAti5Ejov7WRgjXZhGXQ1DAvnnqcTy5WdCVYhGfbFxC237 https://uosproducerh.com/chain UQRLpoSErjwYdvomEExk8LMnDSfyD2MxnD
+cluos  -u http://124.232.156.101:9008 system voteproducer prods uosproducerh "20000 UOS" uosproducerh
+
+cluos  -u http://124.232.156.101:9008 system newaccount --transfer ulordofficia uosproduceri UOS6cFSCjBg5SoD3x8ukpWNkoHabdcJ4fp5eZFUx541dFmqaVYEa5   --stake-net "50000.0000  UOS" --stake-cpu "50000.0000  UOS" --buy-ram "10.0000  UOS"
+cluos  -u http://124.232.156.101:9008 system regproducer uosproduceri UOS6cFSCjBg5SoD3x8ukpWNkoHabdcJ4fp5eZFUx541dFmqaVYEa5 https://uosproduceri.com/chain UQRLpoSErjwYdvomEExk8LMnDSfyD2MxnD
+cluos  -u http://124.232.156.101:9008 system voteproducer prods uosproduceri "22000 UOS" uosproduceri
+
+cluos  -u http://124.232.156.101:9008 system newaccount --transfer ulordofficia uosproducerj UOS7er99rUq1B855VSbu2zkY2nJjTsEMd4V5EaM3zYPpVpWejQmGM   --stake-net "50000.0000  UOS" --stake-cpu "50000.0000  UOS" --buy-ram "10.0000  UOS"
+cluos  -u http://124.232.156.101:9008 system regproducer uosproducerj UOS7er99rUq1B855VSbu2zkY2nJjTsEMd4V5EaM3zYPpVpWejQmGM https://uosproducerj.com/chain UQRLpoSErjwYdvomEExk8LMnDSfyD2MxnD
+cluos  -u http://124.232.156.101:9008 system voteproducer prods uosproducerj "12000 UOS" uosproducerj
+
+cluos  -u http://124.232.156.101:9008 system newaccount --transfer ulordofficia uosproducerk UOS7v8e1hkjTU5tRzRWp7ukG4hsjpErnvJBYQvA6jjKYAAaHxy5K7   --stake-net "50000.0000  UOS" --stake-cpu "50000.0000  UOS" --buy-ram "10.0000  UOS"
+cluos  -u http://124.232.156.101:9008 system regproducer uosproducerk UOS7v8e1hkjTU5tRzRWp7ukG4hsjpErnvJBYQvA6jjKYAAaHxy5K7 https://uosproducerk.com/chain UQRLpoSErjwYdvomEExk8LMnDSfyD2MxnD
+cluos  -u http://124.232.156.101:9008 system voteproducer prods uosproducerk "2000 UOS" uosproducerk
+
+cluos  -u http://124.232.156.101:9008 system newaccount --transfer ulordofficia uosproducerl UOS5CbfQCs9NhUKCLowwEA2xs3Vz2NusAzTeJKq7gezgCtPgVJXFz   --stake-net "50000.0000  UOS" --stake-cpu "50000.0000  UOS" --buy-ram "10.0000  UOS"
+cluos  -u http://124.232.156.101:9008 system regproducer uosproducerl UOS5CbfQCs9NhUKCLowwEA2xs3Vz2NusAzTeJKq7gezgCtPgVJXFz https://uosproducerl.com/chain UQRLpoSErjwYdvomEExk8LMnDSfyD2MxnD
+cluos  -u http://124.232.156.101:9008 system voteproducer prods uosproducerl "3000 UOS" uosproducerl
+
+cluos  -u http://124.232.156.101:9008 system newaccount --transfer ulordofficia uosproducerm UOS6CjDf7S2dUWxGGuZA9d4enkownA2b6M1aDYaJznWYYvF14E3s5   --stake-net "50000.0000  UOS" --stake-cpu "50000.0000  UOS" --buy-ram "10.0000  UOS"
+cluos  -u http://124.232.156.101:9008 system regproducer uosproducerm UOS6CjDf7S2dUWxGGuZA9d4enkownA2b6M1aDYaJznWYYvF14E3s5 https://uosproducerm.com/chain UQRLpoSErjwYdvomEExk8LMnDSfyD2MxnD
+cluos  -u http://124.232.156.101:9008 system voteproducer prods uosproducerm "13000 UOS" uosproducerm
+
+cluos  -u http://124.232.156.101:9008 system newaccount --transfer ulordofficia uosproducern UOS75ppzHvy4HAZtfQUG4mC1xe1soYmp56xZ4iAu61xnZSu6buQNJ   --stake-net "50000.0000  UOS" --stake-cpu "50000.0000  UOS" --buy-ram "10.0000  UOS"
+cluos  -u http://124.232.156.101:9008 system regproducer uosproducern UOS75ppzHvy4HAZtfQUG4mC1xe1soYmp56xZ4iAu61xnZSu6buQNJ https://uosproducern.com/chain UQRLpoSErjwYdvomEExk8LMnDSfyD2MxnD
+cluos  -u http://124.232.156.101:9008 system voteproducer prods uosproducern "30000 UOS" uosproducern
+
+cluos  -u http://124.232.156.101:9008 system newaccount --transfer ulordofficia uosproducero UOS6wP9hvoqqKxv5jAg6H1GzVZ36FVxn1PzyZujbGeXeq7PZW5wa6   --stake-net "50000.0000  UOS" --stake-cpu "50000.0000  UOS" --buy-ram "10.0000  UOS"
+cluos  -u http://124.232.156.101:9008 system regproducer uosproducero UOS6wP9hvoqqKxv5jAg6H1GzVZ36FVxn1PzyZujbGeXeq7PZW5wa6 https://uosproducero.com/chain UQRLpoSErjwYdvomEExk8LMnDSfyD2MxnD
+cluos  -u http://124.232.156.101:9008 system voteproducer prods uosproducero "3200 UOS" uosproducero
+
+cluos  -u http://124.232.156.101:9008 system newaccount --transfer ulordofficia uosproducerp UOS7xgAUXrcNT1rckiaXbkaSYS3eyTBZU7TqHmdisoGML187b4CwH   --stake-net "50000.0000  UOS" --stake-cpu "50000.0000  UOS" --buy-ram "10.0000  UOS"
+cluos  -u http://124.232.156.101:9008 system regproducer uosproducerp UOS7xgAUXrcNT1rckiaXbkaSYS3eyTBZU7TqHmdisoGML187b4CwH https://uosproducerp.com/chain UQRLpoSErjwYdvomEExk8LMnDSfyD2MxnD
+cluos  -u http://124.232.156.101:9008 system voteproducer prods uosproducerp "8000 UOS" uosproducerp
+
+cluos  -u http://124.232.156.101:9008 system newaccount --transfer ulordofficia uosproducerq UOS58WsZAKNTgd5bmKF3foCKnpQXAWUgiAXi7QTb8g7rsyczGfTut   --stake-net "50000.0000  UOS" --stake-cpu "50000.0000  UOS" --buy-ram "10.0000  UOS"
+cluos  -u http://124.232.156.101:9008 system regproducer uosproducerq UOS58WsZAKNTgd5bmKF3foCKnpQXAWUgiAXi7QTb8g7rsyczGfTut https://uosproducerq.com/chain UQRLpoSErjwYdvomEExk8LMnDSfyD2MxnD
+cluos  -u http://124.232.156.101:9008 system voteproducer prods uosproducerq "8888 UOS" uosproducerq
+
+cluos  -u http://124.232.156.101:9008 system newaccount --transfer ulordofficia uosproducerr UOS53xqC1bDzYDmtRcuy7Ci9HP4nmGRuLKjJqnitcXJqr6WGF4ek9   --stake-net "50000.0000  UOS" --stake-cpu "50000.0000  UOS" --buy-ram "10.0000  UOS"
+cluos  -u http://124.232.156.101:9008 system regproducer uosproducerr UOS53xqC1bDzYDmtRcuy7Ci9HP4nmGRuLKjJqnitcXJqr6WGF4ek9 https://uosproducerr.com/chain UQRLpoSErjwYdvomEExk8LMnDSfyD2MxnD
+cluos  -u http://124.232.156.101:9008 system voteproducer prods uosproducerr "2356 UOS" uosproducerr
+
+cluos  -u http://124.232.156.101:9008 system newaccount --transfer ulordofficia uosproducers UOS6TosVE9DJXKeJXd4vHaqkosF99S9k3TV2s7RkpG5ME6C9vEApb   --stake-net "50000.0000  UOS" --stake-cpu "50000.0000  UOS" --buy-ram "10.0000  UOS"
+cluos  -u http://124.232.156.101:9008 system regproducer uosproducers UOS6TosVE9DJXKeJXd4vHaqkosF99S9k3TV2s7RkpG5ME6C9vEApb https://uosproducers.com/chain UQRLpoSErjwYdvomEExk8LMnDSfyD2MxnD
+cluos  -u http://124.232.156.101:9008 system voteproducer prods uosproducers "3000 UOS" uosproducers
+
+cluos  -u http://124.232.156.101:9008 system newaccount --transfer ulordofficia uosproducert UOS4xd7pEVmw6TtPsnv8D1QJyJfRC1VV21ENZnrYissujwKRRdzrQ   --stake-net "50000.0000  UOS" --stake-cpu "50000.0000  UOS" --buy-ram "10.0000  UOS"
+cluos  -u http://124.232.156.101:9008 system regproducer uosproducert UOS4xd7pEVmw6TtPsnv8D1QJyJfRC1VV21ENZnrYissujwKRRdzrQ https://uosproducert.com/chain UQRLpoSErjwYdvomEExk8LMnDSfyD2MxnD
+cluos  -u http://124.232.156.101:9008 system voteproducer prods uosproducert "12450 UOS" uosproducert
+
+cluos  -u http://124.232.156.101:9008 system newaccount --transfer ulordofficia uosproduceru UOS6sEGkH4nq6NAMt6cTVwELmMzFVTMxJscchC56Dm5AjqmcfCU5v   --stake-net "50000.0000  UOS" --stake-cpu "50000.0000  UOS" --buy-ram "10.0000  UOS"
+cluos  -u http://124.232.156.101:9008 system regproducer uosproduceru UOS6sEGkH4nq6NAMt6cTVwELmMzFVTMxJscchC56Dm5AjqmcfCU5v https://uosproduceru.com/chain UQRLpoSErjwYdvomEExk8LMnDSfyD2MxnD
+cluos  -u http://124.232.156.101:9008 system voteproducer prods uosproduceru "1240 UOS" uosproduceru
+
+
+//黄波使用
+cluos  -u http://10.186.11.211:9008 system newaccount --transfer ulordofficia tobrightnic1 UOS6gnEEFhWwkBJMBGUwg87wCSZVmQXBGpJ34g64vJMEQbhm18sZt UOS5kkHPHw2JNMcyarxkb2ANJA3x7VGq5Rv3Tq3WHyxc7gfFkAnEA  --stake-net "10000.0000  UOS" --stake-cpu "10000.0000  UOS" --buy-ram "10000.0000  UOS"
+cluos -u http://10.186.11.211:9008 transfer ulordofficia tobrightnic1 "500000 UOS"
+
+//释放权限
+
+cluos  -u https://testrpc1.uosio.org:20580 set account permission uosio.bpay owner '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"owner"},"weight":1}],"waits":[]}' -p uosio.bpay@owner
+cluos  -u https://testrpc1.uosio.org:20580 set account permission uosio.bpay active '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"active"},"weight":1}],"waits":[]}' -p uosio.bpay@active
+
+cluos  -u https://testrpc1.uosio.org:20580 set account permission uosio.msig owner '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"owner"},"weight":1}],"waits":[]}' -p uosio.msig@owner
+cluos  -u https://testrpc1.uosio.org:20580 set account permission uosio.msig active '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"active"},"weight":1}],"waits":[]}' -p uosio.msig@active
+
+cluos  -u https://testrpc1.uosio.org:20580 set account permission uosio.names owner '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"owner"},"weight":1}],"waits":[]}' -p uosio.names@owner
+cluos  -u https://testrpc1.uosio.org:20580 set account permission uosio.names active '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"active"},"weight":1}],"waits":[]}' -p uosio.names@active
+
+cluos  -u https://testrpc1.uosio.org:20580 set account permission uosio.ram owner '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"owner"},"weight":1}],"waits":[]}' -p uosio.ram@owner
+cluos  -u https://testrpc1.uosio.org:20580 set account permission uosio.ram active '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"active"},"weight":1}],"waits":[]}' -p uosio.ram@active
+
+cluos  -u https://testrpc1.uosio.org:20580 set account permission uosio.ramfee owner '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"owner"},"weight":1}],"waits":[]}' -p uosio.ramfee@owner
+cluos  -u https://testrpc1.uosio.org:20580 set account permission uosio.ramfee active '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"active"},"weight":1}],"waits":[]}' -p uosio.ramfee@active
+
+cluos  -u https://testrpc1.uosio.org:20580 set account permission uosio.saving owner '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"owner"},"weight":1}],"waits":[]}' -p uosio.saving@owner
+cluos  -u https://testrpc1.uosio.org:20580 set account permission uosio.saving active '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"active"},"weight":1}],"waits":[]}' -p uosio.saving@active
+
+cluos  -u https://testrpc1.uosio.org:20580 set account permission uosio.stake owner '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"owner"},"weight":1}],"waits":[]}' -p uosio.stake@owner
+cluos  -u https://testrpc1.uosio.org:20580 set account permission uosio.stake active '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"active"},"weight":1}],"waits":[]}' -p uosio.stake@active
+
+cluos  -u https://testrpc1.uosio.org:20580 set account permission uosio.token owner '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"owner"},"weight":1}],"waits":[]}' -p uosio.token@owner
+cluos  -u https://testrpc1.uosio.org:20580 set account permission uosio.token active '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"active"},"weight":1}],"waits":[]}' -p uosio.token@active
+
+cluos  -u https://testrpc1.uosio.org:20580 set account permission uosio.vpay owner '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"owner"},"weight":1}],"waits":[]}' -p uosio.vpay@owner
+cluos  -u https://testrpc1.uosio.org:20580 set account permission uosio.vpay active '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"active"},"weight":1}],"waits":[]}' -p uosio.vpay@active
+
+cluos  -u https://testrpc1.uosio.org:20580 set account permission uosio.bvpay owner '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"owner"},"weight":1}],"waits":[]}' -p uosio.bvpay@owner
+cluos  -u https://testrpc1.uosio.org:20580 set account permission uosio.bvpay active '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"active"},"weight":1}],"waits":[]}' -p uosio.bvpay@active
+
+cluos  -u https://testrpc1.uosio.org:20580 set account permission uosio.txfee owner '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"owner"},"weight":1}],"waits":[]}' -p uosio.txfee@owner
+cluos  -u https://testrpc1.uosio.org:20580 set account permission uosio.txfee active '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"active"},"weight":1}],"waits":[]}' -p uosio.txfee@active
+
+cluos  -u https://testrpc1.uosio.org:20580 set account permission uosblockpro1 active '{"threshold":1,"keys":[{"key":"UOS8EAwgF9VEai6CP5iw6s2EwMMo52ho1GVci3rmE4CNb1T4J294T","weight":1}]}' owner
+cluos  -u https://testrpc1.uosio.org:20580 set account permission uosblockpro1 owner '{"threshold":1,"keys":[{"key":"UOS6gts6s1u8dNfzzxqbieEmdkB41K7u5d4JUpB8vSAq7vutHr7AC","weight":1}]}' -p uosblockpro1@owner
+
+cluos  -u https://testrpc1.uosio.org:20580 set account permission uoscommunity active '{"threshold":1,"keys":[{"key":"UOS6jQE1UQYeNpVsPQC72zJCGUb1CuNbRiMxikwHvMHULDthAzJYQ","weight":1}]}' owner
+cluos  -u https://testrpc1.uosio.org:20580 set account permission uoscommunity owner '{"threshold":1,"keys":[{"key":"UOS6GiXgy8r5phjsPL6npDVPYSZKFhmXhbfoytKs5HiDzKcAZH6cu","weight":1}]}' -p uoscommunity@owner
+
+cluos  -u https://testrpc1.uosio.org:20580 set account permission uoszhongguo1 active '{"threshold":1,"keys":[{"key":"UOS5o8FcJDhWuyy9uzjatXmcMrWiMZYwm3SPzvfYQzFGhRZ9jYv2f","weight":1}]}' owner
+cluos  -u https://testrpc1.uosio.org:20580 set account permission uoszhongguo1 owner '{"threshold":1,"keys":[{"key":"UOS6rSCJvo9tTyzd4JsZFYKGJL3b27TDGXW2KHUb7trbfeuiMHyZQ","weight":1}]}' -p uoszhongguo1@owner
+
+cluos  -u https://testrpc1.uosio.org:20580 set account permission uoszhongguo1 active '{"threshold":1,"keys":[{"key":"UOS5o8FcJDhWuyy9uzjatXmcMrWiMZYwm3SPzvfYQzFGhRZ9jYv2f","weight":1}]}' owner
+cluos  -u https://testrpc1.uosio.org:20580 set account permission uoszhongguo1 owner '{"threshold":1,"keys":[{"key":"UOS6rSCJvo9tTyzd4JsZFYKGJL3b27TDGXW2KHUb7trbfeuiMHyZQ","weight":1}]}' -p uoszhongguo1@owner
+
+cluos  -u https://testrpc1.uosio.org:20580  set account permission uosio.union active '{"threshold":3,"keys":[{"key":"UOS5mjGQWjN5W3r5FaXpg97jFebHz3feWNTmKfwyAzvLCjhnMJhHY","weight":1},{"key":"UOS6huTSmSfQfhmRkcGp52t4f8kFTFGXqKctFNzxK81NbR8GMBy4z","weight":1},{"key":"UOS7SMEGDejhYETKH2zXiq2citkU6WhyqXiRhUXJDwH55uVS4GsAU","weight":1}],"accounts":[{"permission":{"actor":"uosio.union","permission":"uosio.code"},"weight":3}]}' owner -p uosio.union@owner
+cluos  -u https://testrpc1.uosio.org:20580  set account permission uosio.union owner '{"threshold":3,"keys":[{"key":"UOS4wr8iDoTH7EmDoXcGySm4pGTszi9uys2Pme1BH1swpJrtqFRN7","weight":1},{"key":"UOS55FaESneCuAU6kYsLNx2QkHU8oXsHALRBaARH9yRBbLVpmJrDq","weight":1},{"key":"UOS8JwWGNn4wy3S2oGYfPKyWoKivev94r4PYNaAjPnKQdpauDUZfu","weight":1}]}' -p uosio.union@owner
+
+
+
+

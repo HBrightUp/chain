@@ -1,0 +1,27 @@
+signature-provider =  UOS89phnrXbVvYxcUuriiGxXY2LxecWFVifRhcepaHk6zideg1utf=KEY:5Ki9APouAJ7okmmDTn5tcdQmoGXRbzQyAWY32fKqr8JJqUxEq2D
+ulordjsm1111
+
+signature-provider =  UOS5CMEJNVRTX6KaDXmFh8YPHUmFAusqcrX7onC9RjWsmu1NZZB7x=KEY:5Jvc2y4L4c2oVkfNPpix999edfox5LvSqR56KUKqcEBvuPAhm31
+gongshiuos11
+
+signature-provider =  UOS5ZTpsroFGJrr3GuaWxdLaSxkpoZGVUBRVzW3mhomZkrCrHB2fw=KEY:5JM59Ma4nc8g6nvo1eXPhofiDmaW3qxnfbunwFt63Xia8RMAZMp
+uosiopokerbp
+
+signature-provider =  UOS7tQQaFoMiFbstkBD4nhGMpjX696EFCE48ZWCtuFxf16P1pg9nG=KEY:5JTcbfGBeunxFbhrnoJWPQBrUZquZVToUxNdAhxcvZLztXZBJ4X
+qkt111111111
+
+signature-provider =  UOS8VjUQXSovjJ5LuubcAUK9r5LYda7j5dLTJcfrBHm6VSP2L3d8Y=KEY:5HuB9Zov7hiC9qSH9FhXi4KHeuRKYjubwpnoq18N4DauihyYWs3
+uoskkkkonebp
+
+
+
+111.204.209.105-
+
+Dlrns@233
+Dlrns@123
+
+ssh root@111.204.209.107
+
+noduos --genesis-json uos/cfg/genesis.json --config-dir uos/cfg/ --data-dir uos/data &
+
+

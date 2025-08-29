@@ -1,0 +1,364 @@
+/*******************************************************Begin 硬件配置 **************************************************************************************/
+/************************   BP配置 ********************************
+10.186.11.95			uosblockpro1
+10.186.11.96			uoscommunity
+10.186.11.97			uoszhongguo1
+
+root
+91>0_%O02NcD1y5?
+24核32G 100G系统盘
+
+/************************   https配置 ********************************
+
+114.67.37.75:8250      10.186.11.98:8250        区块浏览器   https://rpc1.uosio.org:8250
+114.67.37.76:8250      10.186.11.101:8250        https://rpc2.uosio.org
+
+root
+91>0_%O02NcD1y5?
+
+124.232.147.65:8080		124.232.147.65:8080    https://rpc3.uosio.org:8080
+24核32G 100G系统盘
+uos uos
+
+/************************   内部http配置 ********************************
+10.186.11.22		   
+10.186.11.20		 
+
+/************************   p2p配置 ********************************
+114.67.37.75:9660      10.186.11.98:9660		node-a
+114.67.37.76:9660      10.186.11.101:9660		node-b
+124.232.147.65:7020    124.232.147.65:7020      node-c
+/************************   mongodb配置 ********************************
+//mongodb
+10.186.11.99:11008
+
+root
+bzYA*a4r3gETB%i1
+24核32G 100G系统盘 500G系统盘未挂载
+
+//初始状态无密码登陆mongo --host 10.186.11.99 --port 11008
+
+db.createUser({user:'admin', pwd:'5KixYnvhZBXca318hTMjCN2WBy8w6upe2xREXcx9wMwApvfefjT', roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]})
+
+db.createUser({user:"uos",pwd:"5JQwqdGNmwEbkj5KTCuRLqa6Lg7GgyvJZdpKdkrQYDR59E3ks1U",roles:[{"role":"readWrite","db":"uos"}]})
+
+db.createUser({user:"userrdone",pwd:"5KJiStCJoY4jkwYmmv524ACtL2on8AXE7C4VyWs2u27UbzfZYM5",roles:[{"role":"read","db":"uos"}]})
+
+sudo  ~/uos/mongodb/bin/mongod -f ~/uos/mongodb/mongod.conf --auth --fork
+sudo  ~/uos/mongodb/bin/mongod -f ~/uos/mongodb/mongod.conf  --fork
+
+mongodb-uri = mongodb://uos:5JQwqdGNmwEbkj5KTCuRLqa6Lg7GgyvJZdpKdkrQYDR59E3ks1U@10.186.11.99:11008/uos
+
+mongo --host 10.186.11.99 --port 11008  -u uos -p 5JQwqdGNmwEbkj5KTCuRLqa6Lg7GgyvJZdpKdkrQYDR59E3ks1U
+
+//查看所有用户权限
+db.auth('userrdone','5KJiStCJoY4jkwYmmv524ACtL2on8AXE7C4VyWs2u27UbzfZYM5')
+
+/**********************************************************************
+区块浏览器
+39.108.7.62
+
+/******************************************************* End 硬件配置 **************************************************************************************/
+
+/******************************************************************  常用命令  ******************************************************************************************************************/
+./noduos --config-dir ./cfg --data-dir ~/uosdata --genesis-json ./cfg/genesis.json --delete-all-blocks
+nohup kuosd > wallet.logfile 2>&1 &
+nohup ./noduos --config-dir ./cfg/ --data-dir ~/uosdata > noduos.logfile 2>&1 &
+
+./noduos --config-dir ./cfg/ --data-dir ~/uosdata --genesis-json ./cfg/genesis.json --delete-all-blocks --mongodb-wipe &
+
+mongodb-block-start 
+/********************************************* 监控程序 *****************************************************************************
+http://132.232.99.50:1090/uos.html
+
+./uos_moni_cli 132.232.99.50 1091 /home/uos/monicli/bin/shuos.sh &
+
+export LD_LIBRARY_PATH="/home/uos/monicl/lib:$LD_LIBRARY_PATH"
+
+echo "ip: 10.186.11.99"
+echo "node-all"
+
+/********************************************************** private-key ************************************************************
+//uosio sign
+UOS8VrEtzikkqQBokT5ECirQQZ4Qpkh1p31spGSgTCHX95T86tU7Y
+5HxmNvuR7fPbRKU87j39B3CoJ5e2zYnuYFLXvukqQt3EARvbnLU
+
+//联盟
+UOS6jwwwyrhbY9c6RML29PrkxpVwS2Gck1UPmc997u5cCP115pSBn
+UOS6KuS9g2216Bud7q5ZwXRPCcAvyckD4TzVBYFhNybjmnEwkw59R
+UOS5447JkeHnw7vNX8YCcH6qgsSXpB3GkzLzrkKN5Y78onTnwcUpR
+
+uosalliance1  
+uosalliance2
+uosalliance3
+
+//bp用户
+uosblockpro1
+5J7rVdnodoArQy7MRX9ikNy7c7N82sZoKTdnXtNWmi2XYiETs7y 
+UOS7gALw3kBi63m13HxLXXtA8jR61gzBf2Xnf99N6rgr4T2mVoFzc
+
+uoscommunity
+5KKqY2hNo82kNKnVuHxmyXjG9sXByPcde8osy4h7BQVqRaFzL11 
+UOS5QwfvUQVyxo3iCFkWNNetKTnYKWQscn6UfkT7UGo6z4h8bSkNa
+
+uoszhongguo1
+5JLgZLfxhfame1mz1ekB1JX146y6amwiJxYdE2QexaUR1nE2R6B 
+UOS5L4FwXoHKWhKQ14fTe5YSZwidHQWRppaGFsMmnnQSKX2jGjs4U
+
+//钱包用户
+uosmobilepro
+UOS867kG74XMSqv1BLxaV3wsKgTi4LxGmRwQPx6JcH6HjmNLbi3R4
+
+//测试用户
+//uoswebtest11
+UOS7B6RgHtNwvzTx9mhkvdGdWqBjYtK6yqpeXUu3ZyNZG8YBqXAKT
+5KRVVzvUU5n5v7ASY7XPbi5sg1cq8eFk1YRFXeokTRNq6LrXdeJ
+
+//bithumbshiny 
+Private key: 5KPghUc3Useu8ZGDMiMkf7M7LmYUGQMPKn1fHT55tq9aZTkMJjA
+Public key: UOS5qcSK4fpcyLyeqd7ndvVs7adDvN5Yx1iaAGebh1buvsb6r3obZ
+
+
+//十大用户
+222222222222	Key: UOS5i9GLi8C2bruDhggETXwYek1ANbYvh5sNFRtJwmUBejUD61EwR     30
+ulordoooooo1	Key: UOS5QJDai5oacBkJeX4hEN4dwKrUt1JrWCN7zbajTJWcRjHDQBiVH
+zhengzhengoo	Key: UOS8XmGKHEGmLt7tsGWBGfpPBYpCTjMd9bhywuZVh21qzr3fQVFDB
+guozhizhong1	Key: UOS8koAfx19G7o6ZarGtbBw2yZMeUeMquqYzckyprWFyNcjha2TEN
+uosflytomoon	Key: UOS5t7SDRFgfa1eFJmYAee8fNuSQg9CyEXk8N3ry3fYyg5y8F4ezV
+uoswinwinwin	Key: UOS5duUgRHqwLk17oD6xGD6x68J2YdDhzejzyi8WtKjUFo48aVm5q
+uosboxuosbox	Key: UOS5NrYXqynJdajdQRd3CPEpmJzKgq9SjtL1hwf4cCmHFVkSrmHEn
+utbankutbank	Key: UOS8XGQDfLqopeRVuiQHs2fJqKSwyEXoQruNLCPXhnLV1TpZLg5DB
+nodeshanghai	Key: UOS7Fk8sTLmyajwtrftK4jYtTDFhFKR3ugMjydMJhm1CoHFmZaKaJ
+chinachainn1	Key: UOS6wLiyeAGHsEwEhMZbSFArCV2WkDAoUCaMAH8zAEftDMoKdge48
+
+
+cluos  -u http://10.186.11.227:8250  get account 222222222222        
+cluos  -u http://10.186.11.227:8250  get account ulordoooooo1		
+cluos  -u http://10.186.11.227:8250  get account zhengzhengoo		
+cluos  -u http://10.186.11.227:8250  get account guozhizhong1		
+cluos  -u http://10.186.11.227:8250  get account uosflytomoon		
+cluos  -u http://10.186.11.227:8250  get account uoswinwinwin		
+cluos  -u http://10.186.11.227:8250  get account uosboxuosbox		
+cluos  -u http://10.186.11.227:8250  get account utbankutbank		
+cluos  -u http://10.186.11.227:8250  get account nodeshanghai		
+cluos  -u http://10.186.11.227:8250  get account chinachainn1		
+
+
+
+/*********************************************************  上线指令集 ***************************************************************/
+cluos wallet create -n uos --to-console
+PW5KThWx61SxQyhbFbogLGDSBGaJJmqc77M24FA7rys6fYvL8DF3W
+
+cluos wallet   import -n uos --private-key  5HxmNvuR7fPbRKU87j39B3CoJ5e2zYnuYFLXvukqQt3EARvbnLU
+cluos wallet   import -n uos --private-key  5KPghUc3Useu8ZGDMiMkf7M7LmYUGQMPKn1fHT55tq9aZTkMJjA
+
+
+cluos  -u http://10.186.11.227:8250 create account uosio uosio.bpay  UOS8VrEtzikkqQBokT5ECirQQZ4Qpkh1p31spGSgTCHX95T86tU7Y
+cluos  -u http://10.186.11.227:8250 create account uosio uosio.msig  UOS8VrEtzikkqQBokT5ECirQQZ4Qpkh1p31spGSgTCHX95T86tU7Y
+cluos  -u http://10.186.11.227:8250 create account uosio uosio.names  UOS8VrEtzikkqQBokT5ECirQQZ4Qpkh1p31spGSgTCHX95T86tU7Y
+cluos  -u http://10.186.11.227:8250 create account uosio uosio.ram     UOS8VrEtzikkqQBokT5ECirQQZ4Qpkh1p31spGSgTCHX95T86tU7Y
+cluos  -u http://10.186.11.227:8250 create account uosio uosio.ramfee UOS8VrEtzikkqQBokT5ECirQQZ4Qpkh1p31spGSgTCHX95T86tU7Y
+cluos  -u http://10.186.11.227:8250 create account uosio uosio.saving  UOS8VrEtzikkqQBokT5ECirQQZ4Qpkh1p31spGSgTCHX95T86tU7Y
+cluos  -u http://10.186.11.227:8250 create account uosio uosio.stake   UOS8VrEtzikkqQBokT5ECirQQZ4Qpkh1p31spGSgTCHX95T86tU7Y
+cluos  -u http://10.186.11.227:8250 create account uosio uosio.token  UOS8VrEtzikkqQBokT5ECirQQZ4Qpkh1p31spGSgTCHX95T86tU7Y
+cluos  -u http://10.186.11.227:8250 create account uosio uosio.vpay   UOS8VrEtzikkqQBokT5ECirQQZ4Qpkh1p31spGSgTCHX95T86tU7Y
+cluos  -u http://10.186.11.227:8250 create account uosio uosio.bvpay   UOS8VrEtzikkqQBokT5ECirQQZ4Qpkh1p31spGSgTCHX95T86tU7Y
+cluos  -u http://10.186.11.227:8250 create account uosio uosio.union   UOS8VrEtzikkqQBokT5ECirQQZ4Qpkh1p31spGSgTCHX95T86tU7Y
+cluos  -u http://10.186.11.227:8250 create account uosio uosio.txfee    UOS8VrEtzikkqQBokT5ECirQQZ4Qpkh1p31spGSgTCHX95T86tU7Y
+cluos  -u http://10.186.11.227:8250 create account uosio uosio.wrap    UOS8VrEtzikkqQBokT5ECirQQZ4Qpkh1p31spGSgTCHX95T86tU7Y
+
+cluos  -u http://10.186.11.227:8250 set contract uosio.token ~/UOS/build/contracts/uosio.token/
+cluos  -u http://10.186.11.227:8250 set contract uosio.msig ~/UOS/build/contracts/uosio.msig/
+cluos  -u http://10.186.11.227:8250 push action uosio.token create '["uosio.union", "1000000000.0000 UOS"]' -p uosio.token
+cluos  -u http://10.186.11.227:8250 set contract uosio ~/UOS/build/contracts/uosio.system/ 
+cluos  -u http://10.186.11.227:8250 push action uosio setpriv '["uosio.msig", 1]' -p uosio
+cluos  -u http://10.186.11.227:8250 set contract uosio.union ~/UOS/build/contracts/uosio.union/
+cluos  -u http://10.186.11.227:8250 set contract uosio.bvpay ~/UOS/build/contracts/uosio.bvpay/
+
+cluos  -u http://10.186.11.227:8250  set account permission uosio.union active '{"threshold":1,"keys":[{"key":"UOS8VrEtzikkqQBokT5ECirQQZ4Qpkh1p31spGSgTCHX95T86tU7Y","weight":1}],"accounts":[{"permission":{"actor":"uosio.union","permission":"uosio.code"},"weight":1}]}' owner -p uosio.union@owner
+
+cluos  -u http://10.186.11.227:8250  push action uosio.union modifymember '[["uosio","uosio.bvpay","uosio.bpay"]]' -p uosio.union@owner
+
+cluos  -u http://10.186.11.227:8250 push action uosio.union utuosvotetr '["uosio","e9b8adc11993ae1516ff8e39e2293ab8341a35aeba5636fb3d04c087eb12c01b","uosio","3160000000" ,""]' -p uosio
+cluos  -u http://10.186.11.227:8250 push action uosio.union utuosvotetr '["uosio.bvpay","e9b8adc11993ae1516ff8e39e2293ab8341a35aeba5636fb3d04c087eb12c01b","uosio","3160000000" ,""]' -p uosio.bvpay
+cluos  -u http://10.186.11.227:8250 push action uosio.union utuosvotetr '["uosio.bpay","e9b8adc11993ae1516ff8e39e2293ab8341a35aeba5636fb3d04c087eb12c01b","uosio","3160000000" ,""]' -p uosio.bpay
+
+cluos  -u http://10.186.11.227:8250 system newaccount --transfer uosio uosalliance1 UOS8VrEtzikkqQBokT5ECirQQZ4Qpkh1p31spGSgTCHX95T86tU7Y   --stake-net "1000.0000  UOS" --stake-cpu "1000.0000  UOS" --buy-ram "500.0000  UOS"
+cluos  -u http://10.186.11.227:8250 system newaccount --transfer uosio uosalliance2 UOS8VrEtzikkqQBokT5ECirQQZ4Qpkh1p31spGSgTCHX95T86tU7Y   --stake-net "1000.0000  UOS" --stake-cpu "1000.0000  UOS" --buy-ram "500.0000  UOS"
+cluos  -u http://10.186.11.227:8250 system newaccount --transfer uosio uosalliance3 UOS8VrEtzikkqQBokT5ECirQQZ4Qpkh1p31spGSgTCHX95T86tU7Y   --stake-net "1000.0000  UOS" --stake-cpu "1000.0000  UOS" --buy-ram "500.0000  UOS"
+
+cluos  -u http://10.186.11.227:8250 set account permission uosalliance1 voting '{"threshold":1,"keys":[{"key":"UOS6jwwwyrhbY9c6RML29PrkxpVwS2Gck1UPmc997u5cCP115pSBn","weight":1}]},"weight":1}]}' active -p uosalliance1@active
+cluos  -u http://10.186.11.227:8250 set action permission uosalliance1 uosio.union utuosvotetr voting -p uosalliance1@active
+cluos  -u http://10.186.11.227:8250 set action permission uosalliance1 uosio.union setuttr voting -p uosalliance1@active
+cluos  -u http://10.186.11.227:8250 set action permission uosalliance1 uosio.union setousutid voting -p uosalliance1@active
+
+cluos  -u http://10.186.11.227:8250 set account permission uosalliance2 voting '{"threshold":1,"keys":[{"key":"UOS6KuS9g2216Bud7q5ZwXRPCcAvyckD4TzVBYFhNybjmnEwkw59R","weight":1}]},"weight":1}]}' active -p uosalliance2@active
+cluos  -u http://10.186.11.227:8250 set action permission uosalliance2 uosio.union utuosvotetr voting -p uosalliance2@active
+cluos  -u http://10.186.11.227:8250 set action permission uosalliance2 uosio.union setuttr voting -p uosalliance2@active
+cluos  -u http://10.186.11.227:8250 set action permission uosalliance2 uosio.union setousutid voting -p uosalliance2@active
+
+cluos  -u http://10.186.11.227:8250 set account permission uosalliance3 voting '{"threshold":1,"keys":[{"key":"UOS5447JkeHnw7vNX8YCcH6qgsSXpB3GkzLzrkKN5Y78onTnwcUpR","weight":1}]},"weight":1}]}' active -p uosalliance3@active
+cluos  -u http://10.186.11.227:8250 set action permission uosalliance3 uosio.union utuosvotetr voting -p uosalliance3@active
+cluos  -u http://10.186.11.227:8250 set action permission uosalliance3 uosio.union setuttr voting -p uosalliance3@active
+cluos  -u http://10.186.11.227:8250 set action permission uosalliance3 uosio.union setousutid voting -p uosalliance3@active
+
+cluos  -u http://10.186.11.227:8250  push action uosio.union modifymember '[["uosalliance1","uosalliance2","uosalliance3"]]' -p uosio.union
+
+//创建bp用户
+cluos  -u http://10.186.11.227:8250 system newaccount --transfer uosio uosblockpro1 UOS6gts6s1u8dNfzzxqbieEmdkB41K7u5d4JUpB8vSAq7vutHr7AC UOS8EAwgF9VEai6CP5iw6s2EwMMo52ho1GVci3rmE4CNb1T4J294T  --stake-net "50000.0000  UOS" --stake-cpu "50000.0000  UOS" --buy-ram "100.0000  UOS"
+cluos  -u http://10.186.11.227:8250 system newaccount --transfer uosio uoscommunity UOS6GiXgy8r5phjsPL6npDVPYSZKFhmXhbfoytKs5HiDzKcAZH6cu UOS6jQE1UQYeNpVsPQC72zJCGUb1CuNbRiMxikwHvMHULDthAzJYQ  --stake-net "50000.0000  UOS" --stake-cpu "50000.0000  UOS" --buy-ram "100.0000  UOS"
+cluos  -u http://10.186.11.227:8250 system newaccount --transfer uosio uoszhongguo1 UOS6rSCJvo9tTyzd4JsZFYKGJL3b27TDGXW2KHUb7trbfeuiMHyZQ UOS5o8FcJDhWuyy9uzjatXmcMrWiMZYwm3SPzvfYQzFGhRZ9jYv2f  --stake-net "50000.0000  UOS" --stake-cpu "50000.0000  UOS" --buy-ram "100.0000  UOS"
+
+cluos  -u http://10.186.11.227:8250 transfer uosio uosio.bvpay "100 UOS"
+
+//创建十大用户
+
+cluos  -u http://10.186.11.227:8250 system newaccount --transfer uosio 222222222222 UOS5i9GLi8C2bruDhggETXwYek1ANbYvh5sNFRtJwmUBejUD61EwR  --stake-net "1.0000  UOS" --stake-cpu "1.0000  UOS" --buy-ram "10.0000  UOS"
+cluos  -u http://10.186.11.227:8250 system newaccount --transfer uosio ulordoooooo1 UOS5QJDai5oacBkJeX4hEN4dwKrUt1JrWCN7zbajTJWcRjHDQBiVH  --stake-net "1.0000  UOS" --stake-cpu "1.0000  UOS" --buy-ram "10.0000  UOS"
+cluos  -u http://10.186.11.227:8250 system newaccount --transfer uosio zhengzhengoo UOS8XmGKHEGmLt7tsGWBGfpPBYpCTjMd9bhywuZVh21qzr3fQVFDB  --stake-net "1.0000  UOS" --stake-cpu "1.0000  UOS" --buy-ram "10.0000  UOS"
+cluos  -u http://10.186.11.227:8250 system newaccount --transfer uosio guozhizhong1 UOS8koAfx19G7o6ZarGtbBw2yZMeUeMquqYzckyprWFyNcjha2TEN  --stake-net "1.0000  UOS" --stake-cpu "1.0000  UOS" --buy-ram "10.0000  UOS"
+cluos  -u http://10.186.11.227:8250 system newaccount --transfer uosio uosflytomoon UOS5t7SDRFgfa1eFJmYAee8fNuSQg9CyEXk8N3ry3fYyg5y8F4ezV  --stake-net "1.0000  UOS" --stake-cpu "1.0000  UOS" --buy-ram "10.0000  UOS"
+cluos  -u http://10.186.11.227:8250 system newaccount --transfer uosio uoswinwinwin UOS5duUgRHqwLk17oD6xGD6x68J2YdDhzejzyi8WtKjUFo48aVm5q  --stake-net "1.0000  UOS" --stake-cpu "1.0000  UOS" --buy-ram "10.0000  UOS"
+cluos  -u http://10.186.11.227:8250 system newaccount --transfer uosio uosboxuosbox UOS5NrYXqynJdajdQRd3CPEpmJzKgq9SjtL1hwf4cCmHFVkSrmHEn  --stake-net "1.0000  UOS" --stake-cpu "1.0000  UOS" --buy-ram "10.0000  UOS"
+cluos  -u http://10.186.11.227:8250 system newaccount --transfer uosio utbankutbank UOS8XGQDfLqopeRVuiQHs2fJqKSwyEXoQruNLCPXhnLV1TpZLg5DB  --stake-net "1.0000  UOS" --stake-cpu "1.0000  UOS" --buy-ram "10.0000  UOS"
+cluos  -u http://10.186.11.227:8250 system newaccount --transfer uosio nodeshanghai UOS7Fk8sTLmyajwtrftK4jYtTDFhFKR3ugMjydMJhm1CoHFmZaKaJ  --stake-net "1.0000  UOS" --stake-cpu "1.0000  UOS" --buy-ram "10.0000  UOS"
+cluos  -u http://10.186.11.227:8250 system newaccount --transfer uosio chinachainn1 UOS6wLiyeAGHsEwEhMZbSFArCV2WkDAoUCaMAH8zAEftDMoKdge48  --stake-net "1.0000  UOS" --stake-cpu "1.0000  UOS" --buy-ram "10.0000  UOS"
+
+cluos  -u http://10.186.11.227:8250 system newaccount --transfer uosio uoswebtest11 UOS7B6RgHtNwvzTx9mhkvdGdWqBjYtK6yqpeXUu3ZyNZG8YBqXAKT  --stake-net "20.0000  UOS" --stake-cpu "20.0000  UOS" --buy-ram "10.0000  UOS"
+cluos  -u http://10.186.11.227:8250 system newaccount --transfer uosio uosmobilepro UOS867kG74XMSqv1BLxaV3wsKgTi4LxGmRwQPx6JcH6HjmNLbi3R4  --stake-net "1000.0000  UOS" --stake-cpu "1000.0000  UOS" --buy-ram "1000.0000  UOS"
+
+cluos  -u http://10.186.11.227:8250 system newaccount --transfer uosio bithumbshiny UOS5qcSK4fpcyLyeqd7ndvVs7adDvN5Yx1iaAGebh1buvsb6r3obZ  --stake-net "200.0000  UOS" --stake-cpu "200.0000  UOS" --buy-ram "600.0000  UOS"
+
+cluos  -u http://10.186.11.227:8250 transfer uosio  bithumbshiny "942.0000 UOS"
+cluos  -u http://10.186.11.227:8250 transfer uosio  uosmobilepro "3000.0000 UOS"
+
+/************************************************ 竞选bp ******************************************************/
+cluos  -u http://10.186.11.227:8250 set contract uosio.wrap /home/uos/contract/uosio.wrap
+
+cluos -u http://10.186.11.227:8250 set account permission -d -j -s -x 3600 uosblockpro1 active '{"threshold":1,"keys":[{"key":"UOS8VrEtzikkqQBokT5ECirQQZ4Qpkh1p31spGSgTCHX95T86tU7Y","weight":1}]}' owner
+cluos  -u http://10.186.11.227:8250 push action uosio setpriv '["uosio.wrap", 1]' -p uosio
+cluos -u http://10.186.11.227:8250 push action uosio.wrap exec '["uosio.wrap", {"expiration":"2019-01-29T07:52:45","ref_block_num":52368,"ref_block_prefix":278103277,"max_net_usage_words":0,"max_cpu_usage_ms":0,"delay_sec":0,"context_free_actions":[],"actions":[{"account":"uosio","name":"updateauth","authorization":[{"actor":"uosblockpro1","permission":"active"}],"data":"10e8ad10d17830d500000000a8ed32320000000080ab26a701000000010003db60b4aa12d764a6c1070a00d4c93cbf704eb8b1672fa6c9cae06699f77a0fdf01000000"}],"transaction_extensions":[],"signatures":[],"context_free_data":[]}]' -p  uosio.wrap
+
+cluos  -u http://10.186.11.227:8250 system regproducer uosblockpro1 UOS7gALw3kBi63m13HxLXXtA8jR61gzBf2Xnf99N6rgr4T2mVoFzc https://uosblockpro1.com/chain UOS7gALw3kBi63m13HxLXXtA8jR61gzBf2Xnf99N6rgr4T2mVoFzc
+
+cluos -u http://10.186.11.227:8250 set account permission -d -j -s -x 3600 uosblockpro1 owner '{"threshold":1,"keys":[{"key":"UOS8VrEtzikkqQBokT5ECirQQZ4Qpkh1p31spGSgTCHX95T86tU7Y","weight":1}]}' -p  uosblockpro1@owner
+cluos -u http://10.186.11.227:8250 push action uosio.wrap exec '["uosio.wrap", {"expiration":"2019-01-29T08:12:05","ref_block_num":12696,"ref_block_prefix":1481289868,"max_net_usage_words":0,"max_cpu_usage_ms":0,"delay_sec":0,"context_free_actions":[],"actions":[{"account":"uosio","name":"updateauth","authorization":[{"actor":"uosblockpro1","permission":"owner"}],"data":"10e8ad10d17830d50000000080ab26a7000000000000000001000000010003db60b4aa12d764a6c1070a00d4c93cbf704eb8b1672fa6c9cae06699f77a0fdf01000000"}],"transaction_extensions":[],"signatures":[],"context_free_data":[]}]' -p  uosio.wrap
+
+cluos -u http://10.186.11.227:8250 set account permission -d -j -s -x 3600 uoscommunity owner '{"threshold":1,"keys":[{"key":"UOS8VrEtzikkqQBokT5ECirQQZ4Qpkh1p31spGSgTCHX95T86tU7Y","weight":1}]}' -p  uoscommunity@owner
+cluos -u http://10.186.11.227:8250 push action uosio.wrap exec '["uosio.wrap", {"expiration":"2019-01-29T08:14:22","ref_block_num":12833,"ref_block_prefix":3894350027,"max_net_usage_words":0,"max_cpu_usage_ms":0,"delay_sec":0,"context_free_actions":[],"actions":[{"account":"uosio","name":"updateauth","authorization":[{"actor":"uoscommunity","permission":"owner"}],"data":"e0b39b5a4a8a30d50000000080ab26a7000000000000000001000000010003db60b4aa12d764a6c1070a00d4c93cbf704eb8b1672fa6c9cae06699f77a0fdf01000000"}],"transaction_extensions":[],"signatures":[],"context_free_data":[]}]' -p  uosio.wrap
+
+cluos -u http://10.186.11.227:8250 set account permission -d -j -s -x 3600 uoszhongguo1 owner '{"threshold":1,"keys":[{"key":"UOS8VrEtzikkqQBokT5ECirQQZ4Qpkh1p31spGSgTCHX95T86tU7Y","weight":1}]}' -p  uoszhongguo1@owner
+cluos -u http://10.186.11.227:8250 push action uosio.wrap exec '["uosio.wrap", {"expiration":"2019-01-29T08:16:04","ref_block_num":12935,"ref_block_prefix":3240427603,"max_net_usage_words":0,"max_cpu_usage_ms":0,"delay_sec":0,"context_free_actions":[],"actions":[{"account":"uosio","name":"updateauth","authorization":[{"actor":"uoszhongguo1","permission":"owner"}],"data":"10a8666cd2f631d50000000080ab26a7000000000000000001000000010003db60b4aa12d764a6c1070a00d4c93cbf704eb8b1672fa6c9cae06699f77a0fdf01000000"}],"transaction_extensions":[],"signatures":[],"context_free_data":[]}]' -p  uosio.wrap
+
+cluos  -u http://10.186.11.227:8250 system regproducer uoscommunity UOS5QwfvUQVyxo3iCFkWNNetKTnYKWQscn6UfkT7UGo6z4h8bSkNa https://uoscommunity.com/chain UOS5QwfvUQVyxo3iCFkWNNetKTnYKWQscn6UfkT7UGo6z4h8bSkNa
+
+cluos  -u http://10.186.11.227:8250 system regproducer uoszhongguo1 UOS5L4FwXoHKWhKQ14fTe5YSZwidHQWRppaGFsMmnnQSKX2jGjs4U https://uoszhongguo1.com/chain UOS5L4FwXoHKWhKQ14fTe5YSZwidHQWRppaGFsMmnnQSKX2jGjs4U
+
+cluos  -u http://10.186.11.227:8250   system voteproducer prods uosblockpro1 "100000 UOS" uosblockpro1 -p uosblockpro1@owner
+cluos  -u http://10.186.11.227:8250   system voteproducer prods uoscommunity "100000 UOS" uoscommunity -p uoscommunity@owner
+cluos  -u http://10.186.11.227:8250   system voteproducer prods uoszhongguo1 "100000 UOS" uoszhongguo1 -p uoszhongguo1@owner
+
+//释放权限
+
+cluos  -u http://10.186.11.227:8250 set account permission uosio.bpay owner '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"active"},"weight":1}],"waits":[]}' -p uosio.bpay@owner
+cluos  -u http://10.186.11.227:8250 set account permission uosio.bpay active '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"active"},"weight":1}],"waits":[]}' -p uosio.bpay@active
+
+cluos  -u http://10.186.11.227:8250 set account permission uosio.msig owner '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"active"},"weight":1}],"waits":[]}' -p uosio.msig@owner
+cluos  -u http://10.186.11.227:8250 set account permission uosio.msig active '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"active"},"weight":1}],"waits":[]}' -p uosio.msig@active
+
+cluos  -u http://10.186.11.227:8250 set account permission uosio.names owner '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"active"},"weight":1}],"waits":[]}' -p uosio.names@owner
+cluos  -u http://10.186.11.227:8250 set account permission uosio.names active '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"active"},"weight":1}],"waits":[]}' -p uosio.names@active
+
+cluos  -u http://10.186.11.227:8250 set account permission uosio.ram owner '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"active"},"weight":1}],"waits":[]}' -p uosio.ram@owner
+cluos  -u http://10.186.11.227:8250 set account permission uosio.ram active '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"active"},"weight":1}],"waits":[]}' -p uosio.ram@active
+
+cluos  -u http://10.186.11.227:8250 set account permission uosio.ramfee owner '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"active"},"weight":1}],"waits":[]}' -p uosio.ramfee@owner
+cluos  -u http://10.186.11.227:8250 set account permission uosio.ramfee active '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"active"},"weight":1}],"waits":[]}' -p uosio.ramfee@active
+
+cluos  -u http://10.186.11.227:8250 set account permission uosio.saving owner '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"active"},"weight":1}],"waits":[]}' -p uosio.saving@owner
+cluos  -u http://10.186.11.227:8250 set account permission uosio.saving active '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"active"},"weight":1}],"waits":[]}' -p uosio.saving@active
+
+cluos  -u http://10.186.11.227:8250 set account permission uosio.stake owner '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"active"},"weight":1}],"waits":[]}' -p uosio.stake@owner
+cluos  -u http://10.186.11.227:8250 set account permission uosio.stake active '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"active"},"weight":1}],"waits":[]}' -p uosio.stake@active
+
+cluos  -u http://10.186.11.227:8250 set account permission uosio.token owner '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"active"},"weight":1}],"waits":[]}' -p uosio.token@owner
+cluos  -u http://10.186.11.227:8250 set account permission uosio.token active '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"active"},"weight":1}],"waits":[]}' -p uosio.token@active
+
+cluos  -u http://10.186.11.227:8250 set account permission uosio.vpay owner '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"active"},"weight":1}],"waits":[]}' -p uosio.vpay@owner
+cluos  -u http://10.186.11.227:8250 set account permission uosio.vpay active '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"active"},"weight":1}],"waits":[]}' -p uosio.vpay@active
+
+cluos  -u http://10.186.11.227:8250 set account permission uosio.bvpay owner '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"active"},"weight":1}],"waits":[]}' -p uosio.bvpay@owner
+cluos  -u http://10.186.11.227:8250 set account permission uosio.bvpay active '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"active"},"weight":1}],"waits":[]}' -p uosio.bvpay@active
+
+cluos  -u http://10.186.11.227:8250 set account permission uosio.txfee owner '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"active"},"weight":1}],"waits":[]}' -p uosio.txfee@owner
+cluos  -u http://10.186.11.227:8250 set account permission uosio.txfee active '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"uosio","permission":"active"},"weight":1}],"waits":[]}' -p uosio.txfee@active
+
+cluos  -u http://10.186.11.227:8250 set account permission uosblockpro1 active '{"threshold":1,"keys":[{"key":"UOS8EAwgF9VEai6CP5iw6s2EwMMo52ho1GVci3rmE4CNb1T4J294T","weight":1}]}' owner
+cluos  -u http://10.186.11.227:8250 set account permission uosblockpro1 owner '{"threshold":1,"keys":[{"key":"UOS6gts6s1u8dNfzzxqbieEmdkB41K7u5d4JUpB8vSAq7vutHr7AC","weight":1}]}' -p uosblockpro1@owner
+
+cluos  -u http://10.186.11.227:8250 set account permission uoscommunity active '{"threshold":1,"keys":[{"key":"UOS6jQE1UQYeNpVsPQC72zJCGUb1CuNbRiMxikwHvMHULDthAzJYQ","weight":1}]}' owner
+cluos  -u http://10.186.11.227:8250 set account permission uoscommunity owner '{"threshold":1,"keys":[{"key":"UOS6GiXgy8r5phjsPL6npDVPYSZKFhmXhbfoytKs5HiDzKcAZH6cu","weight":1}]}' -p uoscommunity@owner
+
+cluos  -u http://10.186.11.227:8250 set account permission uoszhongguo1 active '{"threshold":1,"keys":[{"key":"UOS5o8FcJDhWuyy9uzjatXmcMrWiMZYwm3SPzvfYQzFGhRZ9jYv2f","weight":1}]}' owner
+cluos  -u http://10.186.11.227:8250 set account permission uoszhongguo1 owner '{"threshold":1,"keys":[{"key":"UOS6rSCJvo9tTyzd4JsZFYKGJL3b27TDGXW2KHUb7trbfeuiMHyZQ","weight":1}]}' -p uoszhongguo1@owner
+
+cluos  -u http://10.186.11.227:8250 set account permission uoszhongguo1 active '{"threshold":1,"keys":[{"key":"UOS5o8FcJDhWuyy9uzjatXmcMrWiMZYwm3SPzvfYQzFGhRZ9jYv2f","weight":1}]}' owner
+cluos  -u http://10.186.11.227:8250 set account permission uoszhongguo1 owner '{"threshold":1,"keys":[{"key":"UOS6rSCJvo9tTyzd4JsZFYKGJL3b27TDGXW2KHUb7trbfeuiMHyZQ","weight":1}]}' -p uoszhongguo1@owner
+
+cluos  -u http://10.186.11.227:8250  set account permission uosio.union active '{"threshold":3,"keys":[{"key":"UOS5mjGQWjN5W3r5FaXpg97jFebHz3feWNTmKfwyAzvLCjhnMJhHY","weight":1},{"key":"UOS6huTSmSfQfhmRkcGp52t4f8kFTFGXqKctFNzxK81NbR8GMBy4z","weight":1},{"key":"UOS7SMEGDejhYETKH2zXiq2citkU6WhyqXiRhUXJDwH55uVS4GsAU","weight":1}],"accounts":[{"permission":{"actor":"uosio.union","permission":"uosio.code"},"weight":3}]}' owner -p uosio.union@owner
+cluos  -u http://10.186.11.227:8250  set account permission uosio.union owner '{"threshold":3,"keys":[{"key":"UOS4wr8iDoTH7EmDoXcGySm4pGTszi9uys2Pme1BH1swpJrtqFRN7","weight":1},{"key":"UOS55FaESneCuAU6kYsLNx2QkHU8oXsHALRBaARH9yRBbLVpmJrDq","weight":1},{"key":"UOS8JwWGNn4wy3S2oGYfPKyWoKivev94r4PYNaAjPnKQdpauDUZfu","weight":1}]}' -p uosio.union@owner
+
+cluos  -u http://10.186.11.227:8250 push action uosio updateauth '{"account": "uosio", "permission": "owner", "parent": "", "auth": {"threshold": 1, "keys": [], "waits": [], "accounts": [{"weight": 1, "permission": {"actor": "uosio.prods", "permission": "active"}}]}}' -p uosio@owner
+cluos  -u http://10.186.11.227:8250 push action uosio updateauth '{"account": "uosio", "permission": "active", "parent": "owner", "auth": {"threshold": 1, "keys": [], "waits": [], "accounts": [{"weight": 1, "permission": {"actor": "uosio.prods", "permission": "active"}}]}}' -p uosio@active
+
+//uosio.wrap
+//owner
+Private key: 5HwrxANfv1Vt8rXYQmAnBcQPPJ9F38ZwFbiySxy4hASytvuvmgW
+Public key: UOS4wiQF2NMHPXDnsE36GBcUtzup7PC6jUK7e5S6u69egvBAjzrNm
+//active
+Private key: 5JexJo4u9XEukpRF1Byk7iHo6SrrVTcFgt4DgkaSUsFVcDRhmcE
+Public key: UOS53sAdxkJ9KXyjiN1rLZyLHWG4kMFip7uySi4DTasCJtpn882yk
+
+cluos  -u http://10.186.11.227:8250 set account permission uosio.wrap active '{"threshold":1,"keys":[{"key":"UOS53sAdxkJ9KXyjiN1rLZyLHWG4kMFip7uySi4DTasCJtpn882yk","weight":1}]}' owner
+cluos  -u http://10.186.11.227:8250 set account permission uosio.wrap owner '{"threshold":1,"keys":[{"key":"UOS4wiQF2NMHPXDnsE36GBcUtzup7PC6jUK7e5S6u69egvBAjzrNm","weight":1}]}' -p uosio.wrap@owner
+
+/******************************************************   用户创建    ***********
+Private key: 5KYBfqPsTZJAGvtaYqMtRdZUVVMV9VC6rEhE7EB4tLpnPoU9r3N
+Public key: UOS8BsNhRv66VGnCNds5aM96wQRHp1S64LcDZT4w8jXRt7j74uhMB
+
+cluos  -u http://10.186.11.227:8250 system newaccount --transfer bithumbshiny 11111111111l UOS5qcSK4fpcyLyeqd7ndvVs7adDvN5Yx1iaAGebh1buvsb6r3obZ  --stake-net "1.0000  UOS" --stake-cpu "1.0000  UOS" --buy-ram "4.0000  UOS"
+cluos  -u http://10.186.11.227:8250 system newaccount --transfer bithumbshiny 11111l11111l UOS5qcSK4fpcyLyeqd7ndvVs7adDvN5Yx1iaAGebh1buvsb6r3obZ  --stake-net "1.0000  UOS" --stake-cpu "1.0000  UOS" --buy-ram "4.0000  UOS"
+cluos  -u http://10.186.11.227:8250 system newaccount --transfer bithumbshiny l11111111111 UOS5qcSK4fpcyLyeqd7ndvVs7adDvN5Yx1iaAGebh1buvsb6r3obZ  --stake-net "1.0000  UOS" --stake-cpu "1.0000  UOS" --buy-ram "4.0000  UOS"
+cluos  -u http://10.186.11.227:8250 system newaccount --transfer bithumbshiny 1l1111111111 UOS5qcSK4fpcyLyeqd7ndvVs7adDvN5Yx1iaAGebh1buvsb6r3obZ  --stake-net "1.0000  UOS" --stake-cpu "1.0000  UOS" --buy-ram "4.0000  UOS"
+
+cluos -u http://10.186.11.227:8250 set account permission -d -j -s -x 3600 1l1111111111 owner '{"threshold":1,"keys":[{"key":"UOS8BsNhRv66VGnCNds5aM96wQRHp1S64LcDZT4w8jXRt7j74uhMB","weight":1}]}' -p  1l1111111111@owner
+cluos -u http://10.186.11.227:8250 push action uosio.wrap exec '["uosio.wrap", {"expiration":"2019-01-29T09:39:47","ref_block_num":17923,"ref_block_prefix":1500638387,"max_net_usage_words":0,"max_cpu_usage_ms":0,"delay_sec":0,"context_free_actions":[],"actions":[{"account":"uosio","name":"updateauth","authorization":[{"actor":"1l1111111111","permission":"owner"}],"data":"104208218410420c0000000080ab26a7000000000000000001000000010003b28d0c474e9f5490bc1f50f2211b9c8c732490b2fb3522d8bbc6990c6a6f6b8501000000"}],"transaction_extensions":[],"signatures":[],"context_free_data":[]}]' -p  uosio.wrap
+
+cluos -u http://10.186.11.227:8250 set account permission -d -j -s -x 3600 1l1111111111 active '{"threshold":1,"keys":[{"key":"UOS8BsNhRv66VGnCNds5aM96wQRHp1S64LcDZT4w8jXRt7j74uhMB","weight":1}]}' owner
+cluos -u http://10.186.11.227:8250 push action uosio.wrap exec '["uosio.wrap", {"expiration":"2019-01-29T14:07:34","ref_block_num":33991,"ref_block_prefix":769270609,"max_net_usage_words":0,"max_cpu_usage_ms":0,"delay_sec":0,"context_free_actions":[],"actions":[{"account":"uosio","name":"updateauth","authorization":[{"actor":"1l1111111111","permission":"active"}],"data":"104208218410420c00000000a8ed32320000000080ab26a701000000010003b28d0c474e9f5490bc1f50f2211b9c8c732490b2fb3522d8bbc6990c6a6f6b8501000000"}],"transaction_extensions":[],"signatures":[],"context_free_data":[]}]' -p  uosio.wrap
+
+//uosuosuosuos
+Private key: 5K7w8CFyJaJR521jdioTmX6kTkWnJ4RPgkJmJ5jnvd1nWStjTmT
+Public key: UOS723775bMv5oBsJUmWQqytTvdPYHtrnfCHzi6zeZBMriYQiEX68
+
+cluos  -u http://10.186.11.227:8250 system newaccount --transfer bithumbshiny uosuosuosuos UOS723775bMv5oBsJUmWQqytTvdPYHtrnfCHzi6zeZBMriYQiEX68  --stake-net "1.0000  UOS" --stake-cpu "1.0000  UOS" --buy-ram "6.0000  UOS"
+
+
+
+ cluos  -u http://rpc1.uosio.org:8250 system newaccount --transfer bithumbshiny uosgenesuser UOS5aTdkbRaPH5WKYPJaxX8HfqGtX8hKx8p6FDPAzpkyJiYnuBu5c UOS6K6EJq8WXrK1nQ92rw7GfuGh9VvBquqSkKw7zLCJEjbZvPNPsE  --stake-net "1.0000  UOS" --stake-cpu "1.0000  UOS" --buy-ram "6.0000  UOS"
+
+/************************************************************************ 关公链 ************************************************************
+cluos  -u http://10.186.11.227:8250 system buyram bithumbshiny ulinekonline -kb 250
+//关公链合约用户
+ulinekonline
+
+cluos  -u http://124.232.156.101:9008 set contract ulinekonline ~/UOS/build/contracts/linek/
+
+cluos  -u http://124.232.156.101:9008 push action ulinekonline create '["ulinekonline", "100000000.0000 LINEK"]' -p ulinekonline@active
+
+cluos  -u http://124.232.156.101:9008 push action ulinekonline issue '["ulinekonline","20000.0000 LINEK","issue LINEK"]' -p ulinekonline
+
+
+
+
+
