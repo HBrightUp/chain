@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/uos/github/uosio.contracts/system/contracts/uosio.msig/include/uosio.msig/uosio.msig.hpp
+uosiolib/uosio.hpp
+-
+uosiolib/ignore.hpp
+-
+uosiolib/transaction.hpp
+-
+
+/home/uos/github/uosio.contracts/system/contracts/uosio.msig/src/uosio.msig.cpp
+uosio.msig/uosio.msig.hpp
+-
+uosiolib/action.hpp
+-
+uosiolib/permission.hpp
+-
+uosiolib/crypto.hpp
+-
+

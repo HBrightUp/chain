@@ -1,0 +1,68 @@
+Detecting C compiler ABI info failed to compile with the following output:
+Change Dir: /home/uos/github/uosio.contracts/system/build/contracts/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_cd4d2/fast"
+make[3]: Entering directory '/home/uos/github/uosio.contracts/system/build/contracts/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_cd4d2.dir/build.make CMakeFiles/cmTC_cd4d2.dir/build
+make[4]: Entering directory '/home/uos/github/uosio.contracts/system/build/contracts/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_cd4d2.dir/CMakeCCompilerABI.c.obj
+/usr/local/uosio.cdt/bin/uosio-cc     -o CMakeFiles/cmTC_cd4d2.dir/CMakeCCompilerABI.c.obj   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_cd4d2.wasm
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cd4d2.dir/link.txt --verbose=1
+/usr/local/uosio.cdt/bin/uosio-ld  -v CMakeFiles/cmTC_cd4d2.dir/CMakeCCompilerABI.c.obj -o cmTC_cd4d2.wasm  
+uosio-ld: Unknown command line argument '-v'.  Try: '/usr/local/uosio.cdt/bin/uosio-ld -help'
+uosio-ld: Did you mean '-l'?
+CMakeFiles/cmTC_cd4d2.dir/build.make:97: recipe for target 'cmTC_cd4d2.wasm' failed
+make[4]: *** [cmTC_cd4d2.wasm] Error 1
+make[4]: Leaving directory '/home/uos/github/uosio.contracts/system/build/contracts/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_cd4d2/fast' failed
+make[3]: *** [cmTC_cd4d2/fast] Error 2
+make[3]: Leaving directory '/home/uos/github/uosio.contracts/system/build/contracts/CMakeFiles/CMakeTmp'
+
+
+
+Detecting CXX compiler ABI info failed to compile with the following output:
+Change Dir: /home/uos/github/uosio.contracts/system/build/contracts/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_cc49b/fast"
+make[3]: Entering directory '/home/uos/github/uosio.contracts/system/build/contracts/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_cc49b.dir/build.make CMakeFiles/cmTC_cc49b.dir/build
+make[4]: Entering directory '/home/uos/github/uosio.contracts/system/build/contracts/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_cc49b.dir/CMakeCXXCompilerABI.cpp.obj
+/usr/local/uosio.cdt/bin/uosio-cpp      -o CMakeFiles/cmTC_cc49b.dir/CMakeCXXCompilerABI.cpp.obj -c /usr/share/cmake-3.5/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_cc49b.wasm
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cc49b.dir/link.txt --verbose=1
+/usr/local/uosio.cdt/bin/uosio-ld  -v CMakeFiles/cmTC_cc49b.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_cc49b.wasm  
+uosio-ld: Unknown command line argument '-v'.  Try: '/usr/local/uosio.cdt/bin/uosio-ld -help'
+uosio-ld: Did you mean '-l'?
+CMakeFiles/cmTC_cc49b.dir/build.make:97: recipe for target 'cmTC_cc49b.wasm' failed
+make[4]: *** [cmTC_cc49b.wasm] Error 1
+make[4]: Leaving directory '/home/uos/github/uosio.contracts/system/build/contracts/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_cc49b/fast' failed
+make[3]: *** [cmTC_cc49b/fast] Error 2
+make[3]: Leaving directory '/home/uos/github/uosio.contracts/system/build/contracts/CMakeFiles/CMakeTmp'
+
+
+
+Detecting CXX [-std=c++14] compiler features failed to compile with the following output:
+Change Dir: /home/uos/github/uosio.contracts/system/build/contracts/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_9bc92/fast"
+make[3]: Entering directory '/home/uos/github/uosio.contracts/system/build/contracts/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_9bc92.dir/build.make CMakeFiles/cmTC_9bc92.dir/build
+make[4]: Entering directory '/home/uos/github/uosio.contracts/system/build/contracts/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_9bc92.dir/feature_tests.cxx.obj
+/usr/local/uosio.cdt/bin/uosio-cpp     -std=c++14 -o CMakeFiles/cmTC_9bc92.dir/feature_tests.cxx.obj -c /home/uos/github/uosio.contracts/system/build/contracts/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_9bc92.wasm
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9bc92.dir/link.txt --verbose=1
+/usr/local/uosio.cdt/bin/uosio-ld   CMakeFiles/cmTC_9bc92.dir/feature_tests.cxx.obj -o cmTC_9bc92.wasm 
+/usr/local/uosio.cdt/bin/wasm-ld: error: undefined symbol: apply
+CMakeFiles/cmTC_9bc92.dir/build.make:97: recipe for target 'cmTC_9bc92.wasm' failed
+make[4]: *** [cmTC_9bc92.wasm] Error 255
+make[4]: Leaving directory '/home/uos/github/uosio.contracts/system/build/contracts/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_9bc92/fast' failed
+make[3]: *** [cmTC_9bc92/fast] Error 2
+make[3]: Leaving directory '/home/uos/github/uosio.contracts/system/build/contracts/CMakeFiles/CMakeTmp'
+
+
+

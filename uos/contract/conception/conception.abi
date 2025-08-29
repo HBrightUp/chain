@@ -1,0 +1,272 @@
+{
+    "____comment": "This file was generated with uosio-abigen. DO NOT EDIT Wed Apr 24 09:11:22 2019",
+    "version": "uosio::abi/1.1",
+    "structs": [
+        {
+            "name": "global_var",
+            "base": "",
+            "fields": [
+                {
+                    "name": "key",
+                    "type": "name"
+                },
+                {
+                    "name": "val",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "apply_info",
+            "base": "",
+            "fields": [
+                {
+                    "name": "proposer",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "conception_info",
+            "base": "",
+            "fields": [
+                {
+                    "name": "proposal",
+                    "type": "name"
+                },
+                {
+                    "name": "proposer",
+                    "type": "name"
+                },
+                {
+                    "name": "create_time",
+                    "type": "uint64"
+                },
+                {
+                    "name": "description",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "conception_voters",
+            "base": "",
+            "fields": [
+                {
+                    "name": "key",
+                    "type": "uint64"
+                },
+                {
+                    "name": "voter",
+                    "type": "name"
+                },
+                {
+                    "name": "opinion",
+                    "type": "uint8"
+                },
+                {
+                    "name": "amount",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "conception_statistics",
+            "base": "",
+            "fields": [
+                {
+                    "name": "proposal",
+                    "type": "name"
+                },
+                {
+                    "name": "agree",
+                    "type": "uint64"
+                },
+                {
+                    "name": "oppose",
+                    "type": "uint64"
+                },
+                {
+                    "name": "waive",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "init",
+            "base": "",
+            "fields": []
+        },
+        {
+            "name": "create",
+            "base": "",
+            "fields": [
+                {
+                    "name": "proposer",
+                    "type": "name"
+                },
+                {
+                    "name": "proposal",
+                    "type": "name"
+                },
+                {
+                    "name": "description",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "vote",
+            "base": "",
+            "fields": [
+                {
+                    "name": "voter",
+                    "type": "name"
+                },
+                {
+                    "name": "proposal",
+                    "type": "name"
+                },
+                {
+                    "name": "opinion",
+                    "type": "uint8"
+                },
+                {
+                    "name": "quantity",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "rmproposal",
+            "base": "",
+            "fields": [
+                {
+                    "name": "proposal",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "reset",
+            "base": "",
+            "fields": []
+        },
+        {
+            "name": "stop",
+            "base": "",
+            "fields": []
+        },
+        {
+            "name": "setdata",
+            "base": "",
+            "fields": [
+                {
+                    "name": "key",
+                    "type": "name"
+                },
+                {
+                    "name": "val",
+                    "type": "uint64"
+                },
+                {
+                    "name": "op",
+                    "type": "uint8"
+                }
+            ]
+        },
+        {
+            "name": "rmvotedata",
+            "base": "",
+            "fields": [
+                {
+                    "name": "items",
+                    "type": "uint64"
+                }
+            ]
+        }
+    ],
+    "types": [],
+    "actions": [
+        {
+            "name": "init",
+            "type": "init",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "setdata",
+            "type": "setdata",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "create",
+            "type": "create",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "vote",
+            "type": "vote",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "rmproposal",
+            "type": "rmproposal",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "reset",
+            "type": "reset",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "stop",
+            "type": "stop",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "rmvotedata",
+            "type": "rmvotedata",
+            "ricardian_contract": ""
+        }
+    ],
+    "tables": [
+        {
+            "name": "global",
+            "type": "global_var",
+            "index_type": "i64",
+            "key_names" : ["key"],
+            "key_types" : ["uint64"]
+        },
+        {
+            "name": "concept",
+            "type": "conception_info",
+            "index_type": "i64",
+            "key_names" : ["proposal"],
+            "key_types" : ["uint64"]
+        },
+        {
+            "name": "voters",
+            "type": "conception_voters",
+            "index_type": "i64",
+            "key_names" : ["key"],
+            "key_types" : ["uint64"]
+        },
+        {
+            "name": "statistics",
+            "type": "conception_statistics",
+            "index_type": "i64",
+            "key_names" : ["proposal"],
+            "key_types" : ["uint64"]
+        },
+        {
+            "name": "apply",
+            "type": "apply_info",
+            "index_type": "i64",
+            "key_names" : ["proposer"],
+            "key_types" : ["name"]
+        }
+    ],
+    "ricardian_clauses": [],
+    "variants": [],
+    "abi_extensions": []
+}

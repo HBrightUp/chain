@@ -1,0 +1,169 @@
+{
+    "____comment": "This file was generated with uosio-abigen. DO NOT EDIT Mon Dec 21 16:30:47 2020",
+    "version": "uosio::abi/1.1",
+    "structs": [
+        {
+            "name": "clear",
+            "base": "",
+            "fields": []
+        },
+        {
+            "name": "global_var",
+            "base": "",
+            "fields": [
+                {
+                    "name": "key",
+                    "type": "name"
+                },
+                {
+                    "name": "val",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "init",
+            "base": "",
+            "fields": []
+        },
+        {
+            "name": "invite",
+            "base": "",
+            "fields": [
+                {
+                    "name": "owner",
+                    "type": "name"
+                },
+                {
+                    "name": "invited_list",
+                    "type": "name[]"
+                }
+            ]
+        },
+        {
+            "name": "invited_persion",
+            "base": "",
+            "fields": [
+                {
+                    "name": "invited",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "partner_info",
+            "base": "",
+            "fields": [
+                {
+                    "name": "owner",
+                    "type": "name"
+                },
+                {
+                    "name": "prev",
+                    "type": "name"
+                },
+                {
+                    "name": "invited",
+                    "type": "uint64"
+                },
+                {
+                    "name": "join_time",
+                    "type": "uint64"
+                },
+                {
+                    "name": "update_time",
+                    "type": "uint64"
+                },
+                {
+                    "name": "asset_list",
+                    "type": "transfer_list[]"
+                }
+            ]
+        },
+        {
+            "name": "setdata",
+            "base": "",
+            "fields": [
+                {
+                    "name": "key",
+                    "type": "name"
+                },
+                {
+                    "name": "val",
+                    "type": "uint64"
+                },
+                {
+                    "name": "op",
+                    "type": "uint8"
+                }
+            ]
+        },
+        {
+            "name": "transfer_list",
+            "base": "",
+            "fields": [
+                {
+                    "name": "amount",
+                    "type": "uint64"
+                },
+                {
+                    "name": "section",
+                    "type": "uint8"
+                },
+                {
+                    "name": "time",
+                    "type": "uint64"
+                }
+            ]
+        }
+    ],
+    "types": [],
+    "actions": [
+        {
+            "name": "clear",
+            "type": "clear",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "init",
+            "type": "init",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "invite",
+            "type": "invite",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "setdata",
+            "type": "setdata",
+            "ricardian_contract": ""
+        }
+    ],
+    "tables": [
+        {
+            "name": "global",
+            "type": "global_var",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "invitation",
+            "type": "invited_persion",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "partners",
+            "type": "partner_info",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        }
+    ],
+    "ricardian_clauses": [],
+    "variants": [],
+    "abi_extensions": []
+}

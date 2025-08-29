@@ -1,0 +1,94 @@
+{
+    "____comment": "This file was generated with uosio-abigen. DO NOT EDIT Fri Nov  8 10:47:40 2019",
+    "version": "uosio::abi/1.1",
+    "structs": [
+        {
+            "name": "global_var",
+            "base": "",
+            "fields": [
+                {
+                    "name": "key",
+                    "type": "name"
+                },
+                {
+                    "name": "val",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "init",
+            "base": "",
+            "fields": []
+        },
+        {
+            "name": "clear",
+            "base": "",
+            "fields": []
+        },
+        {
+            "name": "issue",
+            "base": "",
+            "fields": [
+                {
+                    "name": "block_number",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "setdata",
+            "base": "",
+            "fields": [
+                {
+                    "name": "key",
+                    "type": "name"
+                },
+                {
+                    "name": "val",
+                    "type": "uint64"
+                },
+                {
+                    "name": "op",
+                    "type": "uint8"
+                }
+            ]
+        }
+        
+    ],
+    "types": [],
+    "actions": [
+        {
+            "name": "init",
+            "type": "init",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "setdata",
+            "type": "setdata",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "clear",
+            "type": "clear",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "issue",
+            "type": "issue",
+            "ricardian_contract": ""
+        }
+    ],
+    "tables": [
+        {
+            "name": "global",
+            "type": "global_var",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        }
+    ],
+    "ricardian_clauses": [],
+    "variants": [],
+    "abi_extensions": []
+}

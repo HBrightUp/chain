@@ -1,0 +1,426 @@
+{
+    "____comment": "This file was generated with uosio-abigen. DO NOT EDIT Fri Jan 10 09:57:56 2020",
+    "version": "uosio::abi/1.1",
+    "structs": [
+        {
+            "name": "clear",
+            "base": "",
+            "fields": [
+                {
+                    "name": "num",
+                    "type": "uint32"
+                }
+            ]
+        },
+        {
+            "name": "clearbonus",
+            "base": "",
+            "fields": [
+                {
+                    "name": "phase",
+                    "type": "uint64"
+                },
+                {
+                    "name": "num",
+                    "type": "uint32"
+                }
+            ]
+        },
+        {
+            "name": "init",
+            "base": "",
+            "fields": []
+        },
+        {
+            "name": "loginnode",
+            "base": "",
+            "fields": [
+                {
+                    "name": "owner",
+                    "type": "name"
+                },
+                {
+                    "name": "strip",
+                    "type": "string"
+                },
+                {
+                    "name": "level",
+                    "type": "uint8"
+                }
+            ]
+        },
+        {
+            "name": "logoutnode",
+            "base": "",
+            "fields": [
+                {
+                    "name": "owner",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "paybonus",
+            "base": "",
+            "fields": [
+                {
+                    "name": "owner",
+                    "type": "name"
+                },
+                {
+                    "name": "phase",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "punishnode",
+            "base": "",
+            "fields": [
+                {
+                    "name": "owner",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "setbonus",
+            "base": "",
+            "fields": [
+                {
+                    "name": "owner",
+                    "type": "name"
+                },
+                {
+                    "name": "phase",
+                    "type": "uint64"
+                },
+                {
+                    "name": "level",
+                    "type": "uint8"
+                },
+                {
+                    "name": "score",
+                    "type": "uint64"
+                },
+                {
+                    "name": "award",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "setperiod",
+            "base": "",
+            "fields": [
+                {
+                    "name": "phase",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "udfs_bonus",
+            "base": "",
+            "fields": [
+                {
+                    "name": "owner",
+                    "type": "name"
+                },
+                {
+                    "name": "ip",
+                    "type": "uint32"
+                },
+                {
+                    "name": "level",
+                    "type": "uint8"
+                },
+                {
+                    "name": "score",
+                    "type": "uint64"
+                },
+                {
+                    "name": "award",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "udfs_global",
+            "base": "",
+            "fields": [
+                {
+                    "name": "key",
+                    "type": "name"
+                },
+                {
+                    "name": "val",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "udfs_node",
+            "base": "",
+            "fields": [
+                {
+                    "name": "owner",
+                    "type": "name"
+                },
+                {
+                    "name": "ip",
+                    "type": "uint32"
+                },
+                {
+                    "name": "amount",
+                    "type": "uint64"
+                },
+                {
+                    "name": "coin_type",
+                    "type": "uint64"
+                },
+                {
+                    "name": "login_at",
+                    "type": "uint64"
+                },
+                {
+                    "name": "level",
+                    "type": "uint8"
+                },
+                {
+                    "name": "status",
+                    "type": "int8"
+                },
+                {
+                    "name": "award",
+                    "type": "asset"
+                },
+                {
+                    "name": "punish",
+                    "type": "uint8"
+                },
+                {
+                    "name": "score",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "udfs_reward",
+            "base": "",
+            "fields": [
+                {
+                    "name": "phase",
+                    "type": "uint64"
+                },
+                {
+                    "name": "nodes",
+                    "type": "uint64"
+                },
+                {
+                    "name": "score",
+                    "type": "uint64"
+                },
+                {
+                    "name": "status",
+                    "type": "uint8"
+                },
+                {
+                    "name": "bill",
+                    "type": "asset"
+                },
+                {
+                    "name": "profit",
+                    "type": "asset"
+                },
+                {
+                    "name": "supply",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "udfs_token",
+            "base": "",
+            "fields": [
+                {
+                    "name": "tr_hash",
+                    "type": "uint64"
+                },
+                {
+                    "name": "owner",
+                    "type": "uint64"
+                },
+                {
+                    "name": "amount",
+                    "type": "uint64"
+                },
+                {
+                    "name": "apply_time",
+                    "type": "uint64"
+                },
+                {
+                    "name": "coin_type",
+                    "type": "uint64"
+                },
+                {
+                    "name": "reserve1",
+                    "type": "uint64"
+                },
+                {
+                    "name": "reserve2",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "unbindnode",
+            "base": "",
+            "fields": [
+                {
+                    "name": "owner",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "updatekey",
+            "base": "",
+            "fields": [
+                {
+                    "name": "key",
+                    "type": "name"
+                },
+                {
+                    "name": "value",
+                    "type": "uint64"
+                },
+                {
+                    "name": "del",
+                    "type": "bool"
+                }
+            ]
+        },
+        {
+            "name": "updatenode",
+            "base": "",
+            "fields": [
+                {
+                    "name": "owner",
+                    "type": "name"
+                },
+                {
+                    "name": "status",
+                    "type": "int8"
+                },
+                {
+                    "name": "del",
+                    "type": "bool"
+                }
+            ]
+        }
+    ],
+    "types": [],
+    "actions": [
+        {
+            "name": "clear",
+            "type": "clear",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "clearbonus",
+            "type": "clearbonus",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "init",
+            "type": "init",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "loginnode",
+            "type": "loginnode",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "logoutnode",
+            "type": "logoutnode",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "paybonus",
+            "type": "paybonus",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "punishnode",
+            "type": "punishnode",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "setbonus",
+            "type": "setbonus",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "setperiod",
+            "type": "setperiod",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "unbindnode",
+            "type": "unbindnode",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "updatekey",
+            "type": "updatekey",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "updatenode",
+            "type": "updatenode",
+            "ricardian_contract": ""
+        }
+    ],
+    "tables": [
+        {
+            "name": "udfsbonus",
+            "type": "udfs_bonus",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "udfsglobal",
+            "type": "udfs_global",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "udfsnode",
+            "type": "udfs_token",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "udfsnodes",
+            "type": "udfs_node",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "udfsreward",
+            "type": "udfs_reward",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        }
+    ],
+    "ricardian_clauses": [],
+    "variants": [],
+    "abi_extensions": []
+}

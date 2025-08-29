@@ -1,0 +1,11 @@
+{
+    "uosio-dot-contracts":
+    {
+        "pipeline-branch": "master",
+        "dependencies": // dependencies to pull for a build of contracts, by branch, tag, or commit hash
+        {
+            "uosio": "release/1.7.x",
+            "uosio.cdt": "release/1.5.x"
+        }
+    }
+}

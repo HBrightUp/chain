@@ -1,0 +1,1 @@
+/usr/local/uosio.cdt/bin/uosio-ld  CMakeFiles/uosio.wrap.dir/src/uosio.wrap.cpp.obj -o uosio.wrap.wasm 

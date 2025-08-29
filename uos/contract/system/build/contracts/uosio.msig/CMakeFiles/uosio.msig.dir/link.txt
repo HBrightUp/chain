@@ -1,0 +1,1 @@
+/usr/local/uosio.cdt/bin/uosio-ld  CMakeFiles/uosio.msig.dir/src/uosio.msig.cpp.obj -o uosio.msig.wasm 

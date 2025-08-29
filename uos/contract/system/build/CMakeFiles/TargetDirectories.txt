@@ -1,0 +1,4 @@
+/home/uos/github/uosio.contracts/system/build/CMakeFiles/rebuild_cache.dir
+/home/uos/github/uosio.contracts/system/build/CMakeFiles/edit_cache.dir
+/home/uos/github/uosio.contracts/system/build/CMakeFiles/contracts_unit_tests.dir
+/home/uos/github/uosio.contracts/system/build/CMakeFiles/contracts_project.dir

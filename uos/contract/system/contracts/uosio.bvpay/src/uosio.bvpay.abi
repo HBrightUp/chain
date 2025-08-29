@@ -1,0 +1,11 @@
+{
+    "____comment": "This file was generated with uosio-abigen. DO NOT EDIT Tue Nov 19 13:50:40 2019",
+    "version": "uosio::abi/1.1",
+    "structs": [],
+    "types": [],
+    "actions": [],
+    "tables": [],
+    "ricardian_clauses": [],
+    "variants": [],
+    "abi_extensions": []
+}

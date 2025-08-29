@@ -1,0 +1,1 @@
+/usr/local/uosio.cdt/bin/uosio-ld  CMakeFiles/uosio.bios.dir/src/uosio.bios.cpp.obj -o uosio.bios.wasm 

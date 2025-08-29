@@ -1,0 +1,340 @@
+{
+    "____comment": "This file was generated with uosio-abigen. DO NOT EDIT Wed Apr  3 10:41:56 2019",
+    "version": "uosio::abi/1.1",
+    "structs": [
+        {
+            "name": "global_var",
+            "base": "",
+            "fields": [
+                {
+                    "name": "key",
+                    "type": "name"
+                },
+                {
+                    "name": "val",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "upgrade",
+            "base": "",
+            "fields": [
+                {
+                    "name": "user",
+                    "type": "name"
+                },
+                {
+                    "name": "credit",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "bpcredit",
+            "base": "",
+            "fields": [
+                {
+                    "name": "bp",
+                    "type": "name"
+                },
+                {
+                    "name": "credit",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "one_minute_bp_list",
+            "base": "",
+            "fields": [
+                {
+                    "name":"ulord_addr",                
+                    "type":"string"
+                },
+                {
+                    "name":"bp_valid_time",
+                    "type":"uint64"
+                },
+                {
+                    "name":"bpname",                
+                    "type":"name"
+                }
+            ]
+        },
+        {
+            "name": "ctribut",
+            "base": "",
+            "fields": [
+                {
+                    "name": "contributor",
+                    "type": "name"
+                },
+                {
+                    "name": "quantity",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "honor_info",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "vip",
+                    "type": "uint8"
+                },
+                {
+                    "name": "credit",
+                    "type": "uint64"
+                },
+                {
+                    "name": "last_convert",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "project_info",
+            "base": "",
+            "fields": [
+                {
+                    "name": "project",
+                    "type": "name"
+                },
+                {
+                    "name": "owner",
+                    "type": "name"
+                },
+                {
+                    "name": "credit",
+                    "type": "uint64"
+                },
+                {
+                    "name": "update_time",
+                    "type": "uint64"
+                },
+                {
+                    "name": "reason",
+                    "type": "string"
+                },
+                {
+                    "name": "state",
+                    "type": "string"
+                },
+                {
+                    "name": "credit_list",
+                    "type": "bpcredit[]"
+                }
+            ]
+        },
+        {
+            "name": "contribution",
+            "base": "",
+            "fields": [
+                {
+                    "name": "contributor",
+                    "type": "name"
+                },
+                {
+                    "name": "",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "convertuos",
+            "base": "",
+            "fields": [
+                {
+                    "name": "user",
+                    "type": "name"
+                },
+                {
+                    "name": "credit",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "init",
+            "base": "",
+            "fields": []
+        },
+         {
+            "name": "setdata",
+            "base": "",
+            "fields": [
+                {
+                    "name": "key",
+                    "type": "name"
+                },
+                {
+                    "name": "val",
+                    "type": "uint64"
+                },
+                {
+                    "name": "op",
+                    "type": "uint8"
+                }
+            ]
+        },
+        {
+            "name": "reward",
+            "base": "",
+            "fields": [
+                {
+                    "name": "project",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "apply",
+            "base": "",
+            "fields": [
+                {
+                    "name": "project",
+                    "type": "name"
+                },
+                {
+                    "name": "proposer",
+                    "type": "name"
+                },
+                {
+                    "name": "reason",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "assess",
+            "base": "",
+            "fields": [
+                {
+                    "name": "bp",
+                    "type": "name"
+                },
+                {
+                    "name": "project",
+                    "type": "name"
+                },
+                {
+                    "name": "credit",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "rmproject",
+            "base": "",
+            "fields": [
+                {
+                    "name": "project",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "update",
+            "base": "",
+            "fields": []
+        }
+    ],
+    "types": [],
+    "actions": [
+        {
+            "name": "setdata",
+            "type": "setdata",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "upgrade",
+            "type": "upgrade",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "contribution",
+            "type": "contribution",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "convertuos",
+            "type": "convertuos",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "init",
+            "type": "init",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "reward",
+            "type": "reward",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "apply",
+            "type": "apply",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "assess",
+            "type": "assess",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "rmproject",
+            "type": "rmproject",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "update",
+            "type": "update",
+            "ricardian_contract": ""
+        }
+    ],
+    "tables": [
+        {
+            "name": "global",
+            "type": "global_var",
+            "index_type": "i64",
+            "key_names" : ["key"],
+            "key_types" : ["uint64"]
+        },
+        {
+            "name": "ctribut",
+            "type": "ctribut",
+            "index_type": "i64",
+            "key_names" : ["contributor"],
+            "key_types" : ["uint64"]
+        },
+        {
+            "name": "honorinfo",
+            "type": "honor_info",
+            "index_type": "i64",
+            "key_names" : ["account"],
+            "key_types" : ["uint64"]
+        },
+        {
+            "name": "projectinfo",
+            "type": "project_info",
+            "index_type": "i64",
+            "key_names" : ["key"],
+            "key_types" : ["uint64"]
+        },{
+            "name": "uosclist",
+            "type": "one_minute_bp_list",
+            "index_type": "i64",
+            "key_names" : ["bp_valid_time"],
+            "key_types" : ["uint64"]
+        }
+    ],
+    "ricardian_clauses": [],
+    "variants": [],
+    "abi_extensions": []
+}

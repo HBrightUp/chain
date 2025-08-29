@@ -1,0 +1,166 @@
+{
+    "____comment": "This file was generated with uosio-abigen. DO NOT EDIT Fri Jan 10 10:57:10 2020",
+    "version": "uosio::abi/1.1",
+    "structs": [
+        {
+            "name": "clear",
+            "base": "",
+            "fields": [
+                {
+                    "name": "num",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "init",
+            "base": "",
+            "fields": []
+        },
+        {
+            "name": "setdata",
+            "base": "",
+            "fields": [
+                {
+                    "name": "key",
+                    "type": "name"
+                },
+                {
+                    "name": "val",
+                    "type": "uint64"
+                },
+                {
+                    "name": "op",
+                    "type": "uint8"
+                }
+            ]
+        },
+        {
+            "name": "setstorage",
+            "base": "",
+            "fields": [
+                {
+                    "name": "user",
+                    "type": "name"
+                },
+                {
+                    "name": "storage",
+                    "type": "int64"
+                }
+            ]
+        },
+        {
+            "name": "setused",
+            "base": "",
+            "fields": [
+                {
+                    "name": "user",
+                    "type": "name"
+                },
+                {
+                    "name": "storage",
+                    "type": "int64"
+                }
+            ]
+        },
+        {
+            "name": "udfs_global",
+            "base": "",
+            "fields": [
+                {
+                    "name": "key",
+                    "type": "name"
+                },
+                {
+                    "name": "val",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "udfs_user",
+            "base": "",
+            "fields": [
+                {
+                    "name": "user",
+                    "type": "name"
+                },
+                {
+                    "name": "create_time",
+                    "type": "uint64"
+                },
+                {
+                    "name": "exp_time",
+                    "type": "uint64"
+                },
+                {
+                    "name": "pack_type",
+                    "type": "uint8"
+                },
+                {
+                    "name": "storage",
+                    "type": "uint64"
+                },
+                {
+                    "name": "used",
+                    "type": "uint64"
+                },
+                {
+                    "name": "gived",
+                    "type": "uint64"
+                },
+                {
+                    "name": "spentmoney",
+                    "type": "uint64"
+                }
+            ]
+        }
+    ],
+    "types": [],
+    "actions": [
+        {
+            "name": "clear",
+            "type": "clear",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "init",
+            "type": "init",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "setdata",
+            "type": "setdata",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "setstorage",
+            "type": "setstorage",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "setused",
+            "type": "setused",
+            "ricardian_contract": ""
+        }
+    ],
+    "tables": [
+        {
+            "name": "udfsglobal",
+            "type": "udfs_global",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "udfsuser",
+            "type": "udfs_user",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        }
+    ],
+    "ricardian_clauses": [],
+    "variants": [],
+    "abi_extensions": []
+}

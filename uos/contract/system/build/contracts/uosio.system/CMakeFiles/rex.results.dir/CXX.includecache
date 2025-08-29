@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/uos/github/uosio.contracts/system/contracts/uosio.system/include/uosio.system/rex.results.hpp
+uosiolib/uosio.hpp
+-
+uosiolib/name.hpp
+-
+uosiolib/asset.hpp
+-
+
+/home/uos/github/uosio.contracts/system/contracts/uosio.system/src/rex.results.cpp
+uosio.system/rex.results.hpp
+-
+

@@ -1,0 +1,1 @@
+/usr/local/uosio.cdt/bin/uosio-ld  CMakeFiles/uosio.bvpay.dir/src/uosio.bvpay.cpp.obj -o uosio.bvpay.wasm 

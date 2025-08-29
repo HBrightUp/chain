@@ -1,0 +1,426 @@
+{
+    "____comment": "This file was generated with uosio-abigen. DO NOT EDIT Thu Nov 21 14:18:29 2019",
+    "version": "uosio::abi/1.1",
+    "structs": [
+        {
+            "name": "account",
+            "base": "",
+            "fields": [
+                {
+                    "name": "balance",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "addnode",
+            "base": "",
+            "fields": [
+                {
+                    "name": "tr_hash",
+                    "type": "uint64"
+                },
+                {
+                    "name": "owner",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "applypass",
+            "base": "",
+            "fields": [
+                {
+                    "name": "voter",
+                    "type": "name"
+                },
+                {
+                    "name": "tr_id",
+                    "type": "string"
+                },
+                {
+                    "name": "owner",
+                    "type": "name"
+                },
+                {
+                    "name": "amount",
+                    "type": "int64"
+                },
+                {
+                    "name": "memo",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "clear",
+            "base": "",
+            "fields": [
+                {
+                    "name": "owner",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "current_transaction",
+            "base": "",
+            "fields": [
+                {
+                    "name": "tr_hash",
+                    "type": "uint64"
+                },
+                {
+                    "name": "tr_id",
+                    "type": "string"
+                },
+                {
+                    "name": "owner",
+                    "type": "name"
+                },
+                {
+                    "name": "amount",
+                    "type": "int64"
+                },
+                {
+                    "name": "votes",
+                    "type": "int32"
+                }
+            ]
+        },
+        {
+            "name": "current_voter",
+            "base": "",
+            "fields": [
+                {
+                    "name": "voter",
+                    "type": "name"
+                },
+                {
+                    "name": "tr_hash",
+                    "type": "uint64"
+                },
+                {
+                    "name": "active_time",
+                    "type": "uint64"
+                },
+                {
+                    "name": "tr_id",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "global_var",
+            "base": "",
+            "fields": [
+                {
+                    "name": "key",
+                    "type": "name"
+                },
+                {
+                    "name": "val",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "issuetoken",
+            "base": "",
+            "fields": []
+        },
+        {
+            "name": "last_state",
+            "base": "",
+            "fields": [
+                {
+                    "name": "owner",
+                    "type": "name"
+                },
+                {
+                    "name": "laster_id",
+                    "type": "string"
+                },
+                {
+                    "name": "laster_owner",
+                    "type": "name"
+                },
+                {
+                    "name": "amount",
+                    "type": "int64"
+                },
+                {
+                    "name": "tr_hash",
+                    "type": "uint64"
+                },
+                {
+                    "name": "members",
+                    "type": "name[]"
+                }
+            ]
+        },
+        {
+            "name": "member_reward",
+            "base": "",
+            "fields": [
+                {
+                    "name": "owner",
+                    "type": "name"
+                },
+                {
+                    "name": "reward",
+                    "type": "asset"
+                },
+                {
+                    "name": "active",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "modifymember",
+            "base": "",
+            "fields": [
+                {
+                    "name": "members",
+                    "type": "name[]"
+                }
+            ]
+        },
+        {
+            "name": "setdata",
+            "base": "",
+            "fields": [
+                {
+                    "name": "key",
+                    "type": "name"
+                },
+                {
+                    "name": "val",
+                    "type": "uint64"
+                },
+                {
+                    "name": "op",
+                    "type": "uint8"
+                }
+            ]
+        },
+        {
+            "name": "transfer",
+            "base": "",
+            "fields": [
+                {
+                    "name": "from",
+                    "type": "name"
+                },
+                {
+                    "name": "to",
+                    "type": "name"
+                },
+                {
+                    "name": "quantity",
+                    "type": "asset"
+                },
+                {
+                    "name": "memo",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "udfs_node",
+            "base": "",
+            "fields": [
+                {
+                    "name": "tr_hash",
+                    "type": "uint64"
+                },
+                {
+                    "name": "owner",
+                    "type": "name"
+                },
+                {
+                    "name": "amount",
+                    "type": "uint64"
+                },
+                {
+                    "name": "apply_time",
+                    "type": "uint64"
+                },
+                {
+                    "name": "coin_type",
+                    "type": "uint64"
+                },
+                {
+                    "name": "reserve1",
+                    "type": "uint64"
+                },
+                {
+                    "name": "reserve2",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "voter",
+            "base": "",
+            "fields": [
+                {
+                    "name": "voter",
+                    "type": "name"
+                },
+                {
+                    "name": "tr_id",
+                    "type": "string"
+                },
+                {
+                    "name": "owner",
+                    "type": "name"
+                },
+                {
+                    "name": "amount",
+                    "type": "int64"
+                },
+                {
+                    "name": "coin_name",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "whitelist_fee",
+            "base": "",
+            "fields": [
+                {
+                    "name": "owner",
+                    "type": "name"
+                }
+            ]
+        }
+    ],
+    "types": [],
+    "actions": [
+        {
+            "name": "addnode",
+            "type": "addnode",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "applypass",
+            "type": "applypass",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "clear",
+            "type": "clear",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "issuetoken",
+            "type": "issuetoken",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "modifymember",
+            "type": "modifymember",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "setdata",
+            "type": "setdata",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "transfer",
+            "type": "transfer",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "voter",
+            "type": "voter",
+            "ricardian_contract": ""
+        }
+    ],
+    "tables": [
+        {
+            "name": "accounts",
+            "type": "account",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "ethstate",
+            "type": "last_state",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "ethtr",
+            "type": "current_transaction",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "ethvoter",
+            "type": "current_voter",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "global",
+            "type": "global_var",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "memberreward",
+            "type": "member_reward",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "udfsnode",
+            "type": "udfs_node",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "utstate",
+            "type": "last_state",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "uttr",
+            "type": "current_transaction",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "utvoter",
+            "type": "current_voter",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "whitelistfee",
+            "type": "whitelist_fee",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        }
+    ],
+    "ricardian_clauses": [],
+    "variants": [],
+    "abi_extensions": []
+}
