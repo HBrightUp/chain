@@ -1,0 +1,35 @@
+{
+    "printtoconsole":"false",
+    "logtimestamps":"true",
+    "logtimemicros":100,
+    "logips":true,
+	"logpath":"../log/data_center",
+    "daemon":true,
+    "rpcallowip":"127.0.0.1",
+    "rpcservertimeout":30,
+    "rpcport":8332,
+    "rpcworkqueue":100000,
+    "httpthread":12,
+    "rpcuser":"dev",
+    "rpcpassword":"123456",
+    "rpcurl":"http://192.168.1.66:8332",
+    "rpcauth":"dev:123456",
+    "kafka":"192.168.1.66:9092",
+    "mkkafka":"192.168.1.66:9092",
+	"mysql":
+	{
+		"url":"192.168.1.11",
+		"user":"root",
+		"pass":"a",
+		"db":"invite_airdrop",
+		"port":3306
+    },
+    "clickhouse":
+    {
+        "url":"192.168.1.66",
+		"user":"default",
+		"pass":"abcd4321",
+		"db":"invite_airdrop",
+		"port":8123
+    }
+}

@@ -1,0 +1,36 @@
+{
+	"logpath":"./log",
+	"daemon":false,
+	"node_test":"http://192.168.1.11:18545",
+	"node":"http://127.0.0.1:8545",
+	"contract":"0x4d0fc02ad51c89e2ee1bb903089624e84c96749d",
+	"upper":"20",
+	"lower": "0.001",
+	"rate": 390,
+	"check": true,
+	"airdrop_address":
+	[
+		"0x5d5fcd79a7b1fa2a1e590caf9fb4bb7650241695",
+        "0x417d643c2ba19fc8cce6436dd6fbccd433d4c08a",
+        "0x234c8c6dc9713db8bec6afbce06df6e10bbaba4e",
+        "0x3c1682905aaa174976908ab077619ea1c0df49d6",
+        "0x1c10271295dc81a7c3d0c0517f12366c2a82a0ea"
+	]
+	,
+	"mysql":
+	{
+		"url":"192.168.1.11",
+		"user": "root",
+		"pass": "a",
+		"db": "arc_monitor",
+		"port": 3306
+	},
+	"airdrop":
+	{
+		"url":"192.168.1.10",
+		"user": "root",
+		"pass": "123456",
+		"db": "invite_stake_airdrop",
+		"port": 3306
+	}
+}

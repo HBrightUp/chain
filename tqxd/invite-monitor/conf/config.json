@@ -1,0 +1,37 @@
+{
+	"logpath":"./log",
+	"daemon":false,
+	"node_test":"http://192.168.1.11:18545",
+	"node":"http://127.0.0.1:8545",
+	"contract":"0x4d0fc02ad51c89e2ee1bb903089624e84c96749d",
+	"upper":"100",
+	"lower": "0.0000000001",
+	"rate": 1,
+	"check": false,
+	"airstake": "./airdrop_address.json",
+	"airdrop_address":
+	[
+		"0x13b5fcc65e8390e571d9a4677b956cb738cfbeab",
+		"0x13b5fcc65e8390e571d9a4677b956cb738cfbeab",
+		"0x13b5fcc65e8390e571d9a4677b956cb738cfbeab",
+		"0x13b5fcc65e8390e571d9a4677b956cb738cfbeab",
+		"0x13b5fcc65e8390e571d9a4677b956cb738cfbeab"
+	]
+	,
+	"mysql":
+	{
+		"url":"192.168.1.10",
+		"user": "root",
+		"pass": "123456",
+		"db": "invite_airdrop",
+		"port": 3306
+	},
+	"airdrop":
+	{
+		"url":"192.168.1.10",
+		"user": "root",
+		"pass": "123456",
+		"db": "invite_stake_airdrop",
+		"port": 3306
+	}
+}

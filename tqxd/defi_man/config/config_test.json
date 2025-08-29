@@ -1,0 +1,135 @@
+{
+    "path": "./",
+    "ui":
+    {
+        "addressimport":"ui/addressimport.ui",
+        "account":"ui/account.ui",
+        "airdrop":"ui/airdrop.ui",
+        "balance":"ui/balance.ui",
+        "coinview":"ui/coinview.ui",
+        "configdialog":"ui/configdialog.ui",
+        "dialogpassword":"ui/dialogpassword.ui",
+        "mainwindow":"ui/mainwindow.ui",
+        "makemarket":"ui/makemarket.ui",
+        "record":"ui/record.ui",
+        "rpcdialog":"ui/rpcdialog.ui",
+        "token":"ui/token.ui",
+        "yoho": "ui/yoho.ui"
+
+    },
+    "abi":
+    {
+        "swap":
+        {
+            "invite-stake": "abi/swap/invite-stake.json",
+            "staking-rewards-factory": "abi/swap/staking-rewards-factory.json",
+            "staking-rewards": "abi/swap/staking-rewards.json",
+            "uniswap-v2-factory": "abi/swap/uniswap-v2-factory.json",
+            "uniswap-v2-pair": "abi/swap/uniswap-v2-pair.json",
+            "uniswap-v2-router02": "abi/swap/uniswap-v2-router02.json"
+        },
+        "token":
+        {
+            "arc20": "abi/token/arc20.json"
+        },
+        "compound":
+        {
+            "cerc20_delegator": "abi/comptroller/cerc20_delegator.json",
+            "comptroller": "abi/comptroller/comptroller.json",
+            "multi_price_oracle": "abi/comptroller/multi_price_oracle.json"
+        },
+        "bridge":
+        {
+
+        },
+        "yoho":
+        {
+            "token": "abi/yoho/token.json",
+            "level": "abi/yoho/level.json",
+            "stake-rewards-factory":"abi/yoho/stake-rewards-factory.json",
+            "stake-rewards": "abi/yoho/stake-rewards.json",
+            "invite-rewards": "abi/yoho/invite-rewards.json"
+        }
+    },
+    "contract":
+    {   
+        "swap":
+        {
+          "WAITD":"0x5900343DD73367fEBC0dB13C6108D54f3d85832d",
+          "USDT":"0x4B6b9F3695205C8468ddf9AB4025ec2A09bDfF1a",
+          "UniswapV2Factory":"0xE1BfCb24de46d7bE3D64763dBf5533A2101E2059",
+          "UniswapV2Router02":"0xE8963DC0599e063a1dC42051d6282D3Fb873EA92",
+          "StakingRewardsFactory":"0x8c765DE5e10b46b7aF07DcF6Ee99E2F504a1EB8A",
+          "Multicall":"0x8073af7b943d6f5f4db6462846e3aaa13e058f87",
+          "ARC":"0x4D0fc02AD51c89e2eE1bb903089624E84C96749d",
+          "CRET":"0x65867992a117586acd311329d9e17410bbe60ccd",
+          "StakingRewardsFactoryCRET":"0xff150B846B564C4695A1965528d0871d5f26C29D",
+          "UniswapV2Factory2":"0xB8b1058e885Ed38B99a690FfC9a9ce5aea0173Df",
+          "BTC":"0x5C8131B85bd4B7E79825AbF4e65F59aaB35710E1",
+          "ETH":"0x06D96D71BE4a95dd600BC3b2457CE5A8081E906B",
+          "ADA":"0x84423c2D95F770968e41b44B1C8AaB2E150D9cc1",
+          "StakingRewardsFactoryBtcEth":"0xaE434c8c86F83dae7b4e4e884f540FfA23edaB48",
+          "pair":
+          {
+            "AITD-USDT":"0xc47b42508aA30B6251aDcD32ff934fE4B75bF094",
+            "BTC-USDT":"0x992e94a9DC49cf1BcDd7932C30DAB133Ce6Eb297",
+            "ETH-USDT":"0xF841a71a6cB13f3661bf6c2cC701314d8FcDa2e0"
+          },
+          "stake-reward":
+          {
+            "AITD-USDT":"0x9eC1F877a3f1f8563C15ad92397e1C5aD0292d4A",
+            "AITD-USDT-2":"0xdd5a944d9317c56Cacb2A60B45a20EC617407cab",
+            "AITD-USDT-3":"0xdd5a944d9317c56Cacb2A60B45a20EC617407cab",
+            "BTC-USDT":"0x1caF4630507b2Ac92d4408728a168BB25B037404",
+            "ETH-USDT":"0x4c5a90476cEE539641a75dF7CA9F905eEF701621",
+            "CRET": "0x5B24c44f4b0084Ce6046E43085355e629Ad2d596"
+          }
+        },
+        "token":
+        {
+          "WAITD":"0x5900343DD73367fEBC0dB13C6108D54f3d85832d",
+          "USDT":"0x4B6b9F3695205C8468ddf9AB4025ec2A09bDfF1a",
+          "CRET":"0x65867992a117586acd311329d9e17410bbe60ccd",
+          "BTC":"0x5C8131B85bd4B7E79825AbF4e65F59aaB35710E1",
+          "ETH":"0x06D96D71BE4a95dd600BC3b2457CE5A8081E906B",
+          "ADA":"0x2CBF16b030be2a65dB26c6e2f7f9E6A563C076B3"
+        },
+        "comptroller":
+        {
+
+        },
+        "bridge":
+        {
+
+        },
+        "yoho":
+        {
+            "Token":"0x98c765495693A997F2A3E4780D5E31e44Db27483",
+            "Level":"0x9523B7649220569D99fF379ccE5b53fE35b815A8",
+            "StakeRewardsFactory": "0x7a1F1D6c760b753DD7fb8574234DC691ea4FC14B",
+            "StakeRewards":"0x4accF41a46dAB1539683d7e5b66156F2ECCF68D6",
+            "InviteRewards":"0x19c6B25A5BB7Ad5e8dB95EddA32a28a815383C3E"
+        }
+    },
+    "rpc":
+    {
+        "AITD" :"http://192.168.1.11:18545"
+    },
+    "db":
+    {
+        "sqlite":"db/account_test.db",
+        "clickhouse": 
+        {
+            "host":"192.168.1.27",
+            "database":"wallet_report_pre", 
+            "user":"default", 
+            "password":"123456'"
+        }
+    },
+    "log":
+    {
+        "level":"info",
+        "path": "log/"
+    }
+
+}

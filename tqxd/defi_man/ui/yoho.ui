@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>875</width>
+    <height>347</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>190</y>
+      <width>771</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="layout_new_man">
+     <item>
+      <widget class="QLabel" name="label_new_address_man">
+       <property name="text">
+        <string>新管理地址：</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_address_man_new"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_new_privkey_man">
+       <property name="text">
+        <string>新管理私钥：</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_privkey_man_new"/>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="btc_ok">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>240</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>确认</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>771</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>管理员地址：</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_address_man"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>管理员私钥：</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_privkey_man"/>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>22</x>
+      <y>60</y>
+      <width>267</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="layout_transfer_fee">
+     <item>
+      <widget class="QLabel" name="label_transfer_fee">
+       <property name="text">
+        <string>YOHO费率：</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_transfer_fee"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_transfer_fee_rate">
+       <property name="text">
+        <string>万分比</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>100</y>
+      <width>243</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="layout_rewards">
+     <item>
+      <widget class="QLabel" name="label_rewards_fee">
+       <property name="text">
+        <string>奖励费率：</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_rewards_fee"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_rewards_fee_rate">
+       <property name="text">
+        <string>万分比</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>22</x>
+      <y>140</y>
+      <width>361</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="layout_whitelist">
+     <item>
+      <widget class="QLabel" name="label_9">
+       <property name="text">
+        <string>白名单地址：</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_address_whitelist"/>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>60</y>
+      <width>301</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="layout_lower_limit">
+     <item>
+      <widget class="QLabel" name="label_transfer_fee_2">
+       <property name="text">
+        <string>下级奖励下限：</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_lower_limit"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_transfer_fee_rate_2">
+       <property name="text">
+        <string>YH</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>875</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>文件</string>
+    </property>
+    <addaction name="actionimport_relation"/>
+    <addaction name="actionbatch_airdrop"/>
+    <addaction name="actionimport_mint"/>
+   </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>设置</string>
+    </property>
+    <addaction name="actionopen_whitelist"/>
+    <addaction name="actionclose_whitelist"/>
+    <addaction name="actiontransfer_fee"/>
+    <addaction name="actionrewards_fee"/>
+    <addaction name="actionadd_whitelist"/>
+    <addaction name="actionopenhold"/>
+    <addaction name="actionclosehold"/>
+    <addaction name="actionlowerlimit"/>
+   </widget>
+   <widget class="QMenu" name="menu_3">
+    <property name="title">
+     <string>管理</string>
+    </property>
+    <addaction name="action_change_admin_token"/>
+    <addaction name="actionchange_admin_level"/>
+    <addaction name="actionchange_admin_rewards"/>
+   </widget>
+   <addaction name="menu"/>
+   <addaction name="menu_2"/>
+   <addaction name="menu_3"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionimport_relation">
+   <property name="text">
+    <string>导入关系</string>
+   </property>
+  </action>
+  <action name="actionbatch_airdrop">
+   <property name="text">
+    <string>批量转账</string>
+   </property>
+  </action>
+  <action name="actionopen_whitelist">
+   <property name="text">
+    <string>打开白名单</string>
+   </property>
+  </action>
+  <action name="actionclose_whitelist">
+   <property name="text">
+    <string>关闭白名单</string>
+   </property>
+  </action>
+  <action name="actiontransfer_fee">
+   <property name="text">
+    <string>设置转账手续费</string>
+   </property>
+  </action>
+  <action name="actionrewards_fee">
+   <property name="text">
+    <string>设置奖励率</string>
+   </property>
+  </action>
+  <action name="action_change_admin_token">
+   <property name="text">
+    <string>变更token管理员</string>
+   </property>
+  </action>
+  <action name="actionchange_admin_level">
+   <property name="text">
+    <string>变更关系管理员</string>
+   </property>
+  </action>
+  <action name="actionchange_admin_rewards">
+   <property name="text">
+    <string>变更奖励管理员</string>
+   </property>
+  </action>
+  <action name="actionadd_whitelist">
+   <property name="text">
+    <string>添加白名单</string>
+   </property>
+  </action>
+  <action name="actionopenhold">
+   <property name="text">
+    <string>打开上级持有</string>
+   </property>
+  </action>
+  <action name="actionclosehold">
+   <property name="text">
+    <string>关闭上级持有</string>
+   </property>
+  </action>
+  <action name="actionlowerlimit">
+   <property name="text">
+    <string>设置下级奖励限制</string>
+   </property>
+  </action>
+  <action name="actionimport_mint">
+   <property name="text">
+    <string>导入挖矿</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

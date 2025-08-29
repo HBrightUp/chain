@@ -1,0 +1,7 @@
+.idea
+log/
+*.spec
+*/build/
+__pycache__/
+*/*/__pycache__/
+*.db
